@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "restore": {
+    "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/FSharpScripts.fsproj": {}
+  },
+  "projects": {
+    "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/FSharpScripts.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/FSharpScripts.fsproj",
+        "projectName": "FSharpScripts",
+        "projectPath": "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/FSharpScripts.fsproj",
+        "packagesPath": "/home/calebwac/.nuget/packages/",
+        "outputPath": "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/calebwac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/share/dotnet/sdk/7.0.400/FSharp/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "FSharp.Core": {
+              "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[7.0.400, )",
+              "generatePathProperty": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

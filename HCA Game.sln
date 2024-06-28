@@ -1,0 +1,27 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCA Game", "HCA Game.csproj", "{09863764-1224-435B-9291-A30096258C12}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpScripts", "FSharpScripts\FSharpScripts.fsproj", "{4D8E23C6-4174-443E-9233-0C5D67B10714}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09863764-1224-435B-9291-A30096258C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09863764-1224-435B-9291-A30096258C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09863764-1224-435B-9291-A30096258C12}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{09863764-1224-435B-9291-A30096258C12}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{09863764-1224-435B-9291-A30096258C12}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{09863764-1224-435B-9291-A30096258C12}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{4D8E23C6-4174-443E-9233-0C5D67B10714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8E23C6-4174-443E-9233-0C5D67B10714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8E23C6-4174-443E-9233-0C5D67B10714}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8E23C6-4174-443E-9233-0C5D67B10714}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8E23C6-4174-443E-9233-0C5D67B10714}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8E23C6-4174-443E-9233-0C5D67B10714}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "A1zgyG9JLNL/bg/mcstmt1O27COEED06NGz0h049RHjrFoTMEXzb0F7Tbh25qwLa73Tt+CbkxxudkUz3SWDfyw==",
+  "success": true,
+  "projectFilePath": "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/FSharpScripts.fsproj",
+  "expectedPackageFiles": [
+    "/home/calebwac/.nuget/packages/fsharp.core/7.0.400/fsharp.core.7.0.400.nupkg.sha512"
+  ],
+  "logs": []
+}
