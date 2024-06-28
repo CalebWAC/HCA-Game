@@ -1,26 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/FSharpScripts.fsproj": {}
+    "C:\\Users\\caleb\\OneDrive\\Documents\\Godot Projects\\AR Game\\FSharpScripts\\FSharpScripts.fsproj": {}
   },
   "projects": {
-    "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/FSharpScripts.fsproj": {
+    "C:\\Users\\caleb\\OneDrive\\Documents\\Godot Projects\\AR Game\\FSharpScripts\\FSharpScripts.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/FSharpScripts.fsproj",
+        "projectUniqueName": "C:\\Users\\caleb\\OneDrive\\Documents\\Godot Projects\\AR Game\\FSharpScripts\\FSharpScripts.fsproj",
         "projectName": "FSharpScripts",
-        "projectPath": "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/FSharpScripts.fsproj",
-        "packagesPath": "/home/calebwac/.nuget/packages/",
-        "outputPath": "/media/calebwac/Shared/Godot Projects/HCA Game/FSharpScripts/obj/",
+        "projectPath": "C:\\Users\\caleb\\OneDrive\\Documents\\Godot Projects\\AR Game\\FSharpScripts\\FSharpScripts.fsproj",
+        "packagesPath": "C:\\Users\\caleb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\caleb\\OneDrive\\Documents\\Godot Projects\\AR Game\\FSharpScripts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/calebwac/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\caleb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "/usr/share/dotnet/sdk/7.0.400/FSharp/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.400\\FSharp\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -57,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

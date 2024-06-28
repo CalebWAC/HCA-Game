@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://no4pywmxvlyu"]
+[gd_scene load_steps=2 format=3 uid="uid://sya83vg4qpuc"]
 
-[ext_resource type="Script" path="res://World.cs" id="1_gtrk2"]
+[ext_resource type="Script" path="res://WorldGenerator.cs" id="1_qy17g"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="World" type="Node3D" parent="."]
-script = ExtResource("1_gtrk2")
+[node name="WorldGenerator" type="Node3D" parent="."]
+script = ExtResource("1_qy17g")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 10, 10, 10)

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Godot.NET.Sdk/4.2.2">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="World.fs" />
+        <Compile Include="WorldGenerator.fs" />
     </ItemGroup>
 
 </Project>
