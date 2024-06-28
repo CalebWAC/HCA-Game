@@ -6,7 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="GlobalFunctions.fs" />
         <Compile Include="WorldGenerator.fs" />
+        <Compile Include="CameraControl.fs" />
     </ItemGroup>
 
 </Project>
