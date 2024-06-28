@@ -17,4 +17,4 @@ config/icon="res://icon.svg"
 
 [dotnet]
 
-project/assembly_name="AR Game"
+project/assembly_name="HCA Game"
