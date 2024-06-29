@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="HCA Game"
-run/main_scene="res://node_3d.tscn"
+run/main_scene="res://TitleScreen.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+boot_splash/main_scene="res://BaseLevel.tscn"
 
 [dotnet]
 

@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5lpn1wckdi7"]
+
+[ext_resource type="Script" path="res://PlayButton.cs" id="1_nvy70"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 439.0
+offset_right = 713.0
+offset_bottom = 516.0
+theme_override_font_sizes/font_size = 50
+text = "Play"
+script = ExtResource("1_nvy70")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 113.0
+offset_right = 1019.0
+offset_bottom = 267.0
+theme_override_font_sizes/normal_font_size = 60
+text = "[Insert Name of Game Here]"
