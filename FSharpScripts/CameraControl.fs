@@ -4,13 +4,13 @@ open Godot
 open GlobalFunctions
 
 module CameraControlFS =
-    let mutable camera = Unchecked.defaultof<Camera3D>
+    let mutable camera = Unchecked.defaultof<Node3D>
     let sensitivity = 0.3f
     let mutable cameraAngleV = 0f
     let mutable clicked = false
     
     let ready () =
-        camera <- getRoot().GetNode<Camera3D>("Camera3D")
+        camera <- getRoot().GetNode<Node3D>("Camera")
         
     let process delta =
         ()

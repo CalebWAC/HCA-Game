@@ -8,9 +8,11 @@
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("1_qy17g")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.172737, 0.984968, 0, -0.984968, 0.172737, 0, 4.62078, 0)
+
+[node name="Camera" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera"]
 transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 5, 7, -5)
 script = ExtResource("2_4itei")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.698478, 0.0315773, -0.714935, 0.715632, -0.0308204, 0.697797, 0, -0.999026, -0.0441251, 0, 4.62078, 0)
