@@ -9,6 +9,8 @@
         <Compile Include="GlobalFunctions.fs" />
         <Compile Include="WorldGenerator.fs" />
         <Compile Include="CameraControl.fs" />
+        <Compile Include="Player.fs" />
+        <Compile Include="PlayerControl.fs" />
     </ItemGroup>
 
 </Project>

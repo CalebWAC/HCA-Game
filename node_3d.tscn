@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://sya83vg4qpuc"]
+[gd_scene load_steps=6 format=3 uid="uid://sya83vg4qpuc"]
 
 [ext_resource type="Script" path="res://WorldGenerator.cs" id="1_qy17g"]
 [ext_resource type="Script" path="res://CameraControl.cs" id="2_4itei"]
+[ext_resource type="Script" path="res://Player.cs" id="3_wmdso"]
+[ext_resource type="Script" path="res://PlayerControl.cs" id="4_7afsn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msx4f"]
+albedo_color = Color(0, 1, 0.25098, 1)
+metallic = 0.81
 
 [node name="Node3D" type="Node3D"]
 
@@ -16,3 +22,63 @@ transform = Transform3D(1, 0, 0, 0, 0.172737, 0.984968, 0, -0.984968, 0.172737, 
 [node name="Camera3D" type="Camera3D" parent="Camera"]
 transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 5, 7, -5)
 script = ExtResource("2_4itei")
+
+[node name="Player" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
+script = ExtResource("3_wmdso")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.950716, -0.310063, 0, 0.310063, 0.950716, 0, 0, 0)
+height = 1.0
+sides = 16
+material = SubResource("StandardMaterial3D_msx4f")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+script = ExtResource("4_7afsn")
+
+[node name="Forward" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 963.0
+offset_top = 523.0
+offset_right = 1037.0
+offset_bottom = 554.0
+text = "Forward"
+
+[node name="Backward" type="Button" parent="Control"]
+offset_left = 966.0
+offset_top = 604.0
+offset_right = 1051.0
+offset_bottom = 635.0
+text = "Backward"
+
+[node name="Left" type="Button" parent="Control"]
+offset_left = 887.0
+offset_top = 566.0
+offset_right = 961.0
+offset_bottom = 597.0
+text = "Left"
+
+[node name="Right" type="Button" parent="Control"]
+offset_left = 1052.0
+offset_top = 564.0
+offset_right = 1126.0
+offset_bottom = 595.0
+text = "Right"
+
+[node name="RotateLeft" type="Button" parent="Control"]
+offset_left = 842.0
+offset_top = 519.0
+offset_right = 916.0
+offset_bottom = 550.0
+text = "Rotate L"
+
+[node name="RotateRight" type="Button" parent="Control"]
+offset_left = 1069.0
+offset_top = 520.0
+offset_right = 1143.0
+offset_bottom = 551.0
+text = "Rotate R"
