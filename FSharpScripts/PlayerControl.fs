@@ -12,14 +12,12 @@ module PlayerControlFS =
     let mutable rotateR = Unchecked.defaultof<Button>
     let mutable player = Unchecked.defaultof<Node3D>
 
-    let moveLeft () = player.Position <- Vector3(player.Position.X + 1f, player.Position.Y, player.Position.Z)
-    let moveRight () = player.Position <- Vector3(player.Position.X - 1f, player.Position.Y, player.Position.Z)
-    let moveForward () = player.Position <- Vector3(player.Position.X, player.Position.Y, player.Position.Z + 1f)
-    let moveBackward () = player.Position <- Vector3(player.Position.X, player.Position.Y, player.Position.Z - 1f)
-    let rotateLeft () =
-        player.RotateY -90f
-        GD.Print $"{player.Rotation.Y}"
-    let rotateRight () = player.Rotate(Vector3.Up, 90f)
+    let moveLeft () = player.Translate(Vector3(1f, 0f, 0f))
+    let moveRight () = player.Translate(Vector3(-1f, 0f, 0f))
+    let moveForward () = player.Translate(Vector3(0f, 0f, 1f))
+    let moveBackward () = player.Translate(Vector3(0f, 0f, -1f))
+    let rotateLeft () = degToRad 90f |> player.RotateY
+    let rotateRight () = degToRad -90f |> player.RotateY
     
     let ready () =
         left <- getRoot().GetNode<Control>("Control").GetNode<Button>("Left")
