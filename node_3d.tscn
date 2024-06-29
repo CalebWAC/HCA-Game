@@ -20,7 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 0.172737, 0.984968, 0, -0.984968, 0.172737, 
 [node name="Camera" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Camera"]
-transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 5, 7, -5)
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 6, 7.5, -6)
 script = ExtResource("2_4itei")
 
 [node name="Player" type="Node3D" parent="."]

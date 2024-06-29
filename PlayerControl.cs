@@ -14,4 +14,8 @@ public partial class PlayerControl : Control
 	{
 		PlayerControlFS.physicsProcess((float) delta);
 	}
+	
+	public override void _Input(InputEvent @event) {
+		PlayerControlFS.input(@event);
+	}
 }

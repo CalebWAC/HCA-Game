@@ -33,9 +33,19 @@ module PlayerControlFS =
        (dir + player.Position).X < 5f && (dir + player.Position).X > -5f
     
     let move dir =
-        if withinBoundaries dir && originalPos = placeToBe then
+        if withinBoundaries dir && originalPos = placeToBe then             
             t <- 0f
             placeToBe <- placeToBe + dirVec dir
+            
+            // Height compensation
+            let block = WorldFS.world |> Array.find (fun b -> b.position.X = Mathf.Round(placeToBe.X) && b.position.Z = Mathf.Round(placeToBe.Z))
+            if block.position.Y = placeToBe.Y then
+                placeToBe.Y <- placeToBe.Y + 1f
+            elif block.position.Y - Mathf.Round(placeToBe.Y) = -2f then
+                placeToBe.Y <- placeToBe.Y - 1f
+            elif block.position.Y > placeToBe.Y || block.position.Y - Mathf.Round(placeToBe.Y) < -2f then
+                placeToBe <- player.Position
+                
             midpoint <- (player.Position + placeToBe) / 2f
             midpoint.Y <- midpoint.Y + 0.25f
     
@@ -75,4 +85,18 @@ module PlayerControlFS =
         let q2 = midpoint.Lerp(placeToBe, t)
         
         player.Position <- q1.Lerp(q2, t)
-       
+    
+    let input (event : InputEvent) =
+        match event with
+        | :? InputEventKey ->
+            let keyEvent = event :?> InputEventKey
+            if keyEvent.Pressed then
+                match keyEvent.Keycode with
+                | Key.Up -> move Forward
+                | Key.Down -> move Backward
+                | Key.Left -> move Left
+                | Key.Right -> move Right
+                | Key.Q -> rotateLeft ()
+                | Key.E -> rotateRight ()
+                | _ -> ()
+        | _ -> ()
