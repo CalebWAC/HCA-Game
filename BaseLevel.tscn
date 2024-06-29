@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://sya83vg4qpuc"]
+[gd_scene load_steps=5 format=3 uid="uid://sya83vg4qpuc"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_lwuqm"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_hsoeu"]
-[ext_resource type="Script" path="res://Scripts/Player.cs" id="3_fhci6"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="4_s1mur"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msx4f"]
-albedo_color = Color(0, 1, 0.25098, 1)
-metallic = 0.81
+[ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Player.tscn" id="5_gjr8a"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -22,16 +18,6 @@ transform = Transform3D(1, 0, 0, 0, 0.172737, 0.984968, 0, -0.984968, 0.172737, 
 [node name="Camera3D" type="Camera3D" parent="Camera"]
 transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 6, 7.5, -6)
 script = ExtResource("2_hsoeu")
-
-[node name="Player" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
-script = ExtResource("3_fhci6")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.950716, -0.310063, 0, 0.310063, 0.950716, 0, 0, 0)
-height = 1.0
-sides = 16
-material = SubResource("StandardMaterial3D_msx4f")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -87,3 +73,6 @@ offset_top = 515.0
 offset_right = 1127.0
 offset_bottom = 546.0
 text = "Rotate R"
+
+[node name="Player" parent="." instance=ExtResource("5_gjr8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)

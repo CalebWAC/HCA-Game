@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt6h27ritdukq"]
 
-[ext_resource type="Script" path="res://BackButton.cs" id="1_pe52d"]
-[ext_resource type="Script" path="res://Level1.cs" id="2_gttpt"]
+[ext_resource type="Script" path="res://Scripts/BackButton.cs" id="1_pe52d"]
+[ext_resource type="Script" path="res://Scripts/Level1.cs" id="2_gttpt"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

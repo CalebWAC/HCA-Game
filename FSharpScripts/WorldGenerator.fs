@@ -8,6 +8,9 @@ module WorldFS =
         position : Vector3
     }
     
+    type Element =
+        | Goal of Vector3
+    
     let block x y z = { position = Vector3(x, y, z) }
     
     let world = [|
@@ -22,6 +25,8 @@ module WorldFS =
         block 4f 0f -4f; block 4f 0f -3f; block 4f 0f -2f; block 4f 0f -1f; block 4f 1f 0f; block 4f 2f 1f; block 4f 1f 2f; block 4f 2f 3f; block 4f 3f 4f;
     |]
     
+    let elements = [| Goal(Vector3(-4f, 4f, 4f)) |]
+    
     let ready () =
         GD.Print "Beginning world initialization"
         
@@ -31,6 +36,16 @@ module WorldFS =
                 let block = new CsgBox3D()
                 block.Position <- Vector3(data.position.X, i, data.position.Z)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
+        )
+        
+        elements
+        |> Array.iter (fun element ->
+            match element with
+            | Goal pos ->
+                let goalScene = GD.Load<PackedScene>("res://Goal.tscn")
+                let goal = goalScene.Instantiate() :?> Node3D
+                goal.Position <- pos
+                getRoot().GetNode<Node3D>("WorldGenerator").AddChild(goal)
         )
         
     let process delta =

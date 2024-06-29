@@ -12,6 +12,7 @@
         <Compile Include="Player.fs" />
         <Compile Include="PlayerControl.fs" />
         <Compile Include="Intro Screens\SceneChangeButton.fs" />
+        <Compile Include="Goal.fs" />
     </ItemGroup>
 
 </Project>

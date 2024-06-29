@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5lpn1wckdi7"]
 
-[ext_resource type="Script" path="res://PlayButton.cs" id="1_nvy70"]
+[ext_resource type="Script" path="res://Scripts/PlayButton.cs" id="1_nvy70"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
