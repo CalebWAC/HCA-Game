@@ -42,10 +42,10 @@ script = ExtResource("4_7afsn")
 
 [node name="Forward" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 963.0
-offset_top = 523.0
-offset_right = 1037.0
-offset_bottom = 554.0
+offset_left = 970.0
+offset_top = 528.0
+offset_right = 1044.0
+offset_bottom = 559.0
 text = "Forward"
 
 [node name="Backward" type="Button" parent="Control"]
@@ -56,10 +56,10 @@ offset_bottom = 635.0
 text = "Backward"
 
 [node name="Left" type="Button" parent="Control"]
-offset_left = 887.0
-offset_top = 566.0
-offset_right = 961.0
-offset_bottom = 597.0
+offset_left = 891.0
+offset_top = 562.0
+offset_right = 965.0
+offset_bottom = 593.0
 text = "Left"
 
 [node name="Right" type="Button" parent="Control"]
@@ -70,15 +70,15 @@ offset_bottom = 595.0
 text = "Right"
 
 [node name="RotateLeft" type="Button" parent="Control"]
-offset_left = 842.0
-offset_top = 519.0
-offset_right = 916.0
-offset_bottom = 550.0
+offset_left = 889.0
+offset_top = 515.0
+offset_right = 963.0
+offset_bottom = 546.0
 text = "Rotate L"
 
 [node name="RotateRight" type="Button" parent="Control"]
-offset_left = 1069.0
-offset_top = 520.0
-offset_right = 1143.0
-offset_bottom = 551.0
+offset_left = 1053.0
+offset_top = 515.0
+offset_right = 1127.0
+offset_bottom = 546.0
 text = "Rotate R"
