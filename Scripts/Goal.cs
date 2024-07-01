@@ -13,7 +13,7 @@ public partial class Goal : Node3D
 	{
 	}
 
-	public void AreaEntered()
+	public void OnAreaEntered()
 	{
 		GD.Print("You have reached the goal!");
 	}
