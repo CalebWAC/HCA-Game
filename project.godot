@@ -13,9 +13,14 @@ config_version=5
 config/name="HCA Game"
 run/main_scene="res://TitleScreen.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0, 1, 1, 1)
 config/icon="res://icon.svg"
 boot_splash/main_scene="res://BaseLevel.tscn"
 
 [dotnet]
 
 project/assembly_name="HCA Game"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 1, 1, 1)
