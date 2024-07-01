@@ -41,13 +41,16 @@ module PlayerControlFS =
             let block = WorldFS.world |> Array.find (fun b -> b.position.X = Mathf.Round(placeToBe.X) && b.position.Z = Mathf.Round(placeToBe.Z))
             if block.position.Y = placeToBe.Y then
                 placeToBe.Y <- placeToBe.Y + 1f
+                midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
             elif block.position.Y - Mathf.Round(placeToBe.Y) = -2f then
                 placeToBe.Y <- placeToBe.Y - 1f
-            elif block.position.Y > placeToBe.Y || block.position.Y - Mathf.Round(placeToBe.Y) < -2f then
-                placeToBe <- player.Position
+                midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
+            else
+                if block.position.Y > placeToBe.Y || block.position.Y - Mathf.Round(placeToBe.Y) < -2f then
+                    placeToBe <- player.Position
                 
-            midpoint <- (player.Position + placeToBe) / 2f
-            midpoint.Y <- midpoint.Y + 0.25f
+                midpoint <- (player.Position + placeToBe) / 2f
+                midpoint.Y <- midpoint.Y + 0.25f
     
     let moveLeft () = move Left
     let moveRight () = move Right
