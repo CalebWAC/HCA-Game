@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://8miqwi7rketu"]
+[gd_scene load_steps=5 format=3 uid="uid://8miqwi7rketu"]
 
 [ext_resource type="Script" path="res://Scripts/Goal.cs" id="1_p0evf"]
+[ext_resource type="PackedScene" uid="uid://dq051mhnp14b1" path="res://Models/Goal.glb" id="2_0l8da"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76gnq"]
 transparency = 1
@@ -11,6 +12,7 @@ albedo_color = Color(0.509804, 0.00392157, 1, 0.513726)
 [node name="Goal" type="Node3D"]
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
 radial_segments = 20
 rings = 10
 material = SubResource("StandardMaterial3D_76gnq")
@@ -20,5 +22,8 @@ script = ExtResource("1_p0evf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_ihm4n")
+
+[node name="Model" parent="." instance=ExtResource("2_0l8da")]
+transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0.167046, -0.48823, -0.161363)
 
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]

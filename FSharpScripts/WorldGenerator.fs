@@ -33,7 +33,8 @@ module WorldFS =
         world
         |> Array.iter (fun data ->
             for i in 0f .. data.position.Y do
-                let block = new CsgBox3D()
+                let blockScene = GD.Load<PackedScene>("res://Block.tscn")
+                let block = blockScene.Instantiate() :?> Node3D
                 block.Position <- Vector3(data.position.X, i, data.position.Z)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
         )
