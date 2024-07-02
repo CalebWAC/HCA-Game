@@ -34,6 +34,12 @@ module PlayerControlFS =
        (dir + player.Position).Z < 5f && (dir + player.Position).Z > -5f &&
        (dir + player.Position).X < 5f && (dir + player.Position).X > -5f
     
+    let tryMoveBridge () =
+        try
+            let bridge = elements |> Array.find (fun e -> e.etype = Bridge && e.position.Y = placeToBe.Y - 1f)
+            Result.Ok "All good"
+        with | :? KeyNotFoundException -> Result.Error "Not good"
+    
     let tryMoveAquatically () =
         try
             let bubble = elements |> Array.find (fun e -> e.etype = Bubble && e.position.Y = placeToBe.Y && 
@@ -60,7 +66,7 @@ module PlayerControlFS =
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
             else
                 // Water bubble movement
-                if tryMoveAquatically () = Result.Error "Not good" then
+                if tryMoveAquatically () = Result.Error "Not good" && tryMoveBridge () = Result.Error "Not good" then
                     if inBubble() then
                         placeToBe <- placeToBe + dirVec dir * 0.5f
                     elif block.position.Y > placeToBe.Y || block.position.Y - Mathf.Round(placeToBe.Y) < -2f then
