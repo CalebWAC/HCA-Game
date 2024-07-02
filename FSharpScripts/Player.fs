@@ -8,11 +8,10 @@ module PlayerFS =
     
     let onAreaEntered (other : Area3D) =
         match other.GetParent().Name.ToString() with
-        | "GrapplingHook" -> powerUps <- Array.append powerUps [|WorldFS.GrapplingHook|]
+        | "GrapplingHook" ->
+            powerUps <- Array.append powerUps [|WorldFS.GrapplingHook|]
+            other.GetParent().QueueFree()
         | _ -> ()
-        
-        other.GetParent().QueueFree()
-        GD.Print $"Other thing should have been destroyed. Other's parent: ${other.GetParent()}"
     
     let ready () =
         let self = getRoot().GetNode<Node3D>("Player")

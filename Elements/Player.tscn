@@ -10,6 +10,7 @@ height = 1.0
 script = ExtResource("1_ylbkb")
 
 [node name="Area3D" type="Area3D" parent="."]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_jv8ni")

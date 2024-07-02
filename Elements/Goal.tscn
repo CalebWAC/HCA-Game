@@ -10,6 +10,7 @@ radius = 0.252292
 script = ExtResource("1_85j4e")
 
 [node name="Area3D" type="Area3D" parent="."]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_ihm4n")
