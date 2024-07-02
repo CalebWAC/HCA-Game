@@ -25,8 +25,110 @@ script = ExtResource("1_pe52d")
 layout_mode = 0
 offset_left = 146.0
 offset_top = 75.0
-offset_right = 246.0
-offset_bottom = 153.0
+offset_right = 291.0
+offset_bottom = 179.0
 theme_override_font_sizes/font_size = 50
 text = "1"
+script = ExtResource("2_gttpt")
+
+[node name="Level2" type="Button" parent="."]
+offset_left = 380.0
+offset_top = 73.0
+offset_right = 529.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 50
+text = "2"
+script = ExtResource("2_gttpt")
+
+[node name="Level3" type="Button" parent="."]
+offset_left = 628.0
+offset_top = 75.0
+offset_right = 781.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 50
+text = "3"
+script = ExtResource("2_gttpt")
+
+[node name="Level4" type="Button" parent="."]
+offset_left = 867.0
+offset_top = 77.0
+offset_right = 1016.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 50
+text = "4"
+script = ExtResource("2_gttpt")
+
+[node name="Level5" type="Button" parent="."]
+offset_left = 146.0
+offset_top = 251.0
+offset_right = 295.0
+offset_bottom = 357.0
+theme_override_font_sizes/font_size = 50
+text = "5"
+script = ExtResource("2_gttpt")
+
+[node name="Level6" type="Button" parent="."]
+offset_left = 379.0
+offset_top = 259.0
+offset_right = 532.0
+offset_bottom = 365.0
+theme_override_font_sizes/font_size = 50
+text = "6
+"
+script = ExtResource("2_gttpt")
+
+[node name="Level7" type="Button" parent="."]
+offset_left = 628.0
+offset_top = 259.0
+offset_right = 779.0
+offset_bottom = 367.0
+theme_override_font_sizes/font_size = 50
+text = "7
+"
+script = ExtResource("2_gttpt")
+
+[node name="Level8" type="Button" parent="."]
+offset_left = 868.0
+offset_top = 259.0
+offset_right = 1017.0
+offset_bottom = 365.0
+theme_override_font_sizes/font_size = 50
+text = "8"
+script = ExtResource("2_gttpt")
+
+[node name="Level9" type="Button" parent="."]
+offset_left = 148.0
+offset_top = 431.0
+offset_right = 299.0
+offset_bottom = 537.0
+theme_override_font_sizes/font_size = 50
+text = "9
+"
+script = ExtResource("2_gttpt")
+
+[node name="Level10" type="Button" parent="."]
+offset_left = 382.0
+offset_top = 437.0
+offset_right = 533.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 50
+text = "10"
+script = ExtResource("2_gttpt")
+
+[node name="Level11" type="Button" parent="."]
+offset_left = 635.0
+offset_top = 434.0
+offset_right = 782.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 50
+text = "11"
+script = ExtResource("2_gttpt")
+
+[node name="Level12" type="Button" parent="."]
+offset_left = 867.0
+offset_top = 435.0
+offset_right = 1014.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 50
+text = "12"
 script = ExtResource("2_gttpt")

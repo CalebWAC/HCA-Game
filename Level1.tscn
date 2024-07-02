@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://sya83vg4qpuc"]
 
-[ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_lwuqm"]
-[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_hsoeu"]
-[ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="4_s1mur"]
-[ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="5_gjr8a"]
+[ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_hl0wr"]
+[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_addpj"]
+[ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_ufamb"]
+[ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="4_rq4tr"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldGenerator" type="Node3D" parent="."]
-script = ExtResource("1_lwuqm")
+script = ExtResource("1_hl0wr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.796171, 0.605072, 0, -0.605072, -0.796171, 0, 4.62078, 0)
@@ -16,8 +16,8 @@ transform = Transform3D(1, 0, 0, 0, -0.796171, 0.605072, 0, -0.605072, -0.796171
 [node name="Camera" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Camera"]
-transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 9, 11.5, -9)
-script = ExtResource("2_hsoeu")
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 9, 12.5, -9)
+script = ExtResource("2_addpj")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -25,7 +25,7 @@ anchors_preset = 0
 offset_right = 1154.0
 offset_bottom = 650.0
 mouse_filter = 1
-script = ExtResource("4_s1mur")
+script = ExtResource("3_ufamb")
 
 [node name="Forward" type="Button" parent="Control"]
 layout_mode = 0
@@ -75,5 +75,5 @@ offset_right = 1127.0
 offset_bottom = 546.0
 text = "Rotate R"
 
-[node name="Player" parent="." instance=ExtResource("5_gjr8a")]
+[node name="Player" parent="." instance=ExtResource("4_rq4tr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
