@@ -12,6 +12,7 @@ module WorldFS =
         | Goal
         | Bubble
         | Bridge
+        | Hook
         
     type PowerUpType =
         | GrapplingHook
@@ -26,8 +27,8 @@ module WorldFS =
         block -4f 0f -4f; block -4f 1f -3f; block -4f 2f -2f; block -4f 2f -1f; block -4f 3f 0f; block -4f 3f 1f; block -4f 1f 2f; block -4f 0f 3f; block -4f 3f 4f;
         block -3f 0f -4f; block -3f 1f -3f; block -3f 2f -2f; block -3f 2f -1f; block -3f 2f 0f; block -3f 3f 1f; block -3f 1f 2f; block -3f 0f 3f; block -3f 3f 4f
         block -2f 0f -4f; block -2f 0f -3f; block -2f 1f -2f; block -2f 1f -1f; block -2f 2f 0f; block -2f 2f 1f; block -2f 1f 2f; block -2f 0f 3f; block -2f 3f 4f
-        block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 1f 0f; block -1f 2f 1f; block -1f 1f 2f; block -1f 0f 3f; block -1f 3f 4f;
-        block 0f 0f -4f; block 0f 0f -3f; block 0f 0f -2f; block 0f 0f -1f; block 0f 1f 0f; block 0f 2f 1f; block 0f 1f 2f; block 0f 2f 3f; block 0f 3f 4f;
+        block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 1f 0f; block -1f 2f 1f; block -1f 1f 2f; block -1f 0f 3f; block -1f 4f 4f;
+        block 0f 0f -4f; block 0f 0f -3f; block 0f 0f -2f; block 0f 0f -1f; block 0f 1f 0f; block 0f 2f 1f; block 0f 0f 2f; block 0f 2f 3f; block 0f 5f 4f;
         block 1f 0f -4f; block 1f 0f -3f; block 1f 0f -2f; block 1f 0f -1f; block 1f 1f 0f; block 1f 2f 1f; block 1f 1f 2f; block 1f 2f 3f; block 1f 3f 4f;
         block 2f 0f -4f; block 2f 0f -3f; block 2f 0f -2f; block 2f 0f -1f; block 2f 1f 0f; block 2f 2f 1f; block 2f 0f 2f; block 2f 0f 3f; block 2f 2f 4f
         block 3f 0f -4f; block 3f 0f -3f; block 3f 0f -2f; block 3f 0f -1f; block 3f 1f 0f; block 3f 2f 1f; block 3f 0f 2f; block 3f 0f 3f; block 3f 2f 4f;
@@ -38,6 +39,7 @@ module WorldFS =
         { etype = Goal; position = Vector3(-4f, 4f, 4f); rotation = Vector3.Zero }
         { etype = Bubble; position = Vector3(-3f, 4f, 2.5f); rotation = Vector3.Zero }
         { etype = Bridge; position = Vector3(3f, 2f, 2.5f); rotation = Vector3(0f, degToRad 90f, 0f) }
+        { etype = Hook; position = Vector3(0f, 5f, 3.5f); rotation = Vector3.Zero }
     |]
     
     let powerUps = [|
@@ -60,10 +62,12 @@ module WorldFS =
         // Platformer element placement
         elements
         |> Array.iter (fun element ->
-            let scene = match element.etype with
-                        | Goal -> GD.Load<PackedScene>("res://Elements/Goal.tscn")
-                        | Bubble -> GD.Load<PackedScene>("res://Elements/WaterBubble.tscn")
-                        | Bridge _ -> GD.Load<PackedScene>("res://Elements/Bridge.tscn")
+            let scene = GD.Load<PackedScene>(match element.etype with
+                                            | Goal -> "res://Elements/Goal.tscn"
+                                            | Bubble -> "res://Elements/WaterBubble.tscn"
+                                            | Bridge -> "res://Elements/Bridge.tscn"
+                                            | Hook -> "res://Elements/Hook.tscn")
+            
             let emt = scene.Instantiate() :?> Node3D
             emt.Position <- element.position
             emt.Rotation <- element.rotation

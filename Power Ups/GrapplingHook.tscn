@@ -1,7 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://21mqcwif6q2u"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8orr3"]
-radius = 0.45
 
 [node name="GrapplingHook" type="Node3D"]
 
