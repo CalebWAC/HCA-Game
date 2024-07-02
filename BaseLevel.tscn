@@ -16,7 +16,7 @@ transform = Transform3D(1, 0, 0, 0, -0.796171, 0.605072, 0, -0.605072, -0.796171
 [node name="Camera" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Camera"]
-transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 6, 7.5, -6)
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 8, 9.5, -8)
 script = ExtResource("2_hsoeu")
 
 [node name="Control" type="Control" parent="."]

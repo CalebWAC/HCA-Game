@@ -31,8 +31,8 @@ module PlayerControlFS =
     
     let withinBoundaries direction =
        let dir = dirVec direction
-       (dir + player.Position).Z < 5f && (dir + player.Position).Z > -5f &&
-       (dir + player.Position).X < 5f && (dir + player.Position).X > -5f
+       (dir + player.Position).Z < 7f && (dir + player.Position).Z > -7f &&
+       (dir + player.Position).X < 7f && (dir + player.Position).X > -7f
     
     let tryMoveBridge () =
         try
