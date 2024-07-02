@@ -34,20 +34,22 @@ module PlayerControlFS =
        (dir + player.Position).Z < 5f && (dir + player.Position).Z > -5f &&
        (dir + player.Position).X < 5f && (dir + player.Position).X > -5f
     
-    let moveAquatically dir =
+    let tryMoveAquatically () =
         try
-            let bubble = elements |> Array.find (fun e -> e.position.Y = placeToBe.Y && (placeToBe.X = e.position.X || placeToBe.Z = e.position.Z ))
+            let bubble = elements |> Array.find (fun e -> e.etype = Bubble && e.position.Y = placeToBe.Y && 
+                                                          (((placeToBe.X + 0.5f = e.position.X && placeToBe.Z = e.position.Z) || (placeToBe.X - 0.5f = e.position.X && placeToBe.Z = e.position.Z)) ||
+                                                          ((placeToBe.X = e.position.X && placeToBe.Z + 0.5f = e.position.Z) || (placeToBe.X = e.position.X && placeToBe.Z - 0.5f = e.position.Z))))
             placeToBe <- bubble.position
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
+    let inBubble () = elements |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position)
+    
     let move dir =
-        GD.Print $"{player.Position}"
-        
         if withinBoundaries dir && originalPos = placeToBe then             
             t <- 0f
             placeToBe <- placeToBe + dirVec dir
-            
+                
             // Height compensation
             let block = world |> Array.find (fun b -> b.position.X = Mathf.Round(placeToBe.X) && b.position.Z = Mathf.Round(placeToBe.Z))
             if block.position.Y = placeToBe.Y then
@@ -57,15 +59,13 @@ module PlayerControlFS =
                 placeToBe.Y <- placeToBe.Y - 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
             else
-                if block.position.Y > placeToBe.Y || block.position.Y - Mathf.Round(placeToBe.Y) < -2f then
-                    if moveAquatically dir = Result.Error "Not good" then
+                // Water bubble movement
+                if tryMoveAquatically () = Result.Error "Not good" then
+                    if inBubble() then
+                        placeToBe <- placeToBe + dirVec dir * 0.5f
+                    elif block.position.Y > placeToBe.Y || block.position.Y - Mathf.Round(placeToBe.Y) < -2f then
                         placeToBe <- player.Position
                         
-                // Bubble exit checking
-                if elements |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position) then
-                    let unrounded = placeToBe + (dirVec dir * 0.5f)
-                    placeToBe <- Vector3(round unrounded.X, round unrounded.Y, round unrounded.Z)
-                
                 midpoint <- (player.Position + placeToBe) / 2f
                 midpoint.Y <- midpoint.Y + 0.25f
     
