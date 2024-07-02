@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_lwuqm"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_hsoeu"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="4_s1mur"]
-[ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Player.tscn" id="5_gjr8a"]
+[ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="5_gjr8a"]
 
 [node name="Node3D" type="Node3D"]
 

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dudmd68tbviwg"]
+
+[ext_resource type="PackedScene" uid="uid://mjqua8mkpi7f" path="res://Models/Water Bubble.glb" id="1_edgpx"]
+
+[node name="WaterBubble" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_edgpx")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.997436, -1.02373, -1.00992)

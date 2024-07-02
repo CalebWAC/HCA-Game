@@ -8,8 +8,11 @@ module WorldFS =
         position : Vector3
     }
     
-    type Element =
-        | Goal of Vector3
+    type ElementType =
+        | Goal
+        | Bubble
+        
+    type Element = { etype: ElementType; position: Vector3 }
     
     let block x y z = { position = Vector3(x, y, z) }
     
@@ -25,7 +28,10 @@ module WorldFS =
         block 4f 0f -4f; block 4f 0f -3f; block 4f 0f -2f; block 4f 0f -1f; block 4f 1f 0f; block 4f 2f 1f; block 4f 1f 2f; block 4f 2f 3f; block 4f 3f 4f;
     |]
     
-    let elements = [| Goal(Vector3(-4f, 4f, 4f)) |]
+    let elements = [|
+        { etype = Goal; position = Vector3(-4f, 4f, 4f) }
+        { etype = Bubble; position = Vector3(-3f, 4f, 2.5f) }
+    |]
     
     let ready () =
         GD.Print "Beginning world initialization"
@@ -33,7 +39,7 @@ module WorldFS =
         world
         |> Array.iter (fun data ->
             for i in 0f .. data.position.Y do
-                let blockScene = GD.Load<PackedScene>("res://Block.tscn")
+                let blockScene = GD.Load<PackedScene>("res://Elements/Block.tscn")
                 let block = blockScene.Instantiate() :?> Node3D
                 block.Position <- Vector3(data.position.X, i, data.position.Z)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
@@ -41,12 +47,12 @@ module WorldFS =
         
         elements
         |> Array.iter (fun element ->
-            match element with
-            | Goal pos ->
-                let goalScene = GD.Load<PackedScene>("res://Goal.tscn")
-                let goal = goalScene.Instantiate() :?> Node3D
-                goal.Position <- pos
-                getRoot().GetNode<Node3D>("WorldGenerator").AddChild(goal)
+            let scene = match element.etype with
+                        | Goal -> GD.Load<PackedScene>("res://Elements/Goal.tscn")
+                        | Bubble -> GD.Load<PackedScene>("res://Elements/WaterBubble.tscn")
+            let emt = scene.Instantiate() :?> Node3D
+            emt.Position <- element.position
+            getRoot().GetNode<Node3D>("WorldGenerator").AddChild(emt)
         )
         
     let process delta =
