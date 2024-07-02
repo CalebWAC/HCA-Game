@@ -13,7 +13,12 @@ module WorldFS =
         | Bubble
         | Bridge
         
+    type PowerUpType =
+        | GrapplingHook
+        
     type Element = { etype: ElementType; position: Vector3; rotation: Vector3 }
+    
+    type PowerUp = { ptype: PowerUpType; position: Vector3 }
     
     let block x y z = { position = Vector3(x, y, z) }
     
@@ -35,9 +40,14 @@ module WorldFS =
         { etype = Bridge; position = Vector3(3f, 2f, 2.5f); rotation = Vector3(0f, degToRad 90f, 0f) }
     |]
     
+    let powerUps = [|
+        { ptype = GrapplingHook; position = Vector3(-1f, 1f, -3f) }
+    |]
+    
     let ready () =
         GD.Print "Beginning world initialization"
         
+        // World generation
         world
         |> Array.iter (fun data ->
             for i in 0f .. data.position.Y do
@@ -47,6 +57,7 @@ module WorldFS =
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
         )
         
+        // Platformer element placement
         elements
         |> Array.iter (fun element ->
             let scene = match element.etype with
@@ -57,6 +68,16 @@ module WorldFS =
             emt.Position <- element.position
             emt.Rotation <- element.rotation
             getRoot().GetNode<Node3D>("WorldGenerator").AddChild(emt)
+        )
+        
+        // Power up placement
+        powerUps
+        |> Array.iter (fun powerUp ->
+            let scene = match powerUp.ptype with
+                        | GrapplingHook -> GD.Load<PackedScene>("res://Power Ups/GrapplingHook.tscn")
+            let power = scene.Instantiate() :?> Node3D
+            power.Position <- powerUp.position
+            getRoot().GetNode<Node3D>("WorldGenerator").AddChild(power)
         )
         
     let process delta =

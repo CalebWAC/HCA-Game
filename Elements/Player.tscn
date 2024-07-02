@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d6ep830hjnl0"]
+[gd_scene load_steps=4 format=3 uid="uid://d6ep830hjnl0"]
 
 [ext_resource type="PackedScene" uid="uid://boo3av7kiylxm" path="res://Models/Player.glb" id="1_t0aub"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_ylbkb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jv8ni"]
 height = 1.0
 
 [node name="Player" type="Node3D"]
+script = ExtResource("1_ylbkb")
 
 [node name="Area3D" type="Area3D" parent="."]
 

@@ -36,7 +36,9 @@ module PlayerControlFS =
     
     let tryMoveBridge () =
         try
-            let bridge = elements |> Array.find (fun e -> e.etype = Bridge && e.position.Y = placeToBe.Y - 1f)
+            let bridge = elements |> Array.find (fun e -> e.etype = Bridge && e.position.Y = placeToBe.Y - 1f &&
+                                                          (((placeToBe.X + 0.5f = e.position.X && placeToBe.Z = e.position.Z) || (placeToBe.X - 0.5f = e.position.X && placeToBe.Z = e.position.Z)) ||
+                                                          ((placeToBe.X = e.position.X && placeToBe.Z + 0.5f = e.position.Z) || (placeToBe.X = e.position.X && placeToBe.Z - 0.5f = e.position.Z))))
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
