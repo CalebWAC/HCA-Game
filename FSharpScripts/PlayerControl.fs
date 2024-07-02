@@ -37,8 +37,9 @@ module PlayerControlFS =
     let tryMoveBridge () =
         try
             let bridge = elements |> Array.find (fun e -> e.etype = Bridge && e.position.Y = placeToBe.Y - 1f &&
-                                                          (((placeToBe.X + 0.5f = e.position.X && placeToBe.Z = e.position.Z) || (placeToBe.X - 0.5f = e.position.X && placeToBe.Z = e.position.Z)) ||
-                                                          ((placeToBe.X = e.position.X && placeToBe.Z + 0.5f = e.position.Z) || (placeToBe.X = e.position.X && placeToBe.Z - 0.5f = e.position.Z))))
+                                                          (((round placeToBe.X + 0.5f = e.position.X && round placeToBe.Z = e.position.Z) || (round placeToBe.X - 0.5f = e.position.X && round placeToBe.Z = e.position.Z)) ||
+                                                          ((round placeToBe.X = e.position.X && round placeToBe.Z + 0.5f = e.position.Z) || (round placeToBe.X = e.position.X && round placeToBe.Z - 0.5f = e.position.Z))))
+            GD.Print $"Found a bridge at {bridge.position}"
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
@@ -46,7 +47,8 @@ module PlayerControlFS =
         try
             let bubble = elements |> Array.find (fun e -> e.etype = Bubble && e.position.Y = placeToBe.Y && 
                                                           (((placeToBe.X + 0.5f = e.position.X && placeToBe.Z = e.position.Z) || (placeToBe.X - 0.5f = e.position.X && placeToBe.Z = e.position.Z)) ||
-                                                          ((placeToBe.X = e.position.X && placeToBe.Z + 0.5f = e.position.Z) || (placeToBe.X = e.position.X && placeToBe.Z - 0.5f = e.position.Z))))
+                                                          ((placeToBe.X = e.position.X && placeToBe.Z + 0.5f = e.position.Z) || (placeToBe.X = e.position.X && placeToBe.Z - 0.5f = e.position.Z)) ||
+                                                          ((placeToBe.Z - 1f = e.position.Z && placeToBe.Z - 1f <> player.Position.Z) || (placeToBe.Z + 1f = e.position.Z && placeToBe.Z + 1f <> player.Position.Z))))
             placeToBe <- bubble.position
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
