@@ -4,8 +4,13 @@ open Godot
 open GlobalFunctions
 
 module WorldFS =
+    type BlockMaterial =
+        | Ground
+        | Water
+    
     type Block = {
         position : Vector3
+        material : BlockMaterial
     }
     
     type ElementType =
@@ -22,7 +27,8 @@ module WorldFS =
     
     type PowerUp = { ptype: PowerUpType; position: Vector3 }
     
-    let block x y z = { position = Vector3(x, y, z) }
+    let block x y z = { position = Vector3(x, y, z); material = Ground }
+    let waterBlock x y z = { position = Vector3(x, y, z); material = Water }
     
     let mutable level = 0
     
@@ -44,17 +50,17 @@ module WorldFS =
         |]
         [| // Level 2
            block -6f 0f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; block -6f 0f 3f; block -6f 0f 4f; block -6f 0f 5f; block -6f 0f 6f
-           block -5f 0f -6f; block -5f 0f -5f; block -5f 0f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 0f 0f; block -5f 0f 1f; block -5f 0f 2f; block -5f 0f 3f; block -5f 0f 4f; block -5f 0f 5f; block -5f 0f 6f
-           block -4f 0f -6f; block -4f 0f -5f; block -4f 0f -4f; block -4f 0f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; block -4f 0f 1f; block -4f 0f 2f; block -4f 0f 3f; block -4f 0f 4f; block -4f 0f 5f; block -4f 0f 6f
-           block -3f 0f -6f; block -3f 0f -5f; block -3f 0f -4f; block -3f 0f -3f; block -3f 0f -2f; block -3f 0f -1f; block -3f 7f 0f; block -3f 0f 1f; block -3f 0f 2f; block -3f 0f 3f; block -3f 0f 4f; block -3f 0f 5f; block -3f 0f 6f
-           block -2f 0f -6f; block -2f 0f -5f; block -2f 0f -4f; block -2f 0f -3f; block -2f 0f -2f; block -2f 0f -1f; block -2f 0f 0f; block -2f 0f 1f; block -2f 0f 2f; block -2f 0f 3f; block -2f 0f 4f; block -2f 0f 5f; block -2f 0f 6f
+           block -5f 0f -6f; block -5f 0f -5f; block -5f 0f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 0f 0f; waterBlock -5f 0f 1f; waterBlock -5f 0f 2f; waterBlock -5f 0f 3f; waterBlock -5f 0f 4f; waterBlock -5f 0f 5f; block -5f 0f 6f
+           block -4f 0f -6f; block -4f 0f -5f; block -4f 0f -4f; block -4f 0f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; waterBlock -4f 0f 1f; block -4f 0f 2f; block -4f 0f 3f; block -4f 0f 4f; waterBlock -4f 0f 5f; block -4f 0f 6f
+           block -3f 0f -6f; block -3f 0f -5f; block -3f 0f -4f; block -3f 0f -3f; block -3f 0f -2f; block -3f 0f -1f; block -3f 0f 0f; waterBlock -3f 0f 1f; block -3f 0f 2f; block -3f 7f 3f; block -3f 0f 4f; waterBlock -3f 0f 5f; block -3f 0f 6f
+           block -2f 0f -6f; block -2f 0f -5f; block -2f 0f -4f; block -2f 0f -3f; block -2f 0f -2f; block -2f 0f -1f; block -2f 0f 0f; waterBlock -2f 0f 1f; waterBlock -2f 0f 2f; block -2f 0f 3f; waterBlock -2f 0f 4f; waterBlock -2f 0f 5f; block -2f 0f 6f
            block -1f 0f -6f; block -1f 0f -5f; block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 0f 0f; block -1f 0f 1f; block -1f 0f 2f; block -1f 0f 3f; block -1f 0f 4f; block -1f 0f 5f; block -1f 0f 6f
            block 0f 0f -6f; block 0f 0f -5f; block 0f 0f -4f; block 0f 0f -3f; block 0f 0f -2f; block 0f 0f -1f; block 0f 0f 0f; block 0f 0f 1f; block 0f 0f 2f; block 0f 0f 3f; block 0f 0f 4f; block 0f 0f 5f; block 0f 0f 6f
            block 1f 0f -6f; block 1f 0f -5f; block 1f 0f -4f; block 1f 0f -3f; block 1f 0f -2f; block 1f 0f -1f; block 1f 0f 0f; block 1f 0f 1f; block 1f 0f 2f; block 1f 0f 3f; block 1f 0f 4f; block 1f 0f 5f; block 1f 0f 6f
-           block 2f 0f -6f; block 2f 0f -5f; block 2f 0f -4f; block 2f 0f -3f; block 2f 0f -2f; block 2f 0f -1f; block 2f 0f 0f; block 2f 0f 1f; block 2f 0f 2f; block 2f 0f 3f; block 2f 0f 4f; block 2f 0f 5f; block 2f 0f 6f
-           block 3f 0f -6f; block 3f 0f -5f; block 3f 0f -4f; block 3f 0f -3f; block 3f 0f -2f; block 3f 0f -1f; block 3f 0f 0f; block 3f 0f 1f; block 3f 0f 2f; block 3f 0f 3f; block 3f 0f 4f; block 3f 0f 5f; block 3f 0f 6f
-           block 4f 0f -6f; block 4f 0f -5f; block 4f 0f -4f; block 4f 0f -3f; block 4f 0f -2f; block 4f 0f -1f; block 4f 0f 0f; block 4f 0f 1f; block 4f 0f 2f; block 4f 0f 3f; block 4f 0f 4f; block 4f 0f 5f; block 4f 0f 6f
-           block 5f 0f -6f; block 5f 0f -5f; block 5f 0f -4f; block 5f 0f -3f; block 5f 0f -2f; block 5f 0f -1f; block 5f 0f 0f; block 5f 0f 1f; block 5f 0f 2f; block 5f 0f 3f; block 5f 0f 4f; block 5f 0f 5f; block 5f 0f 6f
+           block 2f 0f -6f; block 2f 4f -5f; block 2f 4f -4f; block 2f 5f -3f; block 2f 0f -2f; block 2f 0f -1f; block 2f 0f 0f; block 2f 0f 1f; block 2f 0f 2f; block 2f 0f 3f; block 2f 0f 4f; block 2f 0f 5f; block 2f 0f 6f
+           block 3f 0f -6f; block 3f 3f -5f; block 3f 6f -4f; block 3f 6f -3f; block 3f 0f -2f; block 3f 0f -1f; block 3f 0f 0f; block 3f 0f 1f; block 3f 0f 2f; block 3f 0f 3f; block 3f 0f 4f; block 3f 0f 5f; block 3f 0f 6f
+           block 4f 0f -6f; block 4f 3f -5f; block 4f 6f -4f; block 4f 6f -3f; block 4f 0f -2f; block 4f 0f -1f; block 4f 0f 0f; block 4f 0f 1f; block 4f 0f 2f; block 4f 0f 3f; block 4f 0f 4f; block 4f 0f 5f; block 4f 0f 6f
+           block 5f 0f -6f; block 5f 2f -5f; block 5f 2f -4f; block 5f 1f -3f; block 5f 0f -2f; block 5f 0f -1f; block 5f 0f 0f; block 5f 0f 1f; block 5f 0f 2f; block 5f 0f 3f; block 5f 0f 4f; block 5f 0f 5f; block 5f 0f 6f
            block 6f 0f -6f; block 6f 0f -5f; block 6f 0f -4f; block 6f 0f -3f; block 6f 0f -2f; block 6f 0f -1f; block 6f 0f 0f; block 6f 0f 1f; block 6f 0f 2f; block 6f 0f 3f; block 6f 0f 4f; block 6f 0f 5f; block 6f 0f 6f
         |]
     |]
@@ -68,7 +74,7 @@ module WorldFS =
             { etype = Hook; position = Vector3(-3f, 7f, -5.5f); rotation = Vector3.Zero }
         |]
         [| // Level 2
-            { etype = Goal; position = Vector3(-3f, 8f, 0f); rotation = Vector3.Zero }
+            { etype = Goal; position = Vector3(-3f, 8f, 3f); rotation = Vector3.Zero }
         |]
     |]
     
@@ -77,7 +83,7 @@ module WorldFS =
             { ptype = GrapplingHook; position = Vector3(-2f, 1f, 0f) }
         |]
         [| // Level 2
-            { ptype = TerrainManipulator; position = Vector3(4f, 1f, 4f) }
+            { ptype = TerrainManipulator; position = Vector3(4f, 7f, -4f) }
         |]
     |]
     

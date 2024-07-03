@@ -76,4 +76,4 @@ offset_bottom = 546.0
 text = "Rotate R"
 
 [node name="Player" parent="." instance=ExtResource("4_clpbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 1, 4)
