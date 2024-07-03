@@ -33,10 +33,12 @@ module TerrainManipulatorFS =
                         t <- 0f
                         let blockScene = GD.Load<PackedScene>("res://Elements/Block.tscn")
                         let block = blockScene.Instantiate() :?> Node3D
-                        selected <- selected + Vector3(0f, 0f, 0f)
                         block.Position <- selected
                         block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> onInputEvent event position)
                         getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
+                        GD.Print selected
+                        Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected - Vector3(0f, 1f, 0f))) { position = selected; material = Ground }
+                        selected <- selected + Vector3(0f, 1f, 0f)
                     | Key.Down -> GD.Print "Moving down"
                     | _ -> ()
             | _ -> ()
