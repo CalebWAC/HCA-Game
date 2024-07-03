@@ -23,7 +23,7 @@ module TerrainManipulatorFS =
         t <- t + delta * 4f
     
     let input (event : InputEvent) =
-        if terrainOn && t > 1f then
+        if terrainOn && t > 1f && (worlds[level] |> Array.find(fun b -> b.position = selected - Vector3(0f, 1f, 0f))).material = Ground then
             match event with
             | :? InputEventKey ->
                 let keyEvent = event :?> InputEventKey
@@ -36,7 +36,6 @@ module TerrainManipulatorFS =
                         block.Position <- selected
                         block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> onInputEvent event position)
                         getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
-                        GD.Print selected
                         Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected - Vector3(0f, 1f, 0f))) { position = selected; material = Ground }
                         selected <- selected + Vector3(0f, 1f, 0f)
                     | Key.Down -> GD.Print "Moving down"

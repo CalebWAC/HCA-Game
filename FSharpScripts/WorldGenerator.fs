@@ -14,7 +14,15 @@ module WorldGeneratorFS =
             for i in 0f .. data.position.Y do
                 let blockScene = GD.Load<PackedScene>("res://Elements/Block.tscn")
                 let block = blockScene.Instantiate() :?> Node3D
+                
                 block.Position <- Vector3(data.position.X, i, data.position.Z)
+                block.GetNode<CsgBox3D>("CSGBox3D").MaterialOverride <-
+                    match data.material with
+                    | Ground -> ResourceLoader.Load("res://Materials/Block.tres") :?> Material
+                    | Water ->
+                        block.GetNode("Model").QueueFree()
+                        ResourceLoader.Load("res://Materials/WaterBubble.tres") :?> Material
+                
                 block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.onInputEvent event position)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
                 
