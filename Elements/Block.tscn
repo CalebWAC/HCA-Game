@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp62mesumoyn8"]
+[gd_scene load_steps=5 format=3 uid="uid://dp62mesumoyn8"]
 
 [ext_resource type="PackedScene" uid="uid://ceetweyfcu1rn" path="res://Models/Basic Terrain Block.glb" id="1_2yxbq"]
+[ext_resource type="Script" path="res://Scripts/TerrainManipulator.cs" id="1_k43ns"]
 [ext_resource type="Material" uid="uid://tjrsm8fr0ltv" path="res://Materials/Block.tres" id="2_kfv17"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rntx6"]
+
 [node name="Block" type="Node3D"]
+script = ExtResource("1_k43ns")
 
 [node name="Model" parent="." instance=ExtResource("1_2yxbq")]
 transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.505, -0.505, -0.51)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 material_override = ExtResource("2_kfv17")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_rntx6")

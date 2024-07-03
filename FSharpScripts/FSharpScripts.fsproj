@@ -8,9 +8,10 @@
     <ItemGroup>
         <Compile Include="GlobalFunctions.fs" />
         <Compile Include="World.fs" />
+        <Compile Include="Player.fs" />
+        <Compile Include="TerrainManipulator.fs" />
         <Compile Include="WorldGenerator.fs" />
         <Compile Include="CameraControl.fs" />
-        <Compile Include="Player.fs" />
         <Compile Include="PlayerControl.fs" />
         <Compile Include="Hook.fs" />
         <Compile Include="Intro Screens\SceneChangeButton.fs" />

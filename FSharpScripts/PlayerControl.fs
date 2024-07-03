@@ -117,16 +117,17 @@ module PlayerControlFS =
         player.Position <- q1.Lerp(q2, t)
     
     let input (event : InputEvent) =
-        match event with
-        | :? InputEventKey ->
-            let keyEvent = event :?> InputEventKey
-            if keyEvent.Pressed then
-                match keyEvent.Keycode with
-                | Key.Up -> move Forward
-                | Key.Down -> move Backward
-                | Key.Left -> move Left
-                | Key.Right -> move Right
-                | Key.Q -> rotateLeft ()
-                | Key.E -> rotateRight ()
-                | _ -> ()
-        | _ -> ()
+        if not PlayerFS.terrainOn then
+            match event with
+            | :? InputEventKey ->
+                let keyEvent = event :?> InputEventKey
+                if keyEvent.Pressed then
+                    match keyEvent.Keycode with
+                    | Key.Up -> move Forward
+                    | Key.Down -> move Backward
+                    | Key.Left -> move Left
+                    | Key.Right -> move Right
+                    | Key.Q -> rotateLeft()
+                    | Key.E -> rotateRight()
+                    | _ -> ()
+            | _ -> ()

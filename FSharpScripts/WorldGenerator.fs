@@ -15,7 +15,9 @@ module WorldGeneratorFS =
                 let blockScene = GD.Load<PackedScene>("res://Elements/Block.tscn")
                 let block = blockScene.Instantiate() :?> Node3D
                 block.Position <- Vector3(data.position.X, i, data.position.Z)
+                block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.onInputEvent event position)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
+                
         )
         
         // Platformer element placement
