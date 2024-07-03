@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkeakhsuc7cx0"]
+
+[ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_wgrl4"]
+[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_2ft1v"]
+[ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_j46gh"]
+[ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="4_clpbs"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldGenerator" type="Node3D" parent="."]
+script = ExtResource("1_wgrl4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.796171, 0.605072, 0, -0.605072, -0.796171, 0, 4.62078, 0)
+
+[node name="Camera" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera"]
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 9, 12.5, -9)
+script = ExtResource("2_2ft1v")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+mouse_filter = 1
+script = ExtResource("3_j46gh")
+
+[node name="Forward" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 970.0
+offset_top = 528.0
+offset_right = 1044.0
+offset_bottom = 559.0
+text = "Forward"
+
+[node name="Backward" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 966.0
+offset_top = 604.0
+offset_right = 1051.0
+offset_bottom = 635.0
+text = "Backward"
+
+[node name="Left" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 891.0
+offset_top = 562.0
+offset_right = 965.0
+offset_bottom = 593.0
+text = "Left"
+
+[node name="Right" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 564.0
+offset_right = 1126.0
+offset_bottom = 595.0
+text = "Right"
+
+[node name="RotateLeft" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 889.0
+offset_top = 515.0
+offset_right = 963.0
+offset_bottom = 546.0
+text = "Rotate L"
+
+[node name="RotateRight" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1053.0
+offset_top = 515.0
+offset_right = 1127.0
+offset_bottom = 546.0
+text = "Rotate R"
+
+[node name="Player" parent="." instance=ExtResource("4_clpbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)

@@ -7,11 +7,12 @@ public partial class WorldGenerator : Node3D
 	public override void _Ready()
 	{
 		WorldFS.ready();
+		WorldGeneratorFS.ready();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		WorldFS.process(delta);
+		WorldGeneratorFS.process(delta);
 	}
 }

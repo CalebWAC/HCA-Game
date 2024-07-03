@@ -36,7 +36,7 @@ module PlayerControlFS =
     
     let tryMoveBridge () =
         try
-            let bridge = elements |> Array.find (fun e -> e.etype = Bridge && e.position.Y = placeToBe.Y - 1f &&
+            let bridge = elements[level] |> Array.find (fun e -> e.etype = Bridge && e.position.Y = placeToBe.Y - 1f &&
                                                           (((round placeToBe.X + 0.5f = e.position.X && round placeToBe.Z = e.position.Z) || (round placeToBe.X - 0.5f = e.position.X && round placeToBe.Z = e.position.Z)) ||
                                                           ((round placeToBe.X = e.position.X && round placeToBe.Z + 0.5f = e.position.Z) || (round placeToBe.X = e.position.X && round placeToBe.Z - 0.5f = e.position.Z))))
             GD.Print $"Found a bridge at {bridge.position}"
@@ -45,7 +45,7 @@ module PlayerControlFS =
     
     let tryMoveAquatically () =
         try
-            let bubble = elements |> Array.find (fun e -> e.etype = Bubble && e.position.Y = placeToBe.Y && 
+            let bubble = elements[level] |> Array.find (fun e -> e.etype = Bubble && e.position.Y = placeToBe.Y && 
                                                           (((placeToBe.X + 0.5f = e.position.X && placeToBe.Z = e.position.Z) || (placeToBe.X - 0.5f = e.position.X && placeToBe.Z = e.position.Z)) ||
                                                           ((placeToBe.X = e.position.X && placeToBe.Z + 0.5f = e.position.Z) || (placeToBe.X = e.position.X && placeToBe.Z - 0.5f = e.position.Z)) ||
                                                           ((placeToBe.Z - 1f = e.position.Z && placeToBe.Z - 1f <> player.Position.Z) || (placeToBe.Z + 1f = e.position.Z && placeToBe.Z + 1f <> player.Position.Z))))
@@ -53,7 +53,7 @@ module PlayerControlFS =
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
-    let inBubble () = elements |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position)
+    let inBubble () = elements[level] |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position)
     
     let move dir =
         if withinBoundaries dir && originalPos = placeToBe then             
@@ -61,7 +61,7 @@ module PlayerControlFS =
             placeToBe <- placeToBe + dirVec dir
                 
             // Height compensation
-            let block = world |> Array.find (fun b -> b.position.X = Mathf.Round(placeToBe.X) && b.position.Z = Mathf.Round(placeToBe.Z))
+            let block = worlds[level] |> Array.find (fun b -> b.position.X = Mathf.Round(placeToBe.X) && b.position.Z = Mathf.Round(placeToBe.Z))
             if block.position.Y = placeToBe.Y then
                 placeToBe.Y <- placeToBe.Y + 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)

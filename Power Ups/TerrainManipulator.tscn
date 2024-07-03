@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://fl7gjrj874l7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mcr1x"]
+albedo_color = Color(0.833333, 1, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8orr3"]
+
+[node name="TerrainManipulator" type="Node3D"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_mcr1x")
+radial_segments = 30
+rings = 20
+
+[node name="Area3D" type="Area3D" parent="."]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_8orr3")
