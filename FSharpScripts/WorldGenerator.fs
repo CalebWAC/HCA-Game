@@ -6,8 +6,6 @@ open GlobalFunctions
 
 module WorldGeneratorFS =
     let ready () =
-        GD.Print "Beginning world initialization"
-        
         // World generation
         worlds[level]
         |> Array.iter (fun data ->
@@ -18,7 +16,7 @@ module WorldGeneratorFS =
                 block.Position <- Vector3(data.position.X, i, data.position.Z)
                 block.GetNode<CsgBox3D>("CSGBox3D").MaterialOverride <-
                     match data.material with
-                    | Ground -> ResourceLoader.Load("res://Materials/Block.tres") :?> Material
+                    | Ground -> ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
                     | Water ->
                         block.GetNode("Model").QueueFree()
                         ResourceLoader.Load("res://Materials/WaterBubble.tres") :?> Material

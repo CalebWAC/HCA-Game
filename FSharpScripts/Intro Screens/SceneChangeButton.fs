@@ -12,9 +12,9 @@ module SceneChangeButtonFS =
         let startScene () = button.GetTree().ChangeSceneToFile(scene) |> ignore
         
         member this.Ready () =
-            button <- getScreenRoot().GetNode<Button>(name)
+            button <- if name <> "BackButtonLevel" then getScreenRoot().GetNode<Button>(name) else getRoot().GetNode<Control>("Control").GetNode<Button>(name)
             button.add_Pressed startScene
                 
-            if name.Contains "Level" && WorldFS.completedLevels[(name[5].ToString() |> int) - 1] = true then
+            if name[..4] = "Level" && WorldFS.completedLevels[(name[5].ToString() |> int) - 1] = true then
                 button.Icon <- ResourceLoader.Load($"res://Assets/{name}Filled.png") :?> Texture2D
                     

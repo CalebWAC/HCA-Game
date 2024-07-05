@@ -109,7 +109,10 @@ module PlayerControlFS =
     let physicsProcess delta =
         t <- Mathf.Min(1f, t + delta * 3f)
         
-        if t >= 1f then originalPos <- player.Position
+        if t >= 1f then
+            originalPos <- player.Position
+            placeToBe <- Vector3(placeToBe.X, Mathf.Floor player.Position.Y, placeToBe.Z)
+            player.Position <- Vector3(player.Position.X, Mathf.Floor player.Position.Y, player.Position.Z)
         
         let q1 = originalPos.Lerp(midpoint, t)
         let q2 = midpoint.Lerp(placeToBe, t)
