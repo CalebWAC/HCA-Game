@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5lpn1wckdi7"]
+[gd_scene load_steps=4 format=3 uid="uid://c5lpn1wckdi7"]
 
 [ext_resource type="Script" path="res://Scripts/PlayButton.cs" id="1_nvy70"]
+[ext_resource type="Texture2D" uid="uid://dgax0c1rejroc" path="res://Assets/PlayButton.png" id="1_pl4cy"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="3_88shu"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,19 +14,22 @@ grow_vertical = 2
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 391.0
-offset_top = 439.0
-offset_right = 713.0
-offset_bottom = 516.0
+offset_left = 372.0
+offset_top = 380.0
+offset_right = 788.0
+offset_bottom = 585.0
 theme_override_font_sizes/font_size = 50
-text = "Play"
+icon = ExtResource("1_pl4cy")
+flat = true
+expand_icon = true
 script = ExtResource("1_nvy70")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 113.0
-offset_right = 1019.0
-offset_bottom = 267.0
-theme_override_font_sizes/normal_font_size = 60
-text = "[Insert Name of Game Here]"
+offset_left = 92.0
+offset_top = 48.0
+offset_right = 1088.0
+offset_bottom = 301.0
+theme_override_fonts/normal_font = ExtResource("3_88shu")
+theme_override_font_sizes/normal_font_size = 200
+text = "Expedition"

@@ -1,3 +1,5 @@
+#nowarn "3391"
+
 namespace FSharpScripts
 
 open Godot
@@ -12,3 +14,7 @@ module SceneChangeButtonFS =
         member this.Ready () =
             button <- getScreenRoot().GetNode<Button>(name)
             button.add_Pressed startScene
+                
+            if name.Contains "Level" && WorldFS.completedLevels[(name[5].ToString() |> int) - 1] = true then
+                button.Icon <- ResourceLoader.Load($"res://Assets/{name}Filled.png") :?> Texture2D
+                    

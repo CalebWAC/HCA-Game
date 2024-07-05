@@ -10,12 +10,12 @@ emission_shape_offset = Vector3(0, 0.25, 0)
 emission_shape = 1
 emission_sphere_radius = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yo3wj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ougg"]
 emission_enabled = true
 emission = Color(1, 0.541176, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kdkbq"]
-material = SubResource("StandardMaterial3D_yo3wj")
+material = SubResource("StandardMaterial3D_5ougg")
 radius = 0.05
 height = 0.1
 
@@ -31,6 +31,7 @@ rings = 20
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("SphereShape3D_8orr3")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]

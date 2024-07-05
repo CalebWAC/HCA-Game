@@ -7,7 +7,9 @@ module GoalFS =
     let mutable position = Vector3(0f, 0f, 0f)
     let mutable change = 0.15f
     
-    let onAreaEntered () = getRoot().GetTree().ChangeSceneToFile("res://LevelSelect.tscn") |> ignore
+    let onAreaEntered () =
+        Array.set WorldFS.completedLevels WorldFS.level true
+        getRoot().GetTree().ChangeSceneToFile("res://LevelSelect.tscn") |> ignore
     
     let ready () =
         let goal = getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("Goal")

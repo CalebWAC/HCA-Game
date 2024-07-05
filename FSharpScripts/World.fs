@@ -32,6 +32,8 @@ module WorldFS =
     
     let mutable level = 0
     
+    let completedLevels = Array.create 12 false
+    
     let worlds = [|
         [| // Level 1
            block -6f 5f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; block -6f 0f 3f; block -6f 4f 4f; block -6f 5f 5f; block -6f 6f 6f

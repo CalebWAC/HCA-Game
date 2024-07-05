@@ -39,7 +39,6 @@ module PlayerControlFS =
             let bridge = elements[level] |> Array.find (fun e -> e.etype = Bridge && e.position.Y = placeToBe.Y - 1f &&
                                                           (((round placeToBe.X + 0.5f = e.position.X && round placeToBe.Z = e.position.Z) || (round placeToBe.X - 0.5f = e.position.X && round placeToBe.Z = e.position.Z)) ||
                                                           ((round placeToBe.X = e.position.X && round placeToBe.Z + 0.5f = e.position.Z) || (round placeToBe.X = e.position.X && round placeToBe.Z - 0.5f = e.position.Z))))
-            GD.Print $"Found a bridge at {bridge.position}"
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
