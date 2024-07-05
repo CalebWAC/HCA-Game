@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ww17mqqsvu0l"]
+
+[ext_resource type="Script" path="res://Scripts/LavaWall.cs" id="1_ccr2d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gq4k"]
+albedo_color = Color(0.784097, 0.0269544, 4.81307e-07, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71jg0"]
+size = Vector3(1, 1.99457, 0.109741)
+
+[node name="LavaWall" type="Node3D"]
+script = ExtResource("1_ccr2d")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_7gq4k")
+size = Vector3(1, 2, 0.1)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999664, 0.00421143)
+shape = SubResource("BoxShape3D_71jg0")

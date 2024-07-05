@@ -16,6 +16,7 @@
         <Compile Include="Hook.fs" />
         <Compile Include="Intro Screens\SceneChangeButton.fs" />
         <Compile Include="Goal.fs" />
+        <Compile Include="LavaWall.fs" />
     </ItemGroup>
 
 </Project>

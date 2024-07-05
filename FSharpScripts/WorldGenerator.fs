@@ -33,7 +33,8 @@ module WorldGeneratorFS =
                                             | Goal -> "res://Elements/Goal.tscn"
                                             | Bubble -> "res://Elements/WaterBubble.tscn"
                                             | Bridge -> "res://Elements/Bridge.tscn"
-                                            | Hook -> "res://Elements/Hook.tscn")
+                                            | Hook -> "res://Elements/Hook.tscn"
+                                            | LavaWall -> "res://Elements/LavaWall.tscn")
             
             let emt = scene.Instantiate() :?> Node3D
             emt.Position <- element.position
