@@ -18,3 +18,5 @@ let getScreenRoot () =
 let degToRad deg = deg * Mathf.Pi / 180f
 
 let round num = 0.5f + num |> Mathf.Floor
+
+let roundVec (vec : Vector3) = Vector3(round vec.X, round vec.Y, round vec.Z)
