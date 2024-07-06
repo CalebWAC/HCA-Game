@@ -24,6 +24,7 @@ module HookFS =
                             
                         midpoint <- (originalPos + placeToBe) / 2f
                         t <- 0f
+                        GD.Print placeToBe
             with | _ -> ()
         
         member this.ready (thing : Node3D) =

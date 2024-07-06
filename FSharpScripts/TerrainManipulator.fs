@@ -1,5 +1,7 @@
 namespace FSharpScripts
 
+open System.Collections.Generic
+open FSharpScripts.WorldFS
 open Godot
 open WorldFS
 open PlayerFS
@@ -9,6 +11,8 @@ module TerrainManipulatorFS =
     let mutable self = Unchecked.defaultof<Node3D>
     let mutable selected = Vector3(0f, 0f, 0f)
     let mutable t = 0f
+    
+    let newBlocks = List<Node3D>()
     
     let onInputEvent (event : InputEvent) (position : Vector3) =
         if Array.contains TerrainManipulator powerUps then
@@ -38,6 +42,12 @@ module TerrainManipulatorFS =
                         getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
                         Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected - Vector3(0f, 1f, 0f))) { position = selected; material = Ground }
                         selected <- selected + Vector3(0f, 1f, 0f)
-                    | Key.Down -> GD.Print "Moving down"
+                        newBlocks.Add block
+                    | Key.Down ->
+                        let block = newBlocks.Find (fun b -> b.Position = selected - Vector3(0f, 1f, 0f))
+                        if block <> null then block.QueueFree()
+                        selected <- selected - Vector3(0f, 1f, 0f)
+                        Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected)) { position = selected - Vector3(0f, 1f, 0f); material = Ground }
+                        waitThen 0.25 ()
                     | _ -> ()
             | _ -> ()

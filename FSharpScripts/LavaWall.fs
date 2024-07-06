@@ -11,15 +11,15 @@ module LavaWallFS =
     
     let onAreaEntered (other : Area3D) =
         if other.GetParent().Name.ToString() = "Player" then
-            GD.Print "Collided with player"
-            
             let shaky = getRoot().GetNode<Node3D>("Camera").GetNode("ShakyCamera3D") :?> Camera3D
             shaky.Current <- true
             CameraControlFS.camera.GetNode<Camera3D>("Camera3D").Current <- false
             
             PlayerControlFS.placeToBe <- Vector3(6f, 1f, -6f)
             (other.GetParent() :?> Node3D).Position <- Vector3(6f, 1f, -6f)
-    
+            
+            waitThen 0.5 (shaky.Current <- false; CameraControlFS.camera.GetNode<Camera3D>("Camera3D").Current <- true)
+            
     let ready () =
         self <- getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("LavaWall")
         self.GetNode<Area3D>("Area3D").add_AreaEntered (fun other -> onAreaEntered other)
