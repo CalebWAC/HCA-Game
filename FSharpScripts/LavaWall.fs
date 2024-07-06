@@ -13,13 +13,12 @@ module LavaWallFS =
         if other.GetParent().Name.ToString() = "Player" then
             GD.Print "Collided with player"
             
-            for i in 0 .. 35 do
-                GD.Print $"Rotation: {(other.GetParent() :?> Node3D).Rotation}"
-                Task.Delay(TimeSpan.FromSeconds(2)).WaitAsync(TimeSpan.FromSeconds(10)) |> ignore
-                (other.GetParent() :?> Node3D).RotateY(degToRad 10f)
+            let shaky = getRoot().GetNode<Node3D>("Camera").GetNode("ShakyCamera3D") :?> Camera3D
+            shaky.Current <- true
+            CameraControlFS.camera.GetNode<Camera3D>("Camera3D").Current <- false
             
-            PlayerControlFS.placeToBe <- Vector3(4f, 1f, 4f)
-            (other.GetParent() :?> Node3D).Position <- Vector3(4f, 1f, 4f)
+            PlayerControlFS.placeToBe <- Vector3(6f, 1f, -6f)
+            (other.GetParent() :?> Node3D).Position <- Vector3(6f, 1f, -6f)
     
     let ready () =
         self <- getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("LavaWall")
