@@ -22,6 +22,7 @@ module HookFS =
                         if getHeightAt placeToBe.X placeToBe.Z < placeToBe.Y - 2f then
                             placeToBe <- placeToBe + self.Transform.Basis.Z
                             
+                        placeToBe <- roundVec placeToBe
                         midpoint <- (originalPos + placeToBe) / 2f
                         t <- 0f
                         GD.Print placeToBe

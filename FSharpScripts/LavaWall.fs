@@ -18,7 +18,12 @@ module LavaWallFS =
             PlayerControlFS.placeToBe <- Vector3(6f, 1f, -6f)
             (other.GetParent() :?> Node3D).Position <- Vector3(6f, 1f, -6f)
             
-            waitThen 0.5 (shaky.Current <- false; CameraControlFS.camera.GetNode<Camera3D>("Camera3D").Current <- true)
+            let timer = new Timer()
+            getRoot().AddChild timer
+            timer.OneShot <- true
+            timer.WaitTime <- 0.5
+            timer.Start()
+            timer.add_Timeout (fun _ -> shaky.Current <- false; CameraControlFS.camera.GetNode<Camera3D>("Camera3D").Current <- true)
             
     let ready () =
         self <- getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("LavaWall")

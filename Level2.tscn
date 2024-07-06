@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkeakhsuc7cx0"]
+[gd_scene load_steps=8 format=3 uid="uid://dkeakhsuc7cx0"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_wgrl4"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_2ft1v"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="4_clpbs"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_jaass"]
 [ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_rcnpb"]
+[ext_resource type="Material" uid="uid://cntcf82orge6v" path="res://Materials/TerrainSelector.tres" id="7_1doru"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -97,3 +98,7 @@ script = ExtResource("5_rcnpb")
 
 [node name="Player" parent="." instance=ExtResource("4_clpbs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 1, 4)
+
+[node name="Selector" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25)
+material_override = ExtResource("7_1doru")
