@@ -62,7 +62,7 @@ module PlayerControlFS =
             let block = worlds[level] |> Array.find (fun b -> b.position.X = Mathf.Round(placeToBe.X) && b.position.Z = Mathf.Round(placeToBe.Z))
             
             // Height compensation
-            if block.position.Y = placeToBe.Y then
+            if block.position.Y = placeToBe.Y && block.material = Ground then
                 placeToBe.Y <- placeToBe.Y + 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
             elif block.position.Y - Mathf.Round(placeToBe.Y) = -2f && block.material = Ground then
