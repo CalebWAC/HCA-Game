@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://fl7gjrj874l7"]
+[gd_scene load_steps=7 format=3 uid="uid://fl7gjrj874l7"]
+
+[ext_resource type="PackedScene" uid="uid://b7l8on7ejnkjc" path="res://Models/Terrain Manipulator.glb" id="1_10snh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mcr1x"]
 albedo_color = Color(0.833333, 1, 0, 1)
@@ -23,6 +25,7 @@ height = 0.1
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_mcr1x")
 radial_segments = 30
 rings = 20
@@ -39,3 +42,6 @@ amount = 6
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_nb0hu")
 draw_pass_1 = SubResource("SphereMesh_kdkbq")
+
+[node name="Tinkercad GLTF Scene" parent="." instance=ExtResource("1_10snh")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, -0.315015, -0.0969276, -0.354013)
