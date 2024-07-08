@@ -1,11 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt6h27ritdukq"]
+[gd_scene load_steps=17 format=3 uid="uid://dt6h27ritdukq"]
 
 [ext_resource type="Script" path="res://Scripts/BackButton.cs" id="1_pe52d"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_s0tgt"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level1.cs" id="2_gttpt"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level2.cs" id="3_0yy4k"]
-[ext_resource type="Texture2D" uid="uid://q7m1xb1vlpgt" path="res://Assets/Level1Empty.png" id="3_8lhm5"]
-[ext_resource type="Texture2D" uid="uid://d507s1fq0i4" path="res://Assets/Level2Empty.png" id="5_knta0"]
+[ext_resource type="Texture2D" uid="uid://ng2fx1caqo1p" path="res://Assets/Level3Unfilled.png" id="5_s2rwx"]
+[ext_resource type="Texture2D" uid="uid://bj0e86h3i83bc" path="res://Assets/Level4Unfilled.png" id="6_jisa7"]
+[ext_resource type="Texture2D" uid="uid://cpm4664v50rmp" path="res://Assets/Level5Unfilled.png" id="7_pwaar"]
+[ext_resource type="Texture2D" uid="uid://mgw1s2t6j0u" path="res://Assets/Level6Unfilled.png" id="8_iwkjk"]
+[ext_resource type="Texture2D" uid="uid://ct0fog0jt5su7" path="res://Assets/Level7Unfilled.png" id="9_onq76"]
+[ext_resource type="Texture2D" uid="uid://hq3ykuu8u3x5" path="res://Assets/Level8Unfilled.png" id="10_gkb0u"]
+[ext_resource type="Texture2D" uid="uid://bhxexdvpp4aur" path="res://Assets/Level9Unfilled.png" id="11_mq3c7"]
+[ext_resource type="Texture2D" uid="uid://ex0e074xwbat" path="res://Assets/Level10Unfilled.png" id="12_02bmm"]
+[ext_resource type="Texture2D" uid="uid://deosm5mosu7o0" path="res://Assets/Level11Unfilled.png" id="13_5l5ny"]
+[ext_resource type="Texture2D" uid="uid://did1xwo65harp" path="res://Assets/Level12Unfilled.png" id="14_01bjl"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbkmj"]
+load_path = "res://.godot/imported/Level1Unfilled.png-52003cf202f59734482ce6c930a80f2e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t8ohd"]
+load_path = "res://.godot/imported/Level2Unfilled.png-a46d60a3b02c4e173d56a03437f1ea0e.ctex"
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -36,7 +50,7 @@ offset_bottom = 210.0
 theme_override_font_sizes/font_size = 50
 text = "
 "
-icon = ExtResource("3_8lhm5")
+icon = SubResource("CompressedTexture2D_gbkmj")
 flat = true
 expand_icon = true
 script = ExtResource("2_gttpt")
@@ -48,120 +62,137 @@ offset_top = 62.0
 offset_right = 545.0
 offset_bottom = 211.0
 theme_override_font_sizes/font_size = 50
-icon = ExtResource("5_knta0")
+icon = SubResource("CompressedTexture2D_t8ohd")
 flat = true
 expand_icon = true
 script = ExtResource("3_0yy4k")
 
 [node name="Level3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 628.0
-offset_top = 75.0
-offset_right = 781.0
-offset_bottom = 179.0
+offset_left = 629.0
+offset_top = 59.0
+offset_right = 862.0
+offset_bottom = 214.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "3"
+icon = ExtResource("5_s2rwx")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")
 
 [node name="Level4" type="Button" parent="."]
 layout_mode = 0
-offset_left = 867.0
-offset_top = 77.0
-offset_right = 1016.0
-offset_bottom = 178.0
+offset_left = 864.0
+offset_top = 57.0
+offset_right = 1045.0
+offset_bottom = 207.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "4"
+icon = ExtResource("6_jisa7")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")
 
 [node name="Level5" type="Button" parent="."]
 layout_mode = 0
 offset_left = 146.0
 offset_top = 251.0
-offset_right = 295.0
-offset_bottom = 357.0
+offset_right = 289.0
+offset_bottom = 402.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "5"
+icon = ExtResource("7_pwaar")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")
 
 [node name="Level6" type="Button" parent="."]
 layout_mode = 0
-offset_left = 379.0
+offset_left = 383.0
 offset_top = 259.0
-offset_right = 532.0
-offset_bottom = 365.0
+offset_right = 547.0
+offset_bottom = 407.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "6
-"
+icon = ExtResource("8_iwkjk")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")
 
 [node name="Level7" type="Button" parent="."]
 layout_mode = 0
-offset_left = 628.0
-offset_top = 259.0
-offset_right = 779.0
-offset_bottom = 367.0
+offset_left = 632.0
+offset_top = 260.0
+offset_right = 804.0
+offset_bottom = 407.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "7
-"
+icon = ExtResource("9_onq76")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")
 
 [node name="Level8" type="Button" parent="."]
 layout_mode = 0
 offset_left = 868.0
 offset_top = 259.0
-offset_right = 1017.0
-offset_bottom = 365.0
+offset_right = 1032.0
+offset_bottom = 405.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "8"
+icon = ExtResource("10_gkb0u")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")
 
 [node name="Level9" type="Button" parent="."]
 layout_mode = 0
 offset_left = 148.0
 offset_top = 431.0
-offset_right = 299.0
-offset_bottom = 537.0
+offset_right = 291.0
+offset_bottom = 579.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "9
-"
+icon = ExtResource("11_mq3c7")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")
 
 [node name="Level10" type="Button" parent="."]
 layout_mode = 0
-offset_left = 382.0
-offset_top = 437.0
-offset_right = 533.0
-offset_bottom = 540.0
+offset_left = 386.0
+offset_top = 434.0
+offset_right = 531.0
+offset_bottom = 585.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "10"
+icon = ExtResource("12_02bmm")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")
 
 [node name="Level11" type="Button" parent="."]
 layout_mode = 0
 offset_left = 635.0
 offset_top = 434.0
-offset_right = 782.0
-offset_bottom = 540.0
+offset_right = 783.0
+offset_bottom = 580.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "11"
+icon = ExtResource("13_5l5ny")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")
 
 [node name="Level12" type="Button" parent="."]
 layout_mode = 0
 offset_left = 867.0
 offset_top = 435.0
-offset_right = 1014.0
-offset_bottom = 545.0
+offset_right = 1056.0
+offset_bottom = 583.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
-text = "12"
+icon = ExtResource("14_01bjl")
+flat = true
+expand_icon = true
 script = ExtResource("2_gttpt")

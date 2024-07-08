@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://21mqcwif6q2u"]
+[gd_scene load_steps=6 format=3 uid="uid://21mqcwif6q2u"]
+
+[ext_resource type="PackedScene" uid="uid://b6nlakf857s2q" path="res://Models/Grappling Hook.glb" id="1_pruxu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8orr3"]
 
@@ -20,6 +22,7 @@ height = 0.1
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+visible = false
 radial_segments = 30
 rings = 20
 
@@ -35,3 +38,6 @@ amount = 6
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_txq60")
 draw_pass_1 = SubResource("SphereMesh_y55s3")
+
+[node name="Tinkercad GLTF Scene" parent="." instance=ExtResource("1_pruxu")]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0.137683, 0, -0.0775975)
