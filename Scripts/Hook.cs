@@ -16,9 +16,4 @@ public partial class Hook : Node3D
 	public override void _Process(double delta)
 	{
 	}
-
-	private void OnArea3DInputEvent()
-	{
-		GD.Print("It works!");
-	}
 }

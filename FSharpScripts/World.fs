@@ -128,6 +128,7 @@ module WorldFS =
         [| // Level 3
             { etype = Goal; position = Vector3(-5f, 7f, -5f); rotation = Vector3.Zero }
             { etype = LavaWall; position = Vector3(6f, 5.5f, 0f); rotation = Vector3.Zero }
+            { etype = LavaWall; position = Vector3(0.5f, 5.5f, 2f); rotation = Vector3(0f, degToRad 90f, 0f) }
             { etype = Hook; position = Vector3(2.5f, 5f, -4f); rotation = Vector3(0f, degToRad 90f, 0f) }
             { etype = Hook; position = Vector3(5.5f, 5f, 0f); rotation = Vector3(0f, degToRad 90f, 0f) }
             { etype = Hook; position = Vector3(3f, 5f, 4.5f); rotation = Vector3.Zero }
