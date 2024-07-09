@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://chuvhjrrmt2s4"]
+
+[ext_resource type="Script" path="res://Scripts/GoalFragment.cs" id="1_tnvdu"]
+[ext_resource type="PackedScene" uid="uid://dq051mhnp14b1" path="res://Models/Goal.glb" id="2_ymw1r"]
+[ext_resource type="Material" uid="uid://brcgclratt61n" path="res://Materials/Goal.tres" id="3_ypba6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ihm4n"]
+radius = 0.252292
+
+[node name="GoalFragment" type="Node3D"]
+script = ExtResource("1_tnvdu")
+
+[node name="Area3D" type="Area3D" parent="."]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ihm4n")
+
+[node name="Model" parent="." instance=ExtResource("2_ymw1r")]
+transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0.167046, -0.48823, -0.161363)
+visible = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-1, 0.000383936, 0, -0.000383936, -1, 0, 0, 0, 1, 0, 0.116136, 0)
+material_override = ExtResource("3_ypba6")
+height = 0.8
+sides = 50
+cone = true
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

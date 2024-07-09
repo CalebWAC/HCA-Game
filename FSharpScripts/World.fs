@@ -20,6 +20,7 @@ module WorldFS =
         | Bridge
         | Hook
         | LavaWall
+        | GoalFragment
         
     type PowerUpType =
         | GrapplingHook
@@ -180,6 +181,11 @@ module WorldFS =
             { etype = Bridge; position = Vector3(-2.5f, 5f, -6f); rotation = Vector3.Zero }
         |]
         [| // Level 6
+            { etype = GoalFragment; position = Vector3(3f, 1f, 5f); rotation = Vector3.Zero }
+            { etype = GoalFragment; position = Vector3(2f, 1f, 4f); rotation = Vector3.Zero }
+            { etype = GoalFragment; position = Vector3(3f, 1f, 3f); rotation = Vector3.Zero }
+            { etype = GoalFragment; position = Vector3(2f, 1f, 2f); rotation = Vector3.Zero }
+            { etype = GoalFragment; position = Vector3(3f, 1f, 1f); rotation = Vector3.Zero }
         |]
     |]
     
