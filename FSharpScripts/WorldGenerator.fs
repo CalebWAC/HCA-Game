@@ -32,17 +32,19 @@ module WorldGeneratorFS =
         // Platformer element placement
         elements[level]
         |> Array.iter (fun element ->
-            let scene = GD.Load<PackedScene>(match element.etype with
-                                            | Goal -> "res://Elements/Goal.tscn"
-                                            | Bubble -> "res://Elements/WaterBubble.tscn"
-                                            | Bridge -> "res://Elements/Bridge.tscn"
-                                            | Hook -> "res://Elements/Hook.tscn"
-                                            | LavaWall -> "res://Elements/LavaWall.tscn"
-                                            | GoalFragment -> "res://Elements/GoalFragment.tscn")
+            let scene = GD.Load<PackedScene>("res://Elements/" + match element.etype with
+                                                                 | Goal -> "Goal.tscn"
+                                                                 | Bubble -> "WaterBubble.tscn"
+                                                                 | Bridge -> "Bridge.tscn"
+                                                                 | Hook -> "Hook.tscn"
+                                                                 | LavaWall -> "LavaWall.tscn"
+                                                                 | GoalFragment -> "GoalFragment.tscn"
+                                                                 | MovingBlock -> "MovingBlock.tscn")
             let emt = scene.Instantiate() :?> Node3D
             emt.Position <- element.position
             emt.Rotation <- element.rotation
-            getRoot().GetNode<Node3D>("WorldGenerator").AddChild(emt)
+            getRoot().GetNode<Node3D>("WorldGenerator").AddChild emt
+            if element.etype = MovingBlock then MovingBlockFS.movingBlocks.Add emt
         )
         
         // Power up placement

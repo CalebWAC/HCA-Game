@@ -21,6 +21,8 @@ module PlayerControlFS =
     let mutable midpoint = Unchecked.defaultof<Vector3>
     let mutable placeToBe = Unchecked.defaultof<Vector3>
     let mutable t = 0f
+    
+    let mutable onBlock : Node3D option = None
 
     let dirVec direction = 
        match direction with
@@ -37,17 +39,17 @@ module PlayerControlFS =
     let tryMoveBridge () =
         try
             let bridge = elements[level] |> Array.find (fun e -> e.etype = Bridge && e.position.Y = placeToBe.Y - 1f &&
-                                                          (((round placeToBe.X + 0.5f = e.position.X && round placeToBe.Z = e.position.Z) || (round placeToBe.X - 0.5f = e.position.X && round placeToBe.Z = e.position.Z)) ||
-                                                          ((round placeToBe.X = e.position.X && round placeToBe.Z + 0.5f = e.position.Z) || (round placeToBe.X = e.position.X && round placeToBe.Z - 0.5f = e.position.Z))))
+                                                                 (((round placeToBe.X + 0.5f = e.position.X && round placeToBe.Z = e.position.Z) || (round placeToBe.X - 0.5f = e.position.X && round placeToBe.Z = e.position.Z)) ||
+                                                                 ((round placeToBe.X = e.position.X && round placeToBe.Z + 0.5f = e.position.Z) || (round placeToBe.X = e.position.X && round placeToBe.Z - 0.5f = e.position.Z))))
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
     let tryMoveAquatically () =
         try
             let bubble = elements[level] |> Array.find (fun e -> e.etype = Bubble && e.position.Y = placeToBe.Y && 
-                                                          (((placeToBe.X + 0.5f = e.position.X && placeToBe.Z = e.position.Z) || (placeToBe.X - 0.5f = e.position.X && placeToBe.Z = e.position.Z)) ||
-                                                          ((placeToBe.X = e.position.X && placeToBe.Z + 0.5f = e.position.Z) || (placeToBe.X = e.position.X && placeToBe.Z - 0.5f = e.position.Z)) ||
-                                                          ((placeToBe.Z - 1f = e.position.Z && placeToBe.Z - 1f <> player.Position.Z) || (placeToBe.Z + 1f = e.position.Z && placeToBe.Z + 1f <> player.Position.Z))))
+                                                                 (((placeToBe.X + 0.5f = e.position.X && placeToBe.Z = e.position.Z) || (placeToBe.X - 0.5f = e.position.X && placeToBe.Z = e.position.Z)) ||
+                                                                 ((placeToBe.X = e.position.X && placeToBe.Z + 0.5f = e.position.Z) || (placeToBe.X = e.position.X && placeToBe.Z - 0.5f = e.position.Z)) ||
+                                                                 ((placeToBe.Z - 1f = e.position.Z && placeToBe.Z - 1f <> player.Position.Z) || (placeToBe.Z + 1f = e.position.Z && placeToBe.Z + 1f <> player.Position.Z))))
             placeToBe <- bubble.position
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
@@ -59,15 +61,17 @@ module PlayerControlFS =
             t <- 0f
             placeToBe <- placeToBe + dirVec dir
                 
-            let block = worlds[level] |> Array.find (fun b -> b.position.X = Mathf.Round(placeToBe.X) && b.position.Z = Mathf.Round(placeToBe.Z))
-            
+            let block = worlds[level] |> Array.find (fun b -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z)
+                         
             // Height compensation
             if block.position.Y = placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
                 placeToBe.Y <- placeToBe.Y + 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
+                onBlock <- None
             elif block.position.Y - Mathf.Round(placeToBe.Y) = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
                 placeToBe.Y <- placeToBe.Y - 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
+                onBlock <- None
             else
                 // Water bubble movement
                 if tryMoveAquatically () = Result.Error "Not good" && tryMoveBridge () = Result.Error "Not good" then
@@ -78,6 +82,14 @@ module PlayerControlFS =
                         
                 midpoint <- (player.Position + placeToBe) / 2f
                 midpoint.Y <- midpoint.Y + 0.25f
+                
+            // Moving block movement
+            try
+                if MovingBlockFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe) then
+                    onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe) |> Some
+                    placeToBe.Y <- placeToBe.Y + 1f
+                    midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
+            with | _ -> ()
     
     let moveLeft () = move Left
     let moveRight () = move Right
@@ -107,17 +119,22 @@ module PlayerControlFS =
         placeToBe <- player.Position
         
     let physicsProcess delta =
-        t <- Mathf.Min(1f, t + delta * 3f)
-        
-        if t >= 1f then
-            originalPos <- player.Position
-            placeToBe <- Vector3(placeToBe.X, Mathf.Floor player.Position.Y, placeToBe.Z)
-            player.Position <- Vector3(player.Position.X, Mathf.Floor player.Position.Y, player.Position.Z)
-        
-        let q1 = originalPos.Lerp(midpoint, t)
-        let q2 = midpoint.Lerp(placeToBe, t)
-        
-        player.Position <- q1.Lerp(q2, t)
+        match onBlock with
+        | Some block ->
+            player.Position <- block.Position + Vector3.Up
+            originalPos <- placeToBe
+        | None ->
+            t <- Mathf.Min(1f, t + delta * 3f)
+            
+            if t >= 1f then
+                player.Position <- roundVec player.Position
+                originalPos <- player.Position
+                placeToBe <- roundVec placeToBe
+           
+            let q1 = originalPos.Lerp(midpoint, t)
+            let q2 = midpoint.Lerp(placeToBe, t)
+            
+            player.Position <- q1.Lerp(q2, t)
     
     let input (event : InputEvent) =
         if not PlayerFS.terrainOn then

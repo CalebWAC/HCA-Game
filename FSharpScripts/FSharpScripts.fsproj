@@ -10,6 +10,7 @@
         <Compile Include="World.fs" />
         <Compile Include="Player.fs" />
         <Compile Include="TerrainManipulator.fs" />
+        <Compile Include="MovingBlock.fs" />
         <Compile Include="WorldGenerator.fs" />
         <Compile Include="CameraControl.fs" />
         <Compile Include="PlayerControl.fs" />
