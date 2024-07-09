@@ -44,5 +44,5 @@ module HookFS =
             with | _ -> ()
         
         member this.ready (thing : Node3D) =
-            self <- thing // getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("Hook")
+            self <- thing
             self.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event _ _ _ -> onInputEvent event)

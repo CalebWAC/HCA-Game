@@ -3,19 +3,18 @@ namespace FSharpScripts
 open System.Collections.Generic
 open FSharpScripts.WorldFS
 open Godot
-open WorldFS
 open PlayerFS
 open GlobalFunctions
 
 module TerrainManipulatorFS =
     type Block() =
         let mutable self = Unchecked.defaultof<Node3D>
-        let mutable t = 0f
+        static let mutable t = 0f
         
         static let mutable selected = Vector3(0f, 0f, 0f)
         static let mutable selector = Unchecked.defaultof<CsgBox3D>
         
-        let newBlocks = List<Node3D>()
+        static let newBlocks = List<Node3D>()
         
         static member onInputEvent (event : InputEvent) (position : Vector3) =
             if Array.contains TerrainManipulator powerUps then
@@ -43,11 +42,11 @@ module TerrainManipulatorFS =
             // For hidden blocks
             if Array.contains Glasses powerUps && (worlds[level] |> Array.find(fun b -> b.position.X = self.Position.X && b.position.Z = self.Position.Z)).material = Invisible
                && self.Position.Y <> 0f then
-                if getRoot().GetNode<Node3D>("Player").Position.DistanceTo self.Position <= 2f then
+                if getRoot().GetNode<Node3D>("Player").Position.DistanceTo self.Position <= 3f then
                     self.Visible <- true
                 else self.Visible <- false
         
-        member this.input (event : InputEvent) =
+        static member input (event : InputEvent) =
             if terrainOn && t > 1f && (worlds[level] |> Array.find(fun b -> b.position = selected - Vector3.Up)).material = Ground then
                 match event with
                 | :? InputEventKey ->

@@ -21,6 +21,6 @@ public partial class TerrainManipulator : Node3D
 
 	public override void _Input(InputEvent @event)
 	{
-		block.input(@event);
+		TerrainManipulatorFS.Block.input(@event);
 	}
 }
