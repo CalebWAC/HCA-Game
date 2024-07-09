@@ -7,6 +7,7 @@ module WorldFS =
     type BlockMaterial =
         | Ground
         | Water
+        | Invisible
     
     type Block = {
         position : Vector3
@@ -23,6 +24,7 @@ module WorldFS =
     type PowerUpType =
         | GrapplingHook
         | TerrainManipulator
+        | Glasses
         
     type Element = { etype: ElementType; position: Vector3; rotation: Vector3 }
     
@@ -30,6 +32,7 @@ module WorldFS =
     
     let block x y z = { position = Vector3(x, y, z); material = Ground }
     let waterBlock x y z = { position = Vector3(x, y, z); material = Water }
+    let hiddenBlock x y z = { position = Vector3(x, y, z); material = Invisible }
     
     let mutable level = 0
     
@@ -111,6 +114,21 @@ module WorldFS =
            block 5f 0f -6f; block 5f 0f -5f; block 5f 0f -4f; block 5f 5f -3f; block 5f 0f -2f; waterBlock 5f 0f -1f; block 5f 5f 0f; waterBlock 5f 0f 1f; block 5f 0f 2f; block 5f 5f 3f; waterBlock 5f 0f 4f; block 5f 2f 5f; block 5f 5f 6f
            block 6f 0f -6f; block 6f 0f -5f; block 6f 0f -4f; waterBlock 6f 0f -3f; block 6f 0f -2f; block 6f 0f -1f; block 6f 0f 0f; block 6f 0f 1f; block 6f 0f 2f; waterBlock 6f 0f 3f; waterBlock 6f 0f 4f; block 6f 3f 5f; block 6f 4f 6f
         |]
+        [| // Level 6
+           block -6f 0f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; hiddenBlock -6f 1f 3f; hiddenBlock -6f 2f 4f; hiddenBlock -6f 3f 5f; hiddenBlock -6f 4f 6f
+           block -5f 0f -6f; block -5f 0f -5f; block -5f 0f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 0f 0f; block -5f 0f 1f; block -5f 0f 2f; hiddenBlock -5f 1f 3f; hiddenBlock -5f 2f 4f; hiddenBlock -5f 3f 5f; hiddenBlock -5f 3f 6f
+           block -4f 0f -6f; block -4f 0f -5f; block -4f 0f -4f; block -4f 0f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; block -4f 0f 1f; block -4f 0f 2f; hiddenBlock -4f 1f 3f; hiddenBlock -4f 2f 4f; hiddenBlock -4f 2f 5f; hiddenBlock -4f 2f 6f
+           block -3f 0f -6f; block -3f 0f -5f; block -3f 0f -4f; block -3f 0f -3f; block -3f 0f -2f; block -3f 0f -1f; block -3f 0f 0f; block -3f 0f 1f; block -3f 0f 2f; hiddenBlock -3f 1f 3f; hiddenBlock -3f 1f 4f; hiddenBlock -3f 1f 5f; hiddenBlock -3f 1f 6f
+           block -2f 0f -6f; block -2f 0f -5f; block -2f 0f -4f; block -2f 0f -3f; block -2f 0f -2f; block -2f 0f -1f; block -2f 0f 0f; block -2f 0f 1f; block -2f 0f 2f; block -2f 0f 3f; block -2f 0f 4f; block -2f 0f 5f; block -2f 0f 6f
+           block -1f 0f -6f; block -1f 0f -5f; block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 0f 0f; block -1f 0f 1f; block -1f 0f 2f; block -1f 0f 3f; block -1f 0f 4f; block -1f 0f 5f; block -1f 0f 6f
+           block 0f 0f -6f; block 0f 0f -5f; block 0f 0f -4f; block 0f 0f -3f; block 0f 0f -2f; block 0f 0f -1f; block 0f 0f 0f; block 0f 0f 1f; block 0f 0f 2f; block 0f 0f 3f; block 0f 0f 4f; block 0f 0f 5f; block 0f 0f 6f
+           block 1f 0f -6f; block 1f 0f -5f; block 1f 0f -4f; block 1f 0f -3f; block 1f 0f -2f; block 1f 0f -1f; block 1f 0f 0f; block 1f 0f 1f; block 1f 0f 2f; block 1f 0f 3f; block 1f 0f 4f; block 1f 0f 5f; block 1f 0f 6f
+           block 2f 0f -6f; block 2f 0f -5f; block 2f 0f -4f; block 2f 0f -3f; block 2f 0f -2f; block 2f 0f -1f; block 2f 0f 0f; block 2f 0f 1f; block 2f 0f 2f; block 2f 0f 3f; block 2f 0f 4f; block 2f 0f 5f; block 2f 0f 6f
+           block 3f 0f -6f; block 3f 0f -5f; block 3f 0f -4f; block 3f 0f -3f; block 3f 0f -2f; block 3f 0f -1f; block 3f 0f 0f; block 3f 0f 1f; block 3f 0f 2f; block 3f 0f 3f; block 3f 0f 4f; block 3f 0f 5f; block 3f 0f 6f
+           block 4f 0f -6f; block 4f 0f -5f; block 4f 0f -4f; block 4f 0f -3f; block 4f 0f -2f; block 4f 0f -1f; block 4f 0f 0f; block 4f 0f 1f; block 4f 0f 2f; block 4f 0f 3f; block 4f 0f 4f; block 4f 0f 5f; block 4f 0f 6f
+           block 5f 0f -6f; block 5f 0f -5f; block 5f 0f -4f; block 5f 0f -3f; block 5f 0f -2f; block 5f 0f -1f; block 5f 0f 0f; block 5f 0f 1f; block 5f 0f 2f; block 5f 0f 3f; block 5f 0f 4f; block 5f 0f 5f; block 5f 0f 6f
+           block 6f 0f -6f; block 6f 0f -5f; block 6f 0f -4f; block 6f 0f -3f; block 6f 0f -2f; block 6f 0f -1f; block 6f 0f 0f; block 6f 0f 1f; block 6f 0f 2f; block 6f 0f 3f; block 6f 0f 4f; block 6f 0f 5f; block 6f 0f 6f
+        |]
     |]
     
     let elements = [|
@@ -161,6 +179,8 @@ module WorldFS =
             { etype = Bridge; position = Vector3(-1f, 5f, -4.5f); rotation = Vector3(0f, degToRad 90f, 0f) }
             { etype = Bridge; position = Vector3(-2.5f, 5f, -6f); rotation = Vector3.Zero }
         |]
+        [| // Level 6
+        |]
     |]
     
     let powerUps = [|
@@ -178,6 +198,9 @@ module WorldFS =
             { ptype = GrapplingHook; position = Vector3(-1f, 6f, -3f) }
         |]
         [| // Level 5
+        |]
+        [| // Level 6
+            { ptype = Glasses; position = Vector3(0f, 1f, 0f) }
         |]
     |]
     

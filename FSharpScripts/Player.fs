@@ -15,8 +15,10 @@ module PlayerFS =
             other.GetParent().QueueFree()
         | "TerrainManipulator" ->
             powerUps <- Array.append powerUps [|WorldFS.TerrainManipulator|]
-            other.GetParent<Node3D>().Visible <- false
-            other.QueueFree()
+            other.GetParent().QueueFree()
+        | "Glasses" ->
+            powerUps <- Array.append powerUps [|WorldFS.Glasses|]
+            other.GetParent().QueueFree()
         | _ -> ()
     
     let ready () =

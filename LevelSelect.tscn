@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dt6h27ritdukq"]
+[gd_scene load_steps=21 format=3 uid="uid://dt6h27ritdukq"]
 
 [ext_resource type="Script" path="res://Scripts/BackButton.cs" id="1_pe52d"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_s0tgt"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level5.cs" id="10_vc7oa"]
 [ext_resource type="Texture2D" uid="uid://bhxexdvpp4aur" path="res://Assets/Level9Unfilled.png" id="11_mq3c7"]
 [ext_resource type="Texture2D" uid="uid://ex0e074xwbat" path="res://Assets/Level10Unfilled.png" id="12_02bmm"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level6.cs" id="12_4jdvf"]
 [ext_resource type="Texture2D" uid="uid://deosm5mosu7o0" path="res://Assets/Level11Unfilled.png" id="13_5l5ny"]
 [ext_resource type="Texture2D" uid="uid://did1xwo65harp" path="res://Assets/Level12Unfilled.png" id="14_01bjl"]
 
@@ -120,6 +121,7 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("8_iwkjk")
 flat = true
 expand_icon = true
+script = ExtResource("12_4jdvf")
 
 [node name="Level7" type="Button" parent="."]
 layout_mode = 0

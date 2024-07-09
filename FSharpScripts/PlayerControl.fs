@@ -62,10 +62,10 @@ module PlayerControlFS =
             let block = worlds[level] |> Array.find (fun b -> b.position.X = Mathf.Round(placeToBe.X) && b.position.Z = Mathf.Round(placeToBe.Z))
             
             // Height compensation
-            if block.position.Y = placeToBe.Y && block.material = Ground then
+            if block.position.Y = placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
                 placeToBe.Y <- placeToBe.Y + 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
-            elif block.position.Y - Mathf.Round(placeToBe.Y) = -2f && block.material = Ground then
+            elif block.position.Y - Mathf.Round(placeToBe.Y) = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
                 placeToBe.Y <- placeToBe.Y - 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
             else
@@ -73,7 +73,7 @@ module PlayerControlFS =
                 if tryMoveAquatically () = Result.Error "Not good" && tryMoveBridge () = Result.Error "Not good" then
                     if inBubble() then
                         placeToBe <- placeToBe + dirVec dir * 0.5f
-                    elif block.position.Y > placeToBe.Y || block.position.Y - Mathf.Round(placeToBe.Y) < -2f || block.material <> Ground then
+                    elif block.position.Y > placeToBe.Y || block.position.Y - Mathf.Round(placeToBe.Y) < -2f || block.material = Water then
                         placeToBe <- player.Position
                         
                 midpoint <- (player.Position + placeToBe) / 2f
