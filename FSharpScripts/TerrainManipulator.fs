@@ -19,7 +19,9 @@ module TerrainManipulatorFS =
         if Array.contains TerrainManipulator powerUps then
             try
                 let mouseClick = event :?> InputEventMouseButton
-                if mouseClick.ButtonIndex = MouseButton.Left && mouseClick.Pressed && roundVec position <> roundVec(getRoot().GetNode("WorldGenerator").GetNode<Node3D>("Goal").Position) then
+                if mouseClick.ButtonIndex = MouseButton.Left && mouseClick.Pressed &&
+                   roundVec position <> roundVec(getRoot().GetNode("WorldGenerator").GetNode<Node3D>("Goal").Position) &&
+                   roundVec position <> roundVec(getRoot().GetNode<Node3D>("Player").Position) then
                     terrainOn <- not terrainOn
                     selected <- roundVec position
                     

@@ -181,6 +181,6 @@ module WorldFS =
         |]
     |]
     
-    let ready () = level <- (getRoot().GetTree().CurrentScene.SceneFilePath.ToString()[11]).ToString().ToInt() - 1
+    let ready () = level <- (getRoot().GetTree().CurrentScene.SceneFilePath.ToString()[18]).ToString().ToInt() - 1
     
     let getHeightAt x z = (worlds[level] |> Array.find (fun b -> b.position.X = x && b.position.Z = z)).position.Y

@@ -1,14 +1,14 @@
 using Godot;
 using FSharpScripts;
 
-public partial class Level2 : Button
+public partial class Level4 : Button
 {
     private SceneChangeButtonFS.SceneChanger button;
 	
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        button = new SceneChangeButtonFS.SceneChanger("Level2", "res://Levels/Level2.tscn");
+        button = new SceneChangeButtonFS.SceneChanger("Level4", "res://Levels/Level4.tscn");
         button.Ready();
     }
 

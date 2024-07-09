@@ -8,7 +8,7 @@ public partial class Level1 : Button
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		button = new SceneChangeButtonFS.SceneChanger("Level1", "res://Level1.tscn");
+		button = new SceneChangeButtonFS.SceneChanger("Level1", "res://Levels/Level1.tscn");
 		button.Ready();
 	}
 

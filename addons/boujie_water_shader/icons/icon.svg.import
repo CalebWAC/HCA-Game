@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0s0sb78ulyoy"
-path="res://.godot/imported/icon.svg-5fc1795853d8913e805e81db2563c434.ctex"
+uid="uid://dpk3xn5dc0xj7"
+path="res://.godot/imported/icon.svg-75e20815e59a93f6bcff2d230066feaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaky-camera-3d-9c45f5917a3ad10f1078d68998573c53918bb9e5/addons/shaky_camera_3d/internal/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-5fc1795853d8913e805e81db2563c434.ctex"]
+source_file="res://addons/boujie_water_shader/icons/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-75e20815e59a93f6bcff2d230066feaa.ctex"]
 
 [params]
 

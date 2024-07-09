@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://doa7n5qle0oxw"]
 
-[ext_resource type="Script" path="res://shaky-camera-3d-9c45f5917a3ad10f1078d68998573c53918bb9e5/addons/shaky_camera_3d/internal/scripts/character_body_3d_script.gd" id="1_87xvp"]
-[ext_resource type="PackedScene" uid="uid://daumxjq7jnjp8" path="res://shaky-camera-3d-9c45f5917a3ad10f1078d68998573c53918bb9e5/addons/shaky_camera_3d/shaky_camera_3d.tscn" id="2_jy5hs"]
+[ext_resource type="Script" path="res://addons/shaky_camera_3d/internal/scripts/character_body_3d_script.gd" id="1_87xvp"]
+[ext_resource type="PackedScene" uid="uid://daumxjq7jnjp8" path="res://addons/shaky_camera_3d/shaky_camera_3d.tscn" id="2_jy5hs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qi3pp"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

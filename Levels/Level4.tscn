@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgjwaxj4so0v6"]
+[gd_scene load_steps=8 format=3 uid="uid://cdj5e7h50hwnv"]
 
-[ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_ho7ls"]
-[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_tof4p"]
-[ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_73ub3"]
-[ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_id0t7"]
-[ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_p6xd7"]
-[ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="6_av4id"]
+[ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_agcbp"]
+[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_bg5es"]
+[ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_5ua76"]
+[ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_1f3vh"]
+[ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_nv1k4"]
+[ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="6_om5w8"]
+[ext_resource type="Material" uid="uid://cntcf82orge6v" path="res://Materials/TerrainSelector.tres" id="7_4f1mh"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldGenerator" type="Node3D" parent="."]
-script = ExtResource("1_ho7ls")
+script = ExtResource("1_agcbp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.796171, 0.605072, 0, -0.605072, -0.796171, 0, 4.62078, 0)
@@ -19,7 +20,7 @@ transform = Transform3D(1, 0, 0, 0, -0.796171, 0.605072, 0, -0.605072, -0.796171
 
 [node name="Camera3D" type="Camera3D" parent="Camera"]
 transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 9, 12.5, -9)
-script = ExtResource("2_tof4p")
+script = ExtResource("2_bg5es")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -27,7 +28,7 @@ anchors_preset = 0
 offset_right = 1154.0
 offset_bottom = 650.0
 mouse_filter = 1
-script = ExtResource("3_73ub3")
+script = ExtResource("3_5ua76")
 
 [node name="Forward" type="Button" parent="Control"]
 visible = false
@@ -90,10 +91,14 @@ offset_top = 16.0
 offset_right = 111.0
 offset_bottom = 102.0
 theme_override_font_sizes/font_size = 40
-icon = ExtResource("4_id0t7")
+icon = ExtResource("4_1f3vh")
 flat = true
 expand_icon = true
-script = ExtResource("5_p6xd7")
+script = ExtResource("5_nv1k4")
 
-[node name="Player" parent="." instance=ExtResource("6_av4id")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, -5)
+[node name="Player" parent="." instance=ExtResource("6_om5w8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 1, -4)
+
+[node name="Selector" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25)
+material_override = ExtResource("7_4f1mh")

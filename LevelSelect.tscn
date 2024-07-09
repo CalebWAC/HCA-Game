@@ -1,15 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://dt6h27ritdukq"]
+[gd_scene load_steps=20 format=3 uid="uid://dt6h27ritdukq"]
 
 [ext_resource type="Script" path="res://Scripts/BackButton.cs" id="1_pe52d"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_s0tgt"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level1.cs" id="2_gttpt"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level2.cs" id="3_0yy4k"]
 [ext_resource type="Texture2D" uid="uid://ng2fx1caqo1p" path="res://Assets/Level3Unfilled.png" id="5_s2rwx"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level3.cs" id="6_eqche"]
 [ext_resource type="Texture2D" uid="uid://bj0e86h3i83bc" path="res://Assets/Level4Unfilled.png" id="6_jisa7"]
 [ext_resource type="Texture2D" uid="uid://cpm4664v50rmp" path="res://Assets/Level5Unfilled.png" id="7_pwaar"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level4.cs" id="8_1bktu"]
 [ext_resource type="Texture2D" uid="uid://mgw1s2t6j0u" path="res://Assets/Level6Unfilled.png" id="8_iwkjk"]
 [ext_resource type="Texture2D" uid="uid://ct0fog0jt5su7" path="res://Assets/Level7Unfilled.png" id="9_onq76"]
 [ext_resource type="Texture2D" uid="uid://hq3ykuu8u3x5" path="res://Assets/Level8Unfilled.png" id="10_gkb0u"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level5.cs" id="10_vc7oa"]
 [ext_resource type="Texture2D" uid="uid://bhxexdvpp4aur" path="res://Assets/Level9Unfilled.png" id="11_mq3c7"]
 [ext_resource type="Texture2D" uid="uid://ex0e074xwbat" path="res://Assets/Level10Unfilled.png" id="12_02bmm"]
 [ext_resource type="Texture2D" uid="uid://deosm5mosu7o0" path="res://Assets/Level11Unfilled.png" id="13_5l5ny"]
@@ -78,7 +81,7 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("5_s2rwx")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")
+script = ExtResource("6_eqche")
 
 [node name="Level4" type="Button" parent="."]
 layout_mode = 0
@@ -91,7 +94,7 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("6_jisa7")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")
+script = ExtResource("8_1bktu")
 
 [node name="Level5" type="Button" parent="."]
 layout_mode = 0
@@ -104,7 +107,7 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("7_pwaar")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")
+script = ExtResource("10_vc7oa")
 
 [node name="Level6" type="Button" parent="."]
 layout_mode = 0
@@ -117,7 +120,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("8_iwkjk")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")
 
 [node name="Level7" type="Button" parent="."]
 layout_mode = 0
@@ -130,7 +132,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("9_onq76")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")
 
 [node name="Level8" type="Button" parent="."]
 layout_mode = 0
@@ -143,7 +144,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("10_gkb0u")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")
 
 [node name="Level9" type="Button" parent="."]
 layout_mode = 0
@@ -156,7 +156,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("11_mq3c7")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")
 
 [node name="Level10" type="Button" parent="."]
 layout_mode = 0
@@ -169,7 +168,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("12_02bmm")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")
 
 [node name="Level11" type="Button" parent="."]
 layout_mode = 0
@@ -182,7 +180,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("13_5l5ny")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")
 
 [node name="Level12" type="Button" parent="."]
 layout_mode = 0
@@ -195,4 +192,3 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("14_01bjl")
 flat = true
 expand_icon = true
-script = ExtResource("2_gttpt")

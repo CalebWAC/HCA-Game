@@ -6,3 +6,7 @@
 
 [node name="Model" parent="." instance=ExtResource("1_edgpx")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.997436, -1.02373, -1.00992)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
