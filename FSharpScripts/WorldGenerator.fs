@@ -43,6 +43,8 @@ module WorldGeneratorFS =
             let emt = scene.Instantiate() :?> Node3D
             emt.Position <- element.position
             emt.Rotation <- element.rotation
+            if element.visible = false then emt.Visible <- false
+            
             getRoot().GetNode<Node3D>("WorldGenerator").AddChild emt
             if element.etype = MovingBlock then MovingBlockFS.movingBlocks.Add emt
         )
