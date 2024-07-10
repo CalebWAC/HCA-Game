@@ -63,33 +63,37 @@ module PlayerControlFS =
                 
             let block = worlds[level] |> Array.find (fun b -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z)
                          
-            // Height compensation
-            if block.position.Y = placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
+            // Moving block movement
+            if MovingBlockFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe) then
+                onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe) |> Some
                 placeToBe.Y <- placeToBe.Y + 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
-                onBlock <- None
-            elif block.position.Y - Mathf.Round(placeToBe.Y) = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
+            elif MovingBlockFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) then
+                onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) |> Some
                 placeToBe.Y <- placeToBe.Y - 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
-                onBlock <- None
             else
-                // Water bubble movement
-                if tryMoveAquatically () = Result.Error "Not good" && tryMoveBridge () = Result.Error "Not good" then
-                    if inBubble() then
-                        placeToBe <- placeToBe + dirVec dir * 0.5f
-                    elif block.position.Y > placeToBe.Y || block.position.Y - Mathf.Round(placeToBe.Y) < -2f || block.material = Water then
-                        placeToBe <- player.Position
-                        
-                midpoint <- (player.Position + placeToBe) / 2f
-                midpoint.Y <- midpoint.Y + 0.25f
-                
-            // Moving block movement
-            try
-                if MovingBlockFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe) then
-                    onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe) |> Some
+                // Height compensation
+                if block.position.Y = placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
+                    onBlock <- None
                     placeToBe.Y <- placeToBe.Y + 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
-            with | _ -> ()
+                elif block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
+                    onBlock <- None
+                    placeToBe.Y <- placeToBe.Y - 1f
+                    midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
+                else
+                    // Water bubble movement
+                    if tryMoveAquatically () = Result.Error "Not good" && tryMoveBridge () = Result.Error "Not good" then
+                        if inBubble() then
+                            placeToBe <- placeToBe + dirVec dir * 0.5f
+                        elif block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water then
+                            placeToBe <- player.Position
+                            
+                    midpoint <- (player.Position + placeToBe) / 2f
+                    midpoint.Y <- midpoint.Y + 0.25f
+                
+
     
     let moveLeft () = move Left
     let moveRight () = move Right
@@ -122,6 +126,7 @@ module PlayerControlFS =
         match onBlock with
         | Some block ->
             player.Position <- block.Position + Vector3.Up
+            placeToBe <- player.Position
             originalPos <- placeToBe
         | None ->
             t <- Mathf.Min(1f, t + delta * 3f)
