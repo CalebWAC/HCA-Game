@@ -44,19 +44,19 @@ module PlayerControlFS =
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
-    let tryMoveAquatically () =
+    let tryMoveAquatically place =
         try
-            let rounded = (* roundVec *) placeToBe
+            let rounded = if onBlock = None then place else roundVec place
             let bubble = elements[level] |> Array.find (fun e -> e.etype = Bubble && e.position.Y = rounded.Y && 
-                                                                 (((rounded.X + 0.5f = e.position.X && rounded.Z = e.position.Z) || (rounded.X - 0.5f = e.position.X && rounded.Z = e.position.Z)) ||
-                                                                 ((rounded.X = e.position.X && rounded.Z + 0.5f = e.position.Z) || (rounded.X = e.position.X && rounded.Z - 0.5f = e.position.Z)) ||
-                                                                 ((rounded.Z - 1f = e.position.Z && rounded.Z - 1f <> player.Position.Z) || (rounded.Z + 1f = e.position.Z && rounded.Z + 1f <> player.Position.Z))))
+                                                                 ((rounded.X + 0.5f = e.position.X && rounded.Z = e.position.Z) || (rounded.X - 0.5f = e.position.X && rounded.Z = e.position.Z) ||
+                                                                 (rounded.X = e.position.X && rounded.Z + 0.5f = e.position.Z) || (rounded.X = e.position.X && rounded.Z - 0.5f = e.position.Z) ||
+                                                                 (rounded.Z - 1f = e.position.Z && rounded.Z - 1f <> player.Position.Z) || (rounded.Z + 1f = e.position.Z && rounded.Z + 1f <> player.Position.Z)))
             placeToBe <- bubble.position
-            GD.Print "I have moved successfully"
+            onBlock <- None
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
-    let inBubble () = elements[level] |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position)
+    let inBubble () = if elements[level] |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position) then GD.Print "I am in a bubble!"; true else GD.Print "I am not in a bubble"; false
     
     let move dir =
         if withinBoundaries dir && originalPos = placeToBe then             
@@ -80,20 +80,32 @@ module PlayerControlFS =
                     onBlock <- None
                     placeToBe.Y <- placeToBe.Y + 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
+                    GD.Print "Ah ha ha, it is I"
                 elif block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
                     onBlock <- None
                     placeToBe.Y <- placeToBe.Y - 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
+                    GD.Print "Nay, good sir, it is I"
                 else
                     // Water bubble movement
-                    if tryMoveAquatically () = Result.Error "Not good" && tryMoveBridge () = Result.Error "Not good" then
+                    if tryMoveAquatically placeToBe = Result.Error "Not good" && tryMoveBridge () = Result.Error "Not good" then
                         if inBubble() then
-                            placeToBe <- placeToBe + dirVec dir * 0.5f
+                            GD.Print "Message for you sire: I am in a bubble"
+                            if tryMoveAquatically(placeToBe + dirVec dir * 0.5f) = Result.Error "Not good" then
+                                GD.Print "I have failed to move aquatically"                                       // !!! This is what needs to be changed !!! \\
+                                if block.position.Y = player.Position.Y - 1f || (worlds[level] |> Array.find (fun b -> b.position.X = -5f && b.position.Z = 0f)).position.Y = player.Position.Y - 1f then
+                                    GD.Print "I am being run"
+                                    placeToBe <- placeToBe + dirVec dir * 0.5f
+                                else
+                                    GD.Print $"{block.position}     {player.Position}   {worlds[level] |> Array.find (fun b -> b.position.X = -5f && b.position.Z = 0f)}"
+                                    placeToBe <- player.Position
                         elif block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water then
+                            GD.Print "Rather, it is I that am run!"
                             placeToBe <- player.Position
                             
                     midpoint <- (player.Position + placeToBe) / 2f
                     midpoint.Y <- midpoint.Y + 0.25f
+                    GD.Print "Me too!"
                 
 
     
