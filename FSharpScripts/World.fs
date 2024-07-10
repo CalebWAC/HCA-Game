@@ -132,13 +132,13 @@ module WorldFS =
            block 6f 0f -6f; block 6f 0f -5f; block 6f 0f -4f; block 6f 0f -3f; block 6f 0f -2f; block 6f 0f -1f; block 6f 0f 0f; block 6f 0f 1f; block 6f 0f 2f; hiddenBlock 6f 4f 3f; hiddenBlock 6f 4f 4f; hiddenBlock 6f 4f 5f; hiddenBlock 6f 5f 6f
         |]
         [| // Level 7
-           block -6f 0f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; block -6f 0f 3f; block -6f 0f 4f; block -6f 0f 5f; block -6f 0f 6f
-           block -5f 0f -6f; block -5f 0f -5f; block -5f 0f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 0f 0f; block -5f 0f 1f; block -5f 0f 2f; block -5f 0f 3f; block -5f 0f 4f; block -5f 0f 5f; block -5f 0f 6f
-           block -4f 0f -6f; block -4f 0f -5f; block -4f 0f -4f; block -4f 0f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; block -4f 0f 1f; block -4f 0f 2f; block -4f 0f 3f; block -4f 0f 4f; block -4f 0f 5f; block -4f 0f 6f
-           block -3f 0f -6f; block -3f 0f -5f; block -3f 0f -4f; block -3f 0f -3f; block -3f 0f -2f; block -3f 0f -1f; block -3f 0f 0f; block -3f 0f 1f; block -3f 0f 2f; block -3f 0f 3f; block -3f 0f 4f; block -3f 0f 5f; block -3f 0f 6f
-           block -2f 0f -6f; block -2f 0f -5f; block -2f 0f -4f; block -2f 0f -3f; block -2f 0f -2f; block -2f 0f -1f; block -2f 0f 0f; block -2f 0f 1f; block -2f 0f 2f; block -2f 0f 3f; block -2f 0f 4f; block -2f 0f 5f; block -2f 0f 6f
-           block -1f 0f -6f; block -1f 0f -5f; block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 0f 0f; block -1f 0f 1f; block -1f 0f 2f; block -1f 0f 3f; block -1f 0f 4f; block -1f 0f 5f; block -1f 0f 6f
-           block 0f 0f -6f; block 0f 0f -5f; block 0f 0f -4f; block 0f 0f -3f; block 0f 1f -2f; block 0f 0f -1f; block 0f 0f 0f; block 0f 0f 1f; block 0f 0f 2f; block 0f 0f 3f; block 0f 0f 4f; block 0f 0f 5f; block 0f 0f 6f
+           block -6f 0f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; block -6f 6f 3f; block -6f 5f 4f; block -6f 6f 5f; block -6f 7f 6f
+           block -5f 5f -6f; block -5f 5f -5f; block -5f 5f -4f; block -5f 4f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 0f 0f; block -5f 0f 1f; block -5f 0f 2f; block -5f 5f 3f; block -5f 5f 4f; block -5f 5f 5f; block -5f 5f 6f
+           block -4f 6f -6f; block -4f 1f -5f; block -4f 1f -4f; block -4f 3f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; block -4f 0f 1f; block -4f 0f 2f; block -4f 5f 3f; block -4f 5f 4f; block -4f 4f 5f; block -4f 4f 6f
+           block -3f 6f -6f; block -3f 1f -5f; block -3f 1f -4f; block -3f 2f -3f; block -3f 0f -2f; block -3f 0f -1f; block -3f 0f 0f; block -3f 0f 1f; block -3f 0f 2f; block -3f 4f 3f; block -3f 4f 4f; block -3f 4f 5f; block -3f 4f 6f
+           block -2f 6f -6f; block -2f 1f -5f; block -2f 2f -4f; block -2f 2f -3f; block -2f 0f -2f; block -2f 0f -1f; block -2f 0f 0f; block -2f 0f 1f; block -2f 0f 2f; block -2f 0f 3f; block -2f 2f 4f; block -2f 3f 5f; block -2f 3f 6f
+           block -1f 7f -6f; block -1f 0f -5f; block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 0f 0f; block -1f 0f 1f; block -1f 0f 2f; block -1f 0f 3f; block -1f 2f 4f; block -1f 3f 5f; block -1f 3f 6f
+           block 0f 7f -6f; block 0f 7f -5f; block 0f 8f -4f; block 0f 8f -3f; block 0f 1f -2f; block 0f 0f -1f; block 0f 0f 0f; block 0f 0f 1f; block 0f 0f 2f; block 0f 0f 3f; block 0f 0f 4f; block 0f 3f 5f; block 0f 4f 6f
            block 1f 0f -6f; block 1f 0f -5f; block 1f 0f -4f; block 1f 0f -3f; block 1f 1f -2f; block 1f 0f -1f; block 1f 0f 0f; block 1f 0f 1f; block 1f 0f 2f; block 1f 0f 3f; block 1f 0f 4f; block 1f 0f 5f; block 1f 0f 6f
            block 2f 0f -6f; block 2f 0f -5f; block 2f 0f -4f; block 2f 0f -3f; block 2f 1f -2f; block 2f 0f -1f; block 2f 0f 0f; block 2f 0f 1f; block 2f 0f 2f; block 2f 0f 3f; block 2f 0f 4f; block 2f 0f 5f; block 2f 0f 6f
            block 3f 0f -6f; block 3f 0f -5f; block 3f 0f -4f; block 3f 0f -3f; block 3f 1f -2f; block 3f 0f -1f; block 3f 0f 0f; block 3f 0f 1f; block 3f 0f 2f; block 3f 0f 3f; block 3f 0f 4f; block 3f 0f 5f; block 3f 0f 6f
@@ -206,12 +206,16 @@ module WorldFS =
             { etype = GoalFragment; position = Vector3(4f, 3f, -1f); rotation = Vector3.Zero }
         |]
         [| // Level 7
-            { etype = Goal; position = Vector3(-3f, 8f, 3f); rotation = Vector3.Zero }
+            { etype = Goal; position = Vector3(-3f, 2f, -4f); rotation = Vector3.Zero }
             { etype = MovingBlock; position = Vector3(3f, 2f, -1f); rotation = Vector3(0f, degToRad 90f, 0f) }
             { etype = MovingBlock; position = Vector3(3f, 3f, -0f); rotation = Vector3(0f, degToRad 270f, 0f) }
             { etype = Bubble; position = Vector3(1f, 4f, 1.5f); rotation = Vector3.Zero }
             { etype = Bubble; position = Vector3(1f, 4f, 3.5f); rotation = Vector3.Zero }
-            { etype = Bubble; position = Vector3(-0.5f, 4f, 3.5f); rotation = Vector3.Zero }
+            { etype = Bubble; position = Vector3(-1f, 4f, 3.5f); rotation = Vector3.Zero }
+            { etype = MovingBlock; position = Vector3(-3f, 6f, 2f); rotation = Vector3(0f, degToRad 270f, 0f) }
+            { etype = MovingBlock; position = Vector3(-2f, 7f, 1f); rotation = Vector3(0f, degToRad 90f, 0f) }
+            { etype = MovingBlock; position = Vector3(-1f, 8f, 0f); rotation = Vector3(0f, degToRad 270f, 0f) }
+            { etype = Bubble; position = Vector3(0f, 9f, -1.5f); rotation = Vector3.Zero }
         |]
     |]
     
