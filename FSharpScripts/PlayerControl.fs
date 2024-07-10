@@ -46,11 +46,13 @@ module PlayerControlFS =
     
     let tryMoveAquatically () =
         try
-            let bubble = elements[level] |> Array.find (fun e -> e.etype = Bubble && e.position.Y = placeToBe.Y && 
-                                                                 (((placeToBe.X + 0.5f = e.position.X && placeToBe.Z = e.position.Z) || (placeToBe.X - 0.5f = e.position.X && placeToBe.Z = e.position.Z)) ||
-                                                                 ((placeToBe.X = e.position.X && placeToBe.Z + 0.5f = e.position.Z) || (placeToBe.X = e.position.X && placeToBe.Z - 0.5f = e.position.Z)) ||
-                                                                 ((placeToBe.Z - 1f = e.position.Z && placeToBe.Z - 1f <> player.Position.Z) || (placeToBe.Z + 1f = e.position.Z && placeToBe.Z + 1f <> player.Position.Z))))
+            let rounded = (* roundVec *) placeToBe
+            let bubble = elements[level] |> Array.find (fun e -> e.etype = Bubble && e.position.Y = rounded.Y && 
+                                                                 (((rounded.X + 0.5f = e.position.X && rounded.Z = e.position.Z) || (rounded.X - 0.5f = e.position.X && rounded.Z = e.position.Z)) ||
+                                                                 ((rounded.X = e.position.X && rounded.Z + 0.5f = e.position.Z) || (rounded.X = e.position.X && rounded.Z - 0.5f = e.position.Z)) ||
+                                                                 ((rounded.Z - 1f = e.position.Z && rounded.Z - 1f <> player.Position.Z) || (rounded.Z + 1f = e.position.Z && rounded.Z + 1f <> player.Position.Z))))
             placeToBe <- bubble.position
+            GD.Print "I have moved successfully"
             Result.Ok "All good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
@@ -132,9 +134,10 @@ module PlayerControlFS =
             t <- Mathf.Min(1f, t + delta * 3f)
             
             if t >= 1f then
-                player.Position <- roundVec player.Position
+                if onBlock.IsSome then
+                    player.Position <- roundVec player.Position
+                    placeToBe <- roundVec placeToBe
                 originalPos <- player.Position
-                placeToBe <- roundVec placeToBe
            
             let q1 = originalPos.Lerp(midpoint, t)
             let q2 = midpoint.Lerp(placeToBe, t)
