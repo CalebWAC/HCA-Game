@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3jymllbuq3fa"]
+[gd_scene load_steps=8 format=3 uid="uid://b3jymllbuq3fa"]
+
+[ext_resource type="Script" path="res://Scripts/Glasses.cs" id="1_6t5og"]
+[ext_resource type="PackedScene" uid="uid://cgo1xylyngosw" path="res://Models/Glasses.glb" id="1_mar0c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gy3h"]
 albedo_color = Color(1, 1, 0, 1)
@@ -20,9 +23,11 @@ radius = 0.05
 height = 0.1
 
 [node name="Glasses" type="Node3D"]
+script = ExtResource("1_6t5og")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_6gy3h")
 radial_segments = 30
 rings = 20
@@ -39,3 +44,8 @@ amount = 6
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_txq60")
 draw_pass_1 = SubResource("SphereMesh_y55s3")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Model" parent="Model" instance=ExtResource("1_mar0c")]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, 0.00371361, -0.149031, 0.240215)

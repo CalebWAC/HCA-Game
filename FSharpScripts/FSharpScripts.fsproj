@@ -17,6 +17,7 @@
         <Compile Include="Hook.fs" />
         <Compile Include="SceneChangeButton.fs" />
         <Compile Include="Goal.fs" />
+        <Compile Include="Glasses.fs" />
         <Compile Include="LavaWall.fs" />
         <Compile Include="GoalFragment.fs" />
     </ItemGroup>
