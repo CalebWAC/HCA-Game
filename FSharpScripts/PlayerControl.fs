@@ -65,9 +65,9 @@ module PlayerControlFS =
                 
             let block = worlds[level] |> Array.find (fun b -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z)
                          
-            // Moving block movement                                            // !!! Try flooring here instead of round or round05 !!! \\
-            if MovingBlockFS.movingBlocks.Exists(fun e -> GD.Print $"{roundVec e.Position}   {roundVec placeToBe}"; roundVec e.Position = roundVec placeToBe) then
-                onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe) |> Some
+            // Moving block movement                                          
+            if MovingBlockFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe || floorVec e.Position = floorVec placeToBe) then
+                onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe || floorVec e.Position = floorVec placeToBe) |> Some
                 placeToBe.Y <- placeToBe.Y + 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
             elif MovingBlockFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) then
@@ -90,9 +90,9 @@ module PlayerControlFS =
                         if inBubble() then
                             if tryMoveAquatically(placeToBe + dirVec dir * 0.5f) = Result.Error "Not good" then
                                 try if block.position.Y = player.Position.Y - 1f || (worlds[level] |> Array.find (fun b ->
-                                        let pos = placeToBe + dirVec dir * 0.5f - Vector3(0f, 1f, 0f)
+                                        let pos = placeToBe + dirVec dir * 0.5f - Vector3(0f, 1f, 0f) |> roundVec
                                         b.position.X = pos.X && b.position.Z = pos.Z)).position.Y = player.Position.Y - 1f then
-                                        placeToBe <- placeToBe + dirVec dir * 0.5f
+                                        placeToBe <- placeToBe + dirVec dir * 0.5f |> roundVec
                                     else
                                         placeToBe <- player.Position
                                 with | _ -> placeToBe <- player.Position
@@ -101,8 +101,6 @@ module PlayerControlFS =
                             
                     midpoint <- (player.Position + placeToBe) / 2f
                     midpoint.Y <- midpoint.Y + 0.25f
-                
-
     
     let moveLeft () = move Left
     let moveRight () = move Right
@@ -133,11 +131,11 @@ module PlayerControlFS =
         
     let physicsProcess delta =
         match onBlock with
-        | Some block ->
+        | Some block when t >= 1f ->
             player.Position <- block.Position + Vector3.Up
             placeToBe <- player.Position
             originalPos <- placeToBe
-        | None ->
+        | _ ->
             t <- Mathf.Min(1f, t + delta * 3f)
             
             if t >= 1f then

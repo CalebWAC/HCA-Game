@@ -26,7 +26,7 @@ module HookFS =
                                | -2f, 5f, 4.5f -> seq { for x in -5f..2f do for z in 2f..4f do for y in 5f..6f -> Vector3(x, y, z) }  |> Seq.contains player.Position
                                | -4.5f, 5f, 3f -> seq { for x in -4f.. -2f do for z in -1f..5f do for y in 1f..6f -> Vector3(x, y, z) }  |> Seq.contains player.Position
                                | -5f, 6f, -0.5f -> seq { for x in -5f.. -4f do for z in 0f..4f do for y in 1f..6f -> Vector3(x, y, z) }  |> Seq.contains player.Position
-                               | -3.5f, 5f, -5f -> GD.Print player.Position; seq { for x in -2f.. -1f do for z in -5f.. -4f do for y in 1f..6f -> Vector3(x, y, z) }  |> Seq.contains (roundVec player.Position)
+                               | -3.5f, 5f, -5f -> seq { for x in -2f.. -1f do for z in -5f.. -4f do for y in 1f..6f -> Vector3(x, y, z) }  |> Seq.contains (roundVec player.Position)
                                | _ -> true
                            | _ -> false
                         then 
