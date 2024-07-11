@@ -14,7 +14,8 @@
 script = ExtResource("1_g74n3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.796171, 0.605072, 0, -0.605072, -0.796171, 0, 4.62078, 0)
+transform = Transform3D(1, 0, 0, 0, -0.322266, 0.946649, 0, -0.946649, -0.322266, 0, 4.62078, 0)
+shadow_enabled = true
 
 [node name="Camera" type="Node3D" parent="."]
 
@@ -100,5 +101,5 @@ script = ExtResource("5_tpwvc")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 1, 4)
 
 [node name="Selector" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 50, -25)
 material_override = ExtResource("7_p82dg")

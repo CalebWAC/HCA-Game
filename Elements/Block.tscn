@@ -15,6 +15,7 @@ script = ExtResource("1_k43ns")
 transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.505, -0.505, -0.51)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_i7rd3")
 lod_bias = 100.0
 

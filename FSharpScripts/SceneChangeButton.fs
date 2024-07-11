@@ -17,4 +17,7 @@ module SceneChangeButtonFS =
                 
             if name[..4] = "Level" && WorldFS.completedLevels[(name[5].ToString() |> int) - 1] = true then
                 button.Icon <- ResourceLoader.Load($"res://Assets/{name}Filled.png") :?> Texture2D
-                    
+            
+            // Reset mechanics
+            PlayerFS.powerUps <- [||]
+            MovingBlockFS.movingBlocks.Clear()

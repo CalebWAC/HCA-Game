@@ -174,8 +174,6 @@ module WorldFS =
         [| // Level 2
             { etype = Goal; position = Vector3(-3f, 8f, 3f); rotation = Vector3.Zero; visible = true }
             { etype = Bridge; position = Vector3(-5f, 1f, -3.5f); rotation = Vector3(0f, degToRad 90f, 0f); visible = true }
-            { etype = MovingBlock; position = Vector3(0f, 1f, 0f); rotation = Vector3(0f, degToRad 180f, 0f); visible = true }
-            { etype = MovingBlock; position = Vector3(-1f, 2f, 0f); rotation = Vector3.Zero; visible = true }
         |]
         [| // Level 3
             { etype = Goal; position = Vector3(-5f, 7f, -5f); rotation = Vector3.Zero; visible = true }

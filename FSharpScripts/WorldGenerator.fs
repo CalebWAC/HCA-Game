@@ -19,6 +19,7 @@ module WorldGeneratorFS =
                     | Ground -> ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
                     | Water ->
                         block.GetNode("Model").QueueFree()
+                        block.GetNode<Node3D>("CSGBox3D").Visible <- true
                         ResourceLoader.Load("res://Materials/WaterBubble.tres") :?> Material
                     | Invisible ->
                         if i <> 0f then block.Visible <- false

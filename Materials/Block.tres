@@ -3,6 +3,4 @@
 [resource]
 resource_name = "lambert2SG.001"
 vertex_color_use_as_albedo = true
-albedo_color = Color(0, 0.364706, 0.0823529, 1)
-metallic = 0.5
-roughness = 0.5
+albedo_color = Color(0, 0.498039, 0.227451, 1)

@@ -13,8 +13,10 @@
 script = ExtResource("1_icx1w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.30217, 0.953254, 0, -0.953254, -0.30217, 0, 4.62078, 0)
+transform = Transform3D(1, 0, 0, 0, -0.321754, 0.946823, 0, -0.946823, -0.321754, 0, 4.62078, 0)
+light_energy = 0.75
 shadow_enabled = true
+shadow_normal_bias = 10.0
 
 [node name="Camera" type="Node3D" parent="."]
 

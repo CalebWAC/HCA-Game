@@ -152,6 +152,7 @@ expand_icon = true
 script = ExtResource("16_iq55q")
 
 [node name="Level9" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 148.0
 offset_top = 431.0
@@ -164,6 +165,7 @@ flat = true
 expand_icon = true
 
 [node name="Level10" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 386.0
 offset_top = 434.0
@@ -176,6 +178,7 @@ flat = true
 expand_icon = true
 
 [node name="Level11" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 635.0
 offset_top = 434.0
@@ -188,6 +191,7 @@ flat = true
 expand_icon = true
 
 [node name="Level12" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 867.0
 offset_top = 435.0
