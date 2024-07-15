@@ -101,5 +101,5 @@ script = ExtResource("5_nv1k4")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 1, -4)
 
 [node name="Selector" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 50, -25)
 material_override = ExtResource("7_4f1mh")

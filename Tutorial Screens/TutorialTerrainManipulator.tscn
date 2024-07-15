@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4a7t4ikhpqec"]
+
+[ext_resource type="Script" path="res://Scripts/UnpauseButton.cs" id="1_uxvi0"]
+[ext_resource type="Texture2D" uid="uid://c6bar1116ci74" path="res://Assets/Tutorial Images/Tutorial3.3.PNG" id="2_os63m"]
+[ext_resource type="Texture2D" uid="uid://btsw2fvqsx2fn" path="res://Assets/Tutorial Images/Tutorial3.2.PNG" id="3_o1b2i"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="4_bse68"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k3h3"]
+bg_color = Color(0.341823, 0.618289, 0.824765, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wv5hi"]
+texture = ExtResource("2_os63m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88gqe"]
+texture = ExtResource("3_o1b2i")
+
+[node name="TutorialIntro" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 75.0
+offset_right = 975.0
+offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1k3h3")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 12.0
+offset_right = 776.0
+offset_bottom = 54.0
+script = ExtResource("1_uxvi0")
+
+[node name="Image1" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 380.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wv5hi")
+
+[node name="Image2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 80.0
+offset_right = 720.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_88gqe")
+
+[node name="Title" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = -1.0
+offset_right = 748.0
+offset_bottom = 79.0
+theme_override_fonts/normal_font = ExtResource("4_bse68")
+theme_override_font_sizes/normal_font_size = 60
+text = "Terrain Manipulator"
+
+[node name="Paragraph" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 349.0
+offset_right = 720.0
+offset_bottom = 617.0
+theme_override_fonts/normal_font = ExtResource("4_bse68")
+theme_override_font_sizes/normal_font_size = 20
+text = "	The terrain manipulator allows you to raise or lower any section of the ground. To use it, click the block that you want to raise or lower, and use the up and down arrow keys to change its height. Once you're done, click anywhere else to be able to start moving again."

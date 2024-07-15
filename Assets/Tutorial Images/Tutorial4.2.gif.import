@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://ci2ku6imdaswx"
+path="res://.godot/imported/Tutorial4.2.gif-2c2d6bd32b6844d36b58889ac8aba322.tres"
+
+[deps]
+
+source_file="res://Assets/Tutorial Images/Tutorial4.2.gif"
+dest_files=["res://.godot/imported/Tutorial4.2.gif-2c2d6bd32b6844d36b58889ac8aba322.tres"]
+
+[params]
+
+frames_per_second=30

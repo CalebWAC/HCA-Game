@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://clhodbfcxe5aq"]
+
+[ext_resource type="Script" path="res://Scripts/UnpauseButton.cs" id="1_tro8q"]
+[ext_resource type="Texture2D" uid="uid://cqbn8akwq7qut" path="res://Assets/Tutorial Images/Tutorial2.1.PNG" id="2_pi8pe"]
+[ext_resource type="Texture2D" uid="uid://bucn01c6matwu" path="res://Assets/Tutorial Images/Tutorial2.2.PNG" id="3_wpveb"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="4_lwayg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k3h3"]
+bg_color = Color(0.341823, 0.618289, 0.824765, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_osgwr"]
+texture = ExtResource("2_pi8pe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tj1ru"]
+texture = ExtResource("3_wpveb")
+
+[node name="TutorialIntro" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 75.0
+offset_right = 975.0
+offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1k3h3")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 12.0
+offset_right = 776.0
+offset_bottom = 54.0
+script = ExtResource("1_tro8q")
+
+[node name="Image1" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 380.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_osgwr")
+
+[node name="Image2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 80.0
+offset_right = 720.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tj1ru")
+
+[node name="Title" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = -1.0
+offset_right = 610.0
+offset_bottom = 79.0
+theme_override_fonts/normal_font = ExtResource("4_lwayg")
+theme_override_font_sizes/normal_font_size = 60
+text = "Grappling Hook"
+
+[node name="Paragraph" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 350.0
+offset_right = 718.0
+offset_bottom = 618.0
+theme_override_fonts/normal_font = ExtResource("4_lwayg")
+theme_override_font_sizes/normal_font_size = 20
+text = "	The grappling hook power-up allows you to fly across high distances to an in-range hook. The hooks are orange diamonds scattered against walls in various levels. To use the grappling hook, click on a hook and you will automatically move to that location. A hook can only be grappled to if it is in range."
