@@ -18,7 +18,7 @@ texture = ExtResource("2_os63m")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88gqe"]
 texture = ExtResource("3_o1b2i")
 
-[node name="TutorialIntro" type="Control"]
+[node name="TutorialTerrainManipulator" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15

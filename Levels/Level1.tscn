@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://sya83vg4qpuc"]
+[gd_scene load_steps=9 format=3 uid="uid://sya83vg4qpuc"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_icx1w"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_n8uld"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_g8sov"]
 [ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="6_eurpa"]
 [ext_resource type="PackedScene" uid="uid://cthm4t2utcjk2" path="res://Tutorial Screens/TutorialIntro.tscn" id="7_iarqo"]
+[ext_resource type="PackedScene" uid="uid://clhodbfcxe5aq" path="res://Tutorial Screens/TutorialGrapplingHook.tscn" id="8_nf71i"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -103,4 +104,7 @@ script = ExtResource("5_g8sov")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
 
 [node name="TutorialIntro" parent="." instance=ExtResource("7_iarqo")]
+visible = false
+
+[node name="TutorialGrapplingHook" parent="." instance=ExtResource("8_nf71i")]
 visible = false

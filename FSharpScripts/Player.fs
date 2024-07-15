@@ -13,12 +13,21 @@ module PlayerFS =
         | "GrapplingHook" ->
             powerUps <- Array.append powerUps [|WorldFS.GrapplingHook|]
             other.GetParent().QueueFree()
+            if WorldFS.level = 0 then
+                getRoot().GetTree().Paused <- true
+                getRoot().GetNode<Control>("TutorialGrapplingHook").Visible <- true
         | "TerrainManipulator" ->
             powerUps <- Array.append powerUps [|WorldFS.TerrainManipulator|]
             other.GetParent().QueueFree()
+            if WorldFS.level = 1 then
+                getRoot().GetTree().Paused <- true
+                getRoot().GetNode<Control>("TutorialTerrainManipulator").Visible <- true
         | "Glasses" ->
             powerUps <- Array.append powerUps [|WorldFS.Glasses|]
             other.GetParent().QueueFree()
+            if WorldFS.level = 5 then
+                getRoot().GetTree().Paused <- true
+                getRoot().GetNode<Control>("TutorialInvisibleGlasses").Visible <- true
         | _ -> ()
     
     let ready () =

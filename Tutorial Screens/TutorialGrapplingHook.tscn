@@ -18,7 +18,7 @@ texture = ExtResource("2_pi8pe")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tj1ru"]
 texture = ExtResource("3_wpveb")
 
-[node name="TutorialIntro" type="Control"]
+[node name="TutorialGrapplingHook" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15

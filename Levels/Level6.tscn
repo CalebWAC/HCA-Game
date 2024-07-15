@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3221c06shpth"]
+[gd_scene load_steps=9 format=3 uid="uid://d3221c06shpth"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_ka1r6"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_jm63s"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_rots3"]
 [ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_8euf2"]
 [ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="6_38prk"]
+[ext_resource type="PackedScene" uid="uid://bfadmktm35erb" path="res://Tutorial Screens/TutorialGoalFragment.tscn" id="7_6yfva"]
+[ext_resource type="PackedScene" uid="uid://b6sp522ld8jht" path="res://Tutorial Screens/TutorialInvisibleGlasses.tscn" id="8_o5ho3"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -98,3 +100,9 @@ script = ExtResource("5_8euf2")
 
 [node name="Player" parent="." instance=ExtResource("6_38prk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, -5)
+
+[node name="TutorialGoalFragment" parent="." instance=ExtResource("7_6yfva")]
+visible = false
+
+[node name="TutorialInvisibleGlasses" parent="." instance=ExtResource("8_o5ho3")]
+visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkeakhsuc7cx0"]
+[gd_scene load_steps=10 format=3 uid="uid://dkeakhsuc7cx0"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_g74n3"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_7qope"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_tpwvc"]
 [ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="6_3o3su"]
 [ext_resource type="Material" uid="uid://cntcf82orge6v" path="res://Materials/TerrainSelector.tres" id="7_p82dg"]
+[ext_resource type="PackedScene" uid="uid://cqctu5x58x3xl" path="res://Tutorial Screens/TutorialWater.tscn" id="8_q5ib0"]
+[ext_resource type="PackedScene" uid="uid://d4a7t4ikhpqec" path="res://Tutorial Screens/TutorialTerrainManipulator.tscn" id="9_s8mas"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -103,3 +105,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 1, 
 [node name="Selector" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 50, -25)
 material_override = ExtResource("7_p82dg")
+
+[node name="TutorialWater" parent="." instance=ExtResource("8_q5ib0")]
+visible = false
+
+[node name="TutorialTerrainManipulator" parent="." instance=ExtResource("9_s8mas")]
+visible = false

@@ -65,5 +65,14 @@ module WorldGeneratorFS =
         if level = 0 then
             getRoot().GetTree().Paused <- true
             getRoot().GetNode<Control>("TutorialIntro").Visible <- true
+        elif level = 1 then
+            getRoot().GetTree().Paused <- true
+            getRoot().GetNode<Control>("TutorialWater").Visible <- true
+        elif level = 2 then
+            getRoot().GetTree().Paused <- true
+            getRoot().GetNode<Control>("TutorialLavaWall").Visible <- true
+        elif level = 5 then
+            getRoot().GetTree().Paused <- true
+            getRoot().GetNode<Control>("TutorialGoalFragment").Visible <- true
         
     let process delta = ()
