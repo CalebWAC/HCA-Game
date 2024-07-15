@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mgw1s2t6j0u"
-path="res://.godot/imported/Level6Unfilled.png-a561c71c3e00fb165bd083b34ca1c90b.ctex"
+uid="uid://bphu24k5uk1dr"
+path="res://.godot/imported/Tutorial1.1.PNG-8b578b3f9b3e021474a7bbb80ee67bb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Level6Unfilled.png"
-dest_files=["res://.godot/imported/Level6Unfilled.png-a561c71c3e00fb165bd083b34ca1c90b.ctex"]
+source_file="res://Assets/Tutorial Images/Tutorial1.1.PNG"
+dest_files=["res://.godot/imported/Tutorial1.1.PNG-8b578b3f9b3e021474a7bbb80ee67bb5.ctex"]
 
 [params]
 

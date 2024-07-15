@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://cthm4t2utcjk2"]
+
+[ext_resource type="Texture2D" uid="uid://bphu24k5uk1dr" path="res://Assets/Tutorial Images/Tutorial1.1.PNG" id="1_21las"]
+[ext_resource type="Script" path="res://Scripts/UnpauseButton.cs" id="1_cder6"]
+[ext_resource type="Texture2D" uid="uid://d3pwevvi1xfqb" path="res://Assets/Tutorial Images/Tutorial1.2.PNG" id="2_b7w8j"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="2_clb8k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k3h3"]
+bg_color = Color(0.341823, 0.618289, 0.824765, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hepba"]
+texture = ExtResource("1_21las")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sgbw7"]
+texture = ExtResource("2_b7w8j")
+
+[node name="TutorialIntro" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 75.0
+offset_right = 975.0
+offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1k3h3")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 12.0
+offset_right = 776.0
+offset_bottom = 54.0
+script = ExtResource("1_cder6")
+
+[node name="Image1" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 380.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hepba")
+
+[node name="Image2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 80.0
+offset_right = 720.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sgbw7")
+
+[node name="Title" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = -1.0
+offset_right = 500.0
+offset_bottom = 79.0
+theme_override_fonts/normal_font = ExtResource("2_clb8k")
+theme_override_font_sizes/normal_font_size = 60
+text = "Basics"
+
+[node name="Paragraph" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 369.0
+offset_right = 715.0
+offset_bottom = 637.0
+theme_override_fonts/normal_font = ExtResource("2_clb8k")
+theme_override_font_sizes/normal_font_size = 20
+text = "	Welcome to Expedition! Move your character around with the arrow keys. The Q and E keys allow you to turn towards the right and left. Make it to the purple goal at the end of each level!"

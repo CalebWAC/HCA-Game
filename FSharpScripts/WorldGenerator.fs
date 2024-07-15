@@ -62,5 +62,8 @@ module WorldGeneratorFS =
             getRoot().GetNode<Node3D>("WorldGenerator").AddChild(power)
         )
         
-    let process delta =
-        ()
+        if level = 0 then
+            getRoot().GetTree().Paused <- true
+            getRoot().GetNode<Control>("TutorialIntro").Visible <- true
+        
+    let process delta = ()
