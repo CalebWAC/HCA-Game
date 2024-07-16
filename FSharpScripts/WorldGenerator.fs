@@ -48,7 +48,7 @@ module WorldGeneratorFS =
             if element.visible = false then emt.Visible <- false
             
             getRoot().GetNode<Node3D>("WorldGenerator").AddChild emt
-            if element.etype = MovingBlock then MovingBlockFS.movingBlocks.Add emt
+            if element.etype = MovingBlock || element.etype = MovingBlockWithHook then MovingBlockFS.movingBlocks.Add emt
         )
         
         // Power up placement
