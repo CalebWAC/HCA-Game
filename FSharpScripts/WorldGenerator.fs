@@ -40,7 +40,8 @@ module WorldGeneratorFS =
                                                                  | Hook -> "Hook.tscn"
                                                                  | LavaWall -> "LavaWall.tscn"
                                                                  | GoalFragment -> "GoalFragment.tscn"
-                                                                 | MovingBlock -> "MovingBlock.tscn")
+                                                                 | MovingBlock -> "MovingBlock.tscn"
+                                                                 | MovingBlockWithHook -> "MovingBlockWithHook.tscn")
             let emt = scene.Instantiate() :?> Node3D
             emt.Position <- element.position
             emt.Rotation <- element.rotation

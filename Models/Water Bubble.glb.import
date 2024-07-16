@@ -33,7 +33,7 @@ _subresources={
 "materials": {
 "lambert2SG.001": {
 "use_external/enabled": true,
-"use_external/path": "res://Materials/lambert2SG.001.tres"
+"use_external/path": "res://Materials/WaterBubble.tres"
 }
 }
 }

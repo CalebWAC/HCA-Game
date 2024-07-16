@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://x432kd3txmgd"]
+
+[ext_resource type="Script" path="res://Scripts/MovingBlock.cs" id="1_es3i3"]
+[ext_resource type="PackedScene" uid="uid://ceetweyfcu1rn" path="res://Models/Basic Terrain Block.glb" id="2_fj3rm"]
+[ext_resource type="PackedScene" uid="uid://du3uykkuthl7k" path="res://Elements/Hook.tscn" id="3_hokvj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rntx6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e641i"]
+albedo_color = Color(0.91138, 0.559035, 0.00630782, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cvlls"]
+size = Vector3(0.970215, 0.631836, 0.932617)
+
+[node name="MovingBlock" type="Node3D"]
+script = ExtResource("1_es3i3")
+
+[node name="Model" parent="." instance=ExtResource("2_fj3rm")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.505, -0.505, -0.51)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_rntx6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material = SubResource("StandardMaterial3D_e641i")
+
+[node name="Border" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Border"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00219727, -0.0170898, 0.00732422)
+shape = SubResource("BoxShape3D_cvlls")
+
+[node name="Hook" parent="." instance=ExtResource("3_hokvj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, 0)
+
+[node name="Hook2" parent="." instance=ExtResource("3_hokvj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0, 0)

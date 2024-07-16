@@ -64,13 +64,13 @@ module PlayerControlFS =
             placeToBe <- placeToBe + dirVec dir
                 
             let block = worlds[level] |> Array.find (fun b -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z)
-                         
+            
             // Moving block movement                                          
             if MovingBlockFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe || floorVec e.Position = floorVec placeToBe) then
                 onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe || floorVec e.Position = floorVec placeToBe) |> Some
                 placeToBe.Y <- placeToBe.Y + 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
-            elif MovingBlockFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) then
+            elif MovingBlockFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f) || floorVec e.Position = floorVec placeToBe - Vector3(0f, 2f, 0f)) then
                 onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) |> Some
                 placeToBe.Y <- placeToBe.Y - 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir

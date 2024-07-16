@@ -15,7 +15,7 @@ module HookFS =
                 if mouseClick.ButtonIndex = MouseButton.Left && mouseClick.Pressed then
                     if Array.contains PowerUpType.GrapplingHook PlayerFS.powerUps && self.Position.DistanceTo(player.Position) < 6f then
                         if match level with
-                           | 0 | 3 -> true
+                           | 0 | 3 | 8 -> true
                            | 2 ->
                                let pos = (self.Position.X, self.Position.Y, self.Position.Z)
                                match pos with

@@ -20,4 +20,4 @@ module SceneChangeButtonFS =
             
             // Reset mechanics
             PlayerFS.powerUps <- [||]
-            MovingBlockFS.movingBlocks.Clear()
+            if name <> "BackButtonLevel" then MovingBlockFS.movingBlocks.Clear()
