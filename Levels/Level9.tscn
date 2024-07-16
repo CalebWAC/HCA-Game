@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1uox3oef80j3"]
+[gd_scene load_steps=15 format=3 uid="uid://b1uox3oef80j3"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_p36up"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_efc3n"]
@@ -6,6 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_mw1ev"]
 [ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_qtu7q"]
 [ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="6_ogcpy"]
+[ext_resource type="PackedScene" uid="uid://csrg8wea6p8hh" path="res://addons/voxel/Scenes/TexturedVoxelModel.tscn" id="7_wjlk5"]
+[ext_resource type="Texture2D" uid="uid://dltatidneccje" path="res://addons/voxel/Examples/TorusBox/Assets/Model.png" id="8_koerv"]
+[ext_resource type="CompressedTexture2DArray" uid="uid://ddogs0tsovu8f" path="res://addons/voxel/Examples/TorusBox/Assets/Voxel.png" id="9_enm5g"]
+[ext_resource type="Texture2D" uid="uid://d3teuqnoaxljr" path="res://addons/voxel/Examples/TorusBox/Assets/Palette.png" id="10_heoqd"]
+[ext_resource type="CompressedTexture2DArray" uid="uid://bffom6cq1ade0" path="res://addons/voxel/Examples/TorusBox/Assets/Color.png" id="11_b3by2"]
+[ext_resource type="CompressedTexture2DArray" uid="uid://dk0w7hirnpgkv" path="res://addons/voxel/Examples/TorusBox/Assets/Emission.png" id="12_dbf8w"]
+[ext_resource type="CompressedTexture2DArray" uid="uid://fpa6srwasshy" path="res://addons/voxel/Examples/TorusBox/Assets/Normal.png" id="13_tnios"]
+[ext_resource type="CompressedTexture2DArray" uid="uid://cmc23yvmi318s" path="res://addons/voxel/Examples/TorusBox/Assets/RSMA.png" id="14_2qkct"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -100,3 +108,29 @@ script = ExtResource("5_qtu7q")
 
 [node name="Player" parent="." instance=ExtResource("6_ogcpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
+
+[node name="TexturedVoxelModel" parent="." instance=ExtResource("7_wjlk5")]
+voxel_size = 0.01
+uv_scale = 1.0
+model_size = Vector3i(4, 5, 3)
+model_texture = ExtResource("8_koerv")
+voxel_textures = ExtResource("9_enm5g")
+palette_texture = ExtResource("10_heoqd")
+color_textures = ExtResource("11_b3by2")
+emission_textures = ExtResource("12_dbf8w")
+normal_textures = ExtResource("13_tnios")
+rsma_textures = ExtResource("14_2qkct")
+
+[node name="TexturedVoxelModel2" parent="." instance=ExtResource("7_wjlk5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.3, -0.25, 0.4)
+visible = false
+voxel_size = 0.01
+uv_scale = 1.0
+model_size = Vector3i(4, 5, 3)
+model_texture = ExtResource("8_koerv")
+voxel_textures = ExtResource("9_enm5g")
+palette_texture = ExtResource("10_heoqd")
+color_textures = ExtResource("11_b3by2")
+emission_textures = ExtResource("12_dbf8w")
+normal_textures = ExtResource("13_tnios")
+rsma_textures = ExtResource("14_2qkct")

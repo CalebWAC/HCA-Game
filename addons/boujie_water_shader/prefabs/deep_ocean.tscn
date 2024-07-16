@@ -1,16 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://ignpdv10rx52"]
+[gd_scene load_steps=12 format=3 uid="uid://ignpdv10rx52"]
 
 [ext_resource type="Script" path="res://addons/boujie_water_shader/prefabs/ocean_prefab.gd" id="1_ffcdn"]
 [ext_resource type="Material" uid="uid://cu46b100244nd" path="res://addons/boujie_water_shader/prefabs/deep_ocean_material.tres" id="2_mvet8"]
 [ext_resource type="Script" path="res://addons/boujie_water_shader/types/camera_follower_3d.gd" id="3_u4edm"]
 [ext_resource type="Script" path="res://addons/boujie_water_shader/types/water_material_designer.gd" id="4_aqj8w"]
 [ext_resource type="Script" path="res://addons/boujie_water_shader/types/gerstner_wave.gd" id="8_uytuc"]
-[ext_resource type="Resource" uid="uid://cxeeuqlnw0v08" path="res://External Assets/boujie_water_shader-8b933c4428d6984029cba52cebc224449ac74549/example/boujie_water_shader/height_waves/height4.tres" id="9_bqe5t"]
-[ext_resource type="Resource" uid="uid://c33noe5oxh41i" path="res://External Assets/boujie_water_shader-8b933c4428d6984029cba52cebc224449ac74549/example/boujie_water_shader/height_waves/height2.tres" id="10_3dku7"]
-[ext_resource type="Resource" uid="uid://bf2pvto4lly3o" path="res://External Assets/boujie_water_shader-8b933c4428d6984029cba52cebc224449ac74549/example/boujie_water_shader/foam_waves/foam1.tres" id="11_32a1e"]
-[ext_resource type="Resource" uid="uid://1wsbw638p6o2" path="res://External Assets/boujie_water_shader-8b933c4428d6984029cba52cebc224449ac74549/example/boujie_water_shader/foam_waves/foam2.tres" id="12_fndme"]
-[ext_resource type="Resource" uid="uid://dp2iua60m7f8m" path="res://External Assets/boujie_water_shader-8b933c4428d6984029cba52cebc224449ac74549/example/boujie_water_shader/uv_waves/uvwave1.tres" id="13_nl2mb"]
-[ext_resource type="Resource" uid="uid://3g1mc132n1al" path="res://External Assets/boujie_water_shader-8b933c4428d6984029cba52cebc224449ac74549/example/boujie_water_shader/uv_waves/uvwave2.tres" id="14_wf57g"]
 
 [sub_resource type="Resource" id="Resource_h6ky8"]
 script = ExtResource("8_uytuc")
@@ -90,8 +84,8 @@ distance_fade_far = 4000
 distance_fade_softness = 0.323
 wave_fade_far = 2000
 wave_fade_softness = 0.641
-height_waves = Array[ExtResource("8_uytuc")]([SubResource("Resource_h6ky8"), SubResource("Resource_gq4b8"), ExtResource("9_bqe5t"), ExtResource("10_3dku7")])
-foam_waves = Array[ExtResource("8_uytuc")]([SubResource("Resource_ewn38"), SubResource("Resource_v8fws"), SubResource("Resource_pwrcy"), SubResource("Resource_ei3rv"), ExtResource("11_32a1e"), ExtResource("12_fndme")])
-uv_waves = Array[ExtResource("8_uytuc")]([ExtResource("13_nl2mb"), ExtResource("14_wf57g")])
+height_waves = Array[ExtResource("8_uytuc")]([SubResource("Resource_h6ky8"), SubResource("Resource_gq4b8"), null, null])
+foam_waves = Array[ExtResource("8_uytuc")]([SubResource("Resource_ewn38"), SubResource("Resource_v8fws"), SubResource("Resource_pwrcy"), SubResource("Resource_ei3rv"), null, null])
+uv_waves = Array[ExtResource("8_uytuc")]([null, null])
 
 [connection signal="updated_lod" from="WaterMaterialDesigner" to="." method="_on_water_material_designer_updated_lod"]

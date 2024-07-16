@@ -47,12 +47,12 @@ module WorldGeneratorFS =
                             if i <> 0f then block.Visible <- false
                             ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
                     
-                    block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
+                    // block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
                     getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
             )
             
             // Platformer element placement
-            elements[lev]
+            (* elements[lev]
             |> Array.iter (fun element ->
                 let scene = GD.Load<PackedScene>("res://Elements/" + match element.etype with
                                                                      | Goal -> "Goal.tscn"
@@ -81,7 +81,7 @@ module WorldGeneratorFS =
                 let power = scene.Instantiate() :?> Node3D
                 power.Position <- Vector3(powerUp.position.X + xOffset, powerUp.position.Y, powerUp.position.Z + zOffset)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(power)
-            )
+            ) *)
             
             // Intermediary Blocks
             middle
@@ -102,7 +102,7 @@ module WorldGeneratorFS =
                             if i <> 0f then block.Visible <- false
                             ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
                     
-                    block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
+                    // block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
                     getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block))
         
         if level = 0 then

@@ -36,8 +36,8 @@ module TerrainManipulatorFS =
             self <- thing
             selector <- getRoot().GetNode<CsgBox3D>("Selector")
         
-        member this.process delta =
-            t <- t + delta * 0.5f
+        member this.process delta = ()
+        (*    t <- t + delta * 0.5f
             
             // For hidden blocks
             if Array.contains Glasses powerUps && (worlds[level] |> Array.find(fun b -> b.position.X = self.Position.X && b.position.Z = self.Position.Z)).material = Invisible
@@ -74,4 +74,4 @@ module TerrainManipulatorFS =
                                 Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected)) { position = selected - Vector3.Up; material = Ground }
                                 selector.Position <- selected - Vector3(0f, 0.9f, 0f)
                         | _ -> ()
-                | _ -> ()
+                | _ -> () *)

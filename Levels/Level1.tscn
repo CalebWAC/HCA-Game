@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cthm4t2utcjk2" path="res://Tutorial Screens/TutorialIntro.tscn" id="7_iarqo"]
 [ext_resource type="PackedScene" uid="uid://clhodbfcxe5aq" path="res://Tutorial Screens/TutorialGrapplingHook.tscn" id="8_nf71i"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D2" type="Node3D"]
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("1_icx1w")
