@@ -1,12 +1,9 @@
 namespace FSharpScripts
 
-open System.Collections.Generic
 open Godot
 open GlobalFunctions
 
 module MovingBlockFS =
-    let movingBlocks = List<Node3D>()
-
     type MovingBlock() =
         let mutable self = Unchecked.defaultof<Node3D>
         let mutable origin = Vector3.Zero

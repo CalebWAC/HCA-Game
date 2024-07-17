@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b3jymllbuq3fa"]
 
-[ext_resource type="Script" path="res://Scripts/Glasses.cs" id="1_6t5og"]
+[ext_resource type="Script" path="res://Scripts/Power-Ups/Glasses.cs" id="1_6t5og"]
 [ext_resource type="PackedScene" uid="uid://cgo1xylyngosw" path="res://Models/Glasses.glb" id="1_mar0c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gy3h"]

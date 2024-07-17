@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ww17mqqsvu0l"]
 
-[ext_resource type="Script" path="res://Scripts/LavaWall.cs" id="1_ccr2d"]
+[ext_resource type="Script" path="res://Scripts/Elements/LavaWall.cs" id="1_ccr2d"]
 [ext_resource type="Material" uid="uid://c1aq3tjpaekok" path="res://Materials/Lava.tres" id="2_2cc7c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71jg0"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bcg8t1vwr81v5"]
 
-[ext_resource type="Script" path="res://Scripts/MovingBlock.cs" id="1_p43r8"]
+[ext_resource type="Script" path="res://Scripts/Elements/MovingBlock.cs" id="1_p43r8"]
 [ext_resource type="PackedScene" uid="uid://ceetweyfcu1rn" path="res://Models/Basic Terrain Block.glb" id="2_100ov"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rntx6"]

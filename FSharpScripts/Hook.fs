@@ -45,7 +45,7 @@ module HookFS =
                             t <- 0f
                             
                             if self.GetParent().GetParent().GetParent() <> null then
-                                onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> GD.Print $"{e.Position}     {Vector3(self.GlobalPosition.X - 0.5f, self.GlobalPosition.Y, self.GlobalPosition.Z)}"; floorVec e.Position = floorVec(Vector3(self.GlobalPosition.X + 0.5f, self.GlobalPosition.Y, self.GlobalPosition.Z))) |> Some
+                                onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> GD.Print $"{e.Position}     {Vector3(self.GlobalPosition.X - 0.5f, self.GlobalPosition.Y, self.GlobalPosition.Z)}"; floorVec e.Position = floorVec(Vector3(self.GlobalPosition.X + 0.5f, self.GlobalPosition.Y, self.GlobalPosition.Z))) |> Some
             with | _ -> ()
         
         member this.ready (thing : Node3D) =

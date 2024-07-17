@@ -11,9 +11,9 @@
         <Compile Include="Player.fs" />
         <Compile Include="TerrainManipulator.fs" />
         <Compile Include="MovingBlock.fs" />
+        <Compile Include="WorldGenerator.fs" />
         <Compile Include="CompanionCube.fs" />
         <Compile Include="CubeTrigger.fs" />
-        <Compile Include="WorldGenerator.fs" />
         <Compile Include="CameraControl.fs" />
         <Compile Include="PlayerControl.fs" />
         <Compile Include="Hook.fs" />

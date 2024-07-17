@@ -20,4 +20,8 @@ module SceneChangeButtonFS =
             
             // Reset mechanics
             PlayerFS.powerUps <- [||]
-            if name <> "BackButtonLevel" then MovingBlockFS.movingBlocks.Clear()
+            if name <> "BackButtonLevel" then
+                WorldGeneratorFS.movingBlocks.Clear()
+                WorldGeneratorFS.companionCubes.Clear()
+                WorldGeneratorFS.cubeTriggers.Clear()
+                WorldGeneratorFS.bridges.Clear()

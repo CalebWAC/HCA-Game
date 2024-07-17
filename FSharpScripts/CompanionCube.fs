@@ -3,11 +3,8 @@ namespace FSharpScripts
 open Godot
 open WorldFS
 open GlobalFunctions
-open System.Collections.Generic
 
 module CompanionCubeFS =
-    let companionCubes = List<Node3D>()
-    
     type CompanionCube() =
         let mutable self = Unchecked.defaultof<Node3D>
         let mutable held = false

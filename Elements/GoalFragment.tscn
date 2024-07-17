@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://chuvhjrrmt2s4"]
 
-[ext_resource type="Script" path="res://Scripts/GoalFragment.cs" id="1_tnvdu"]
+[ext_resource type="Script" path="res://Scripts/Elements/GoalFragment.cs" id="1_tnvdu"]
 [ext_resource type="PackedScene" uid="uid://dq051mhnp14b1" path="res://Models/Goal.glb" id="2_ymw1r"]
 [ext_resource type="Material" uid="uid://brcgclratt61n" path="res://Materials/Goal.tres" id="3_ypba6"]
 

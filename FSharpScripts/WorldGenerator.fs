@@ -3,8 +3,14 @@
 open Godot
 open WorldFS
 open GlobalFunctions
+open System.Collections.Generic
 
 module WorldGeneratorFS =
+    let movingBlocks = List<Node3D>()
+    let companionCubes = List<Node3D>()
+    let cubeTriggers = List<Node3D>()
+    let bridges = List<Node3D>()
+    
     let ready () =
         // World generation
         worlds[level]
@@ -50,9 +56,12 @@ module WorldGeneratorFS =
             if element.visible = false then emt.Visible <- false
             getRoot().GetNode<Node3D>("WorldGenerator").AddChild emt
             
-            if element.etype = MovingBlock || element.etype = MovingBlockWithHook then MovingBlockFS.movingBlocks.Add emt
-            if element.etype = CompanionCube then CompanionCubeFS.companionCubes.Add emt
-            if element.etype = CubeTrigger then CubeTriggerFS.cubeTriggers.Add emt
+            match element.etype with
+            | MovingBlock | MovingBlockWithHook -> movingBlocks.Add emt
+            | CompanionCube -> companionCubes.Add emt
+            | CubeTrigger -> cubeTriggers.Add emt
+            | Bridge -> bridges.Add emt
+            | _ -> ()
         )
         
         // Power up placement
