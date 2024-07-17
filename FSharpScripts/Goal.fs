@@ -16,11 +16,12 @@ module GoalFS =
     
     let onAreaEntered () =
         ended <- true
-        originalPos <- goal.Position
+        originalPos <- goal.GlobalPosition
         endPos <-
             let cameraPos = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("EndPos")
             cameraPos.GlobalPosition
         midpoint <- (originalPos + endPos) / 2f
+        GD.Print endPos
     
     let ready () =
         goal <- getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("Goal")
@@ -33,21 +34,22 @@ module GoalFS =
         if not ended then
             goal.Translate(Vector3(0f, change * delta, 0f))
             
+            goal.RotateY(degToRad 45f * delta)
             if goal.Position.Y - position.Y > 0.27f || position.Y - goal.Position.Y > 0f then change <- -change
         else
              t <- t + delta * 0.25f
             
-             if t >= 1.5f then
+             if t <= 1.5f then
+                 let q1 = originalPos.Lerp(midpoint, t)
+                 let q2 = midpoint.Lerp(endPos, t)
+                
+                 goal.GlobalPosition <- q1.Lerp(q2, t)
+                 
+                 // Camera movement
+                 let camera = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("Camera3D")
+                 camera.RotateX(delta * -6f |> degToRad); camera.RotateZ(delta * -6f |> degToRad)
+             elif t <= 3f then
+                 goal.RotateY(degToRad 45f * delta)
+             else
                 Array.set WorldFS.completedLevels WorldFS.level true
                 getRoot().GetTree().ChangeSceneToFile("res://LevelSelect.tscn") |> ignore
-           
-             let q1 = originalPos.Lerp(midpoint, t)
-             let q2 = midpoint.Lerp(endPos, t)
-            
-             goal.Position <- q1.Lerp(q2, t)
-             
-             // Camera movement
-             let camera = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("Camera3D")
-             camera.RotateX(delta * -2f |> degToRad); camera.RotateZ(delta * -2f |> degToRad)
-        
-        goal.RotateY(degToRad 45f * delta)

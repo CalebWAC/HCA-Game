@@ -14,9 +14,7 @@ module CameraControlFS =
         
     let process delta =
         ()
-        
-        
-        
+
     let input (event : InputEvent) =
         match event with
         | :? InputEventMouseButton ->
