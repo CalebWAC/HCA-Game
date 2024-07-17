@@ -76,11 +76,15 @@ module PlayerControlFS =
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
             else
                 // Height compensation
-                if block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
+                if (block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) &&
+                   CompanionCubeFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe + Vector3.Up) |> not) ||
+                   CompanionCubeFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe) then
                     onBlock <- None
                     placeToBe.Y <- placeToBe.Y + 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
-                elif block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
+                elif (block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) &&
+                      CompanionCubeFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> not) ||
+                      CompanionCubeFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) then
                     onBlock <- None
                     placeToBe.Y <- placeToBe.Y - 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
@@ -96,8 +100,7 @@ module PlayerControlFS =
                                     else
                                         placeToBe <- player.Position
                                 with | _ -> placeToBe <- player.Position
-                        elif block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water ||
-                             elements[level] |> Array.exists (fun e -> e.etype = CompanionCube && e.position = roundVec placeToBe) then
+                        elif block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water then
                             placeToBe <- player.Position
                             
                     midpoint <- (player.Position + placeToBe) / 2f

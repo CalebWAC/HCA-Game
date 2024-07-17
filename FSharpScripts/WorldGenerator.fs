@@ -42,14 +42,17 @@ module WorldGeneratorFS =
                                                                  | GoalFragment -> "GoalFragment.tscn"
                                                                  | MovingBlock -> "MovingBlock.tscn"
                                                                  | MovingBlockWithHook -> "MovingBlockWithHook.tscn"
-                                                                 | CompanionCube -> "CompanionCube.tscn")
+                                                                 | CompanionCube -> "CompanionCube.tscn"
+                                                                 | CubeTrigger -> "CubeTrigger.tscn")
             let emt = scene.Instantiate() :?> Node3D
             emt.Position <- element.position
             emt.Rotation <- element.rotation
             if element.visible = false then emt.Visible <- false
-            
             getRoot().GetNode<Node3D>("WorldGenerator").AddChild emt
+            
             if element.etype = MovingBlock || element.etype = MovingBlockWithHook then MovingBlockFS.movingBlocks.Add emt
+            if element.etype = CompanionCube then CompanionCubeFS.companionCubes.Add emt
+            if element.etype = CubeTrigger then CubeTriggerFS.cubeTriggers.Add emt
         )
         
         // Power up placement

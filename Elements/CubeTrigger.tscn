@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://b77hvjrvpkavl"]
+
+[ext_resource type="Script" path="res://Scripts/Elements/CubeTrigger.cs" id="1_g3atf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0ebi"]
+albedo_color = Color(0.277528, 0.277528, 0.277528, 1)
+metallic = 1.0
+metallic_specular = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wecn"]
+albedo_color = Color(1, 0.337255, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.337255, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rntx6"]
+size = Vector3(1, 0.1, 1)
+
+[node name="CubeTrigger" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_g3atf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.450195, 0)
+material_override = SubResource("StandardMaterial3D_t0ebi")
+lod_bias = 100.0
+size = Vector3(1, 0.0996094, 1)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.450195, 0)
+inner_radius = 0.15
+outer_radius = 0.4
+sides = 20
+material = SubResource("StandardMaterial3D_4wecn")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
+shape = SubResource("BoxShape3D_rntx6")

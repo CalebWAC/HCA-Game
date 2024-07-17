@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxw3u7xkhc0in"]
 
-[ext_resource type="Script" path="res://Scripts/CompanionCube.cs" id="1_mbyp4"]
+[ext_resource type="Script" path="res://Scripts/Elements/CompanionCube.cs" id="1_2tys7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0ebi"]
 albedo_color = Color(0.556953, 0.556953, 0.556953, 1)
@@ -10,7 +10,7 @@ metallic_specular = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_rntx6"]
 
 [node name="CompanionCube" type="Node3D"]
-script = ExtResource("1_mbyp4")
+script = ExtResource("1_2tys7")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 material_override = SubResource("StandardMaterial3D_t0ebi")

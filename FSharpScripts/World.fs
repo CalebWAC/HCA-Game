@@ -24,6 +24,7 @@ module WorldFS =
         | MovingBlock
         | MovingBlockWithHook
         | CompanionCube
+        | CubeTrigger
         
     type PowerUpType =
         | GrapplingHook
@@ -188,6 +189,7 @@ module WorldFS =
             { etype = Bridge; position = Vector3(-2.5f, 6f, 0f); rotation = Vector3.Zero; visible = true }
             { etype = Hook; position = Vector3(-3f, 7f, -5.5f); rotation = Vector3.Zero; visible = true }
             { etype = CompanionCube; position = Vector3(2f, 1f, -1f); rotation = Vector3.Zero; visible = true }
+            { etype = CubeTrigger; position = Vector3(0f, 1f, -1f); rotation = Vector3.Zero; visible = true }
         |]
         [| // Level 2
             { etype = Goal; position = Vector3(-3f, 8f, 3f); rotation = Vector3.Zero; visible = true }
