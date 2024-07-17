@@ -20,10 +20,11 @@ module WorldGeneratorFS =
                 let block = blockScene.Instantiate() :?> Node3D
                 
                 block.Position <- Vector3(data.position.X, i, data.position.Z)
+                block.Rotation <- data.rotation
                 block.GetNode<CsgBox3D>("CSGBox3D").MaterialOverride <-
                     match data.material with
                     | Ground -> ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
-                    | Water ->
+                    | Water | RushingWater ->
                         block.GetNode("Model").QueueFree()
                         block.GetNode<Node3D>("CSGBox3D").Visible <- true
                         ResourceLoader.Load("res://Materials/WaterBubble.tres") :?> Material

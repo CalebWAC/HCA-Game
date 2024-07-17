@@ -45,6 +45,10 @@ module TerrainManipulatorFS =
                 if getRoot().GetNode<Node3D>("Player").Position.DistanceTo self.Position <= 3f then
                     self.Visible <- true
                 else self.Visible <- false
+                
+            // For rushing water
+            if (worlds[level] |> Array.find(fun b -> b.position.X = self.Position.X && b.position.Z = self.Position.Z)).material = RushingWater then
+                self.RotateObjectLocal(Vector3.Right, delta * 3f)
         
         static member input (event : InputEvent) =
             if terrainOn && t > 1f && (worlds[level] |> Array.find(fun b -> b.position = selected - Vector3.Up)).material = Ground then
@@ -60,7 +64,7 @@ module TerrainManipulatorFS =
                             block.Position <- selected
                             block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> Block.onInputEvent event position)
                             getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
-                            Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected - Vector3.Up)) { position = selected; material = Ground }
+                            Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected - Vector3.Up)) { position = selected; rotation = Vector3.Zero; material = Ground }
                             selected <- selected + Vector3.Up
                             newBlocks.Add block
                             selector.Position <- selected - Vector3(0f, 0.9f, 0f)
@@ -71,7 +75,7 @@ module TerrainManipulatorFS =
                                 block.QueueFree()
                                 newBlocks.Remove block |> ignore
                                 selected <- selected - Vector3.Up
-                                Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected)) { position = selected - Vector3.Up; material = Ground }
+                                Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected)) { position = selected - Vector3.Up; rotation = Vector3.Zero; material = Ground }
                                 selector.Position <- selected - Vector3(0f, 0.9f, 0f)
                         | _ -> ()
                 | _ -> ()
