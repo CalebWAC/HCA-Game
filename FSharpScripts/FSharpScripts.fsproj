@@ -21,6 +21,7 @@
         <Compile Include="Glasses.fs" />
         <Compile Include="LavaWall.fs" />
         <Compile Include="GoalFragment.fs" />
+        <Compile Include="CompanionCube.fs" />
     </ItemGroup>
 
 </Project>

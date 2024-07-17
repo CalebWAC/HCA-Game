@@ -96,7 +96,8 @@ module PlayerControlFS =
                                     else
                                         placeToBe <- player.Position
                                 with | _ -> placeToBe <- player.Position
-                        elif block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water then
+                        elif block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water ||
+                             elements[level] |> Array.exists (fun e -> e.etype = CompanionCube && e.position = roundVec placeToBe) then
                             placeToBe <- player.Position
                             
                     midpoint <- (player.Position + placeToBe) / 2f
