@@ -16,7 +16,7 @@ module HookFS =
                     if Array.contains PowerUpType.GrapplingHook PlayerFS.powerUps && self.Position.DistanceTo(player.Position) < 8f then
                         if match level with
                            | 3 | 8 -> true
-                           | 0 -> GD.Print player.Position; roundVec player.Position = Vector3(-1f, 6f, -1f)
+                           | 0 -> roundVec player.Position = Vector3(-1f, 6f, -1f)
                            | 2 ->
                                let pos = (self.Position.X, self.Position.Y, self.Position.Z)
                                match pos with
@@ -44,9 +44,7 @@ module HookFS =
                            
                             t <- 0f
                             
-                            GD.Print "Before"
                             if self.GetParent().GetParent().GetParent() <> null then
-                                GD.Print "Found a moving block"
                                 onBlock <- MovingBlockFS.movingBlocks.Find(fun e -> GD.Print $"{e.Position}     {Vector3(self.GlobalPosition.X - 0.5f, self.GlobalPosition.Y, self.GlobalPosition.Z)}"; floorVec e.Position = floorVec(Vector3(self.GlobalPosition.X + 0.5f, self.GlobalPosition.Y, self.GlobalPosition.Z))) |> Some
             with | _ -> ()
         

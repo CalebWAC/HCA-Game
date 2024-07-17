@@ -76,7 +76,7 @@ module PlayerControlFS =
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
             else
                 // Height compensation
-                if block.position.Y = placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
+                if block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) then
                     onBlock <- None
                     placeToBe.Y <- placeToBe.Y + 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
@@ -133,7 +133,7 @@ module PlayerControlFS =
     let physicsProcess delta =
         match onBlock with
         | Some block when t >= 1f ->
-            player.Position <- block.Position + Vector3.Up
+            try player.Position <- block.Position + Vector3.Up with | _ -> ()
             placeToBe <- player.Position
             originalPos <- placeToBe
         | _ ->
@@ -157,10 +157,10 @@ module PlayerControlFS =
                 let keyEvent = event :?> InputEventKey
                 if keyEvent.Pressed then
                     match keyEvent.Keycode with
-                    | Key.Up -> move Forward
-                    | Key.Down -> move Backward
-                    | Key.Left -> move Left
-                    | Key.Right -> move Right
+                    | Key.W -> move Forward
+                    | Key.S -> move Backward
+                    | Key.A -> move Left
+                    | Key.D -> move Right
                     | Key.Q -> rotateLeft()
                     | Key.E -> rotateRight()
                     | _ -> ()
