@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dt6h27ritdukq"]
+[gd_scene load_steps=25 format=3 uid="uid://dt6h27ritdukq"]
 
 [ext_resource type="Script" path="res://Scripts/BackButton.cs" id="1_pe52d"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_s0tgt"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level7.cs" id="14_45rtt"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level8.cs" id="16_iq55q"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level9.cs" id="18_ivxpp"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level10.cs" id="20_bn37r"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbkmj"]
 load_path = "res://.godot/imported/Level1Unfilled.png-52003cf202f59734482ce6c930a80f2e.ctex"
@@ -166,7 +167,6 @@ expand_icon = true
 script = ExtResource("18_ivxpp")
 
 [node name="Level10" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 386.0
 offset_top = 434.0
@@ -177,9 +177,9 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("12_02bmm")
 flat = true
 expand_icon = true
+script = ExtResource("20_bn37r")
 
 [node name="Level11" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 635.0
 offset_top = 434.0

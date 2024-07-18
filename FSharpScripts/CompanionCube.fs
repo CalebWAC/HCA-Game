@@ -7,12 +7,13 @@ open GlobalFunctions
 module CompanionCubeFS =
     type CompanionCube() =
         let mutable self = Unchecked.defaultof<Node3D>
-        let mutable held = false
         
         let mutable t = 1f
         let mutable originalPos = Vector3(0f, 0f, 0f)
         let mutable endPos = Vector3(0f, 0f, 0f)
         let mutable midpoint = Vector3(0f, 0f, 0f)
+        
+        member val held = false with get, set
         
         member this.ready thing =
             self <- thing
@@ -26,7 +27,7 @@ module CompanionCubeFS =
                 let q2 = midpoint.Lerp(endPos, t)
                 
                 self.Position <- q1.Lerp(q2, t)
-            elif held then self.Position <- getRoot().GetNode<Node3D>("Player").Position + Vector3.Up * 2f
+            elif this.held then self.Position <- getRoot().GetNode<Node3D>("Player").Position + Vector3.Up * 2f
             else
                 originalPos <- endPos; self.Position <- roundVec self.Position
                 
@@ -53,12 +54,12 @@ module CompanionCubeFS =
                         let next = playerPos + getRoot().GetNode<Node3D>("Player").Transform.Basis.Z
                         let nextBlock = (worlds[level] |> Array.find (fun b -> b.position.X = round next.X && b.position.Z = round next.Z)).position
                         
-                        if not held && self.Position = roundVec next ||
-                           held && nextBlock.Y <= playerPos.Y then
-                            held <- not held
+                        if not this.held && self.Position = roundVec next ||
+                           this.held && nextBlock.Y <= playerPos.Y then
+                            this.held <- not this.held
                             t <- 0f
                         
-                            if held then
+                            if this.held then
                                 originalPos <- self.Position
                                 endPos <- playerPos + Vector3.Up * 2f
                                 midpoint <- Vector3(self.Position.X, self.Position.Y + 1.5f, self.Position.Z)
