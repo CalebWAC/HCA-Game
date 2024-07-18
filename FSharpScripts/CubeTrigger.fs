@@ -36,6 +36,6 @@ module CubeTriggerFS =
         
         member this.process (delta : float32) =
             if falling then
-                let power = getRoot().GetNode<Node3D>("TerrainManipulator")
+                let power = getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("TerrainManipulator")
                 if power.Position.Y >= 1f then
                     power.Translate(Vector3(0f, -delta * 4f, 0f))

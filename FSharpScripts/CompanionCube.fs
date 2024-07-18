@@ -3,6 +3,7 @@ namespace FSharpScripts
 open Godot
 open WorldFS
 open GlobalFunctions
+open System.Collections.Generic
 
 module CompanionCubeFS =
     type CompanionCube() =
@@ -14,6 +15,13 @@ module CompanionCubeFS =
         let mutable midpoint = Vector3(0f, 0f, 0f)
         
         member val held = false with get, set
+        
+        member this.fall () =
+            this.held <- false
+            originalPos <- self.Position
+            endPos <- self.Position - Vector3(0f, 2f, 0f)
+            midpoint <- (originalPos + endPos) / 2f
+            t <- 0f
         
         member this.ready thing =
             self <- thing
@@ -69,3 +77,6 @@ module CompanionCubeFS =
                                 midpoint <- Vector3(self.Position.X, self.Position.Y + 0.3f, self.Position.Z)
                     | _ -> ()
             | _ -> ()
+            
+        
+    let companionCubesCode = List<CompanionCube>()

@@ -34,7 +34,8 @@ module TerrainManipulatorFS =
         
         member this.ready thing =
             self <- thing
-            selector <- getRoot().GetNode<CsgBox3D>("Selector")
+            try selector <- getRoot().GetNode<CsgBox3D>("Selector")
+                with | _ -> ()
         
         member this.process delta =
             t <- t + delta * 0.5f

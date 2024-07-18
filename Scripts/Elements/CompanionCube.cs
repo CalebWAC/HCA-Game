@@ -10,6 +10,7 @@ public partial class CompanionCube : Node3D
 	{
 		cube = new CompanionCubeFS.CompanionCube();
 		cube.ready(this);
+		CompanionCubeFS.companionCubesCode.Add(cube);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

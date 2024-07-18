@@ -16,6 +16,9 @@ module LavaWallFS =
                 shaky.Current <- true
                 CameraControlFS.camera.GetNode<Camera3D>("Camera3D").Current <- false
                 
+                for cube in CompanionCubeFS.companionCubesCode do 
+                    if cube.held then cube.fall()
+                
                 PlayerControlFS.placeToBe <- startingPoint
                 (other.GetParent() :?> Node3D).Position <- startingPoint
                 

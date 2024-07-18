@@ -18,10 +18,9 @@ module GoalFS =
         ended <- true
         originalPos <- goal.GlobalPosition
         endPos <-
-            let cameraPos = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("EndPos")
-            cameraPos.GlobalPosition
+            let cameraPos = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("Camera3D").GetNode<Node3D>("EndPos")
+            cameraPos.GlobalPosition // + cameraPos.Transform.Basis.Z * 50f
         midpoint <- (originalPos + endPos) / 2f
-        GD.Print endPos
     
     let ready () =
         goal <- getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("Goal")
@@ -43,7 +42,7 @@ module GoalFS =
                  let q1 = originalPos.Lerp(midpoint, t)
                  let q2 = midpoint.Lerp(endPos, t)
                 
-                 goal.GlobalPosition <- q1.Lerp(q2, t)
+                 goal.Position <- q1.Lerp(q2, t)
                  
                  // Camera movement
                  let camera = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("Camera3D")

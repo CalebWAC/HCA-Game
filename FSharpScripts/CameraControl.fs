@@ -16,13 +16,14 @@ module CameraControlFS =
         ()
 
     let input (event : InputEvent) =
-        match event with
-        | :? InputEventMouseButton ->
-            let mouseEvent = event :?> InputEventMouseButton
-            if mouseEvent.ButtonIndex = MouseButton.Left then
-                if not clicked && mouseEvent.Pressed then clicked <- true
-                if clicked && not mouseEvent.Pressed then clicked <- false
-        | :? InputEventMouseMotion when clicked ->
-            let mouseEvent = event :?> InputEventMouseMotion
-            camera.GlobalRotate(Vector3.Up, -mouseEvent.Relative.X * sensitivity |> degToRad)
-        | _ -> ()
+        if not GoalFS.ended then
+            match event with
+            | :? InputEventMouseButton ->
+                let mouseEvent = event :?> InputEventMouseButton
+                if mouseEvent.ButtonIndex = MouseButton.Left then
+                    if not clicked && mouseEvent.Pressed then clicked <- true
+                    if clicked && not mouseEvent.Pressed then clicked <- false
+            | :? InputEventMouseMotion when clicked ->
+                let mouseEvent = event :?> InputEventMouseMotion
+                camera.GlobalRotate(Vector3.Up, -mouseEvent.Relative.X * sensitivity |> degToRad)
+            | _ -> ()
