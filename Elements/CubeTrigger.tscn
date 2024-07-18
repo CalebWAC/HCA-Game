@@ -13,7 +13,7 @@ emission_enabled = true
 emission = Color(1, 0.337255, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rntx6"]
-size = Vector3(1, 0.1, 1)
+size = Vector3(0.8, 0.1, 0.8)
 
 [node name="CubeTrigger" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

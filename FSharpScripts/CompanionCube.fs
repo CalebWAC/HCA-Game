@@ -27,7 +27,20 @@ module CompanionCubeFS =
                 
                 self.Position <- q1.Lerp(q2, t)
             elif held then self.Position <- getRoot().GetNode<Node3D>("Player").Position + Vector3.Up * 2f
-            else originalPos <- endPos; self.Position <- roundVec self.Position
+            else
+                originalPos <- endPos; self.Position <- roundVec self.Position
+                
+                let block = worlds[level] |> Array.find (fun b -> b.position.X = round self.Position.X && b.position.Z = round self.Position.Z)
+                if block.material = RushingWater then
+                    let forward = match block.rotation.Y with
+                                  | pi2 when pi2 = degToRad 90f -> Vector3(1f, 0f, 0f)
+                                  | pi when pi = degToRad 180f -> Vector3(0f, 0f, -1f)
+                                  | pi32 when pi32 = degToRad 270f -> Vector3(-1f, 0f, 0f)
+                                  | _ -> Vector3(0f, 0f, 1f)
+                    
+                    endPos <- endPos + forward
+                    midpoint <- (originalPos + endPos) / 2f - Vector3(0f, 0.5f, 0f)
+                    t <- 0f
             
         member this.input (event : InputEvent) =
             match event with
