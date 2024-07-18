@@ -41,7 +41,9 @@ module PlayerControlFS =
             let bridge = elements[level] |> Array.find (fun e -> e.etype = Bridge && e.position.Y = placeToBe.Y - 1f &&
                                                                  (((round placeToBe.X + 0.5f = e.position.X && round placeToBe.Z = e.position.Z) || (round placeToBe.X - 0.5f = e.position.X && round placeToBe.Z = e.position.Z)) ||
                                                                  ((round placeToBe.X = e.position.X && round placeToBe.Z + 0.5f = e.position.Z) || (round placeToBe.X = e.position.X && round placeToBe.Z - 0.5f = e.position.Z))))
-            Result.Ok "All good"
+            if WorldGeneratorFS.bridges.Find(fun b -> b.Position = bridge.position).Visible = true then
+                Result.Ok "All good"
+            else Result.Error "Not good"
         with | :? KeyNotFoundException -> Result.Error "Not good"
     
     let tryMoveAquatically place =

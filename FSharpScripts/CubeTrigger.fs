@@ -8,18 +8,16 @@ module CubeTriggerFS =
         let mutable self = Unchecked.defaultof<Node3D>
         
         let onActivated (other : Area3D) =
-            match other.GetParent().Name.ToString() with
-            | "CompanionCube" ->
+            if other.IsInGroup(new StringName "cubes") then
                 match level with
-                | 9 -> if self.Position = Vector3(0f, 1f, -1f) then WorldGeneratorFS.bridges.ForEach(fun b -> b.Visible <- true)
+                | 9 -> if self.Position = Vector3(-2f, 1f, 4f) then WorldGeneratorFS.bridges.ForEach(fun b -> b.Visible <- true)
                 | _ -> ()
-            | _ -> ()
         
         let onDeactivated (other : Area3D) =
             match other.GetParent().Name.ToString() with
             | "CompanionCube" ->
                 match level with
-                | 9 -> if self.Position = Vector3(0f, 1f, -1f) then WorldGeneratorFS.bridges.ForEach(fun b -> b.Visible <- false)
+                | 9 -> if self.Position = Vector3(-2f, 1f, 4f) then WorldGeneratorFS.bridges.ForEach(fun b -> b.Visible <- false)
                 | _ -> ()
             | _ -> ()
         

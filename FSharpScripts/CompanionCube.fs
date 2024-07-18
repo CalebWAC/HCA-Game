@@ -54,7 +54,7 @@ module CompanionCubeFS =
                         let nextBlock = (worlds[level] |> Array.find (fun b -> b.position.X = round next.X && b.position.Z = round next.Z)).position
                         
                         if not held && self.Position = roundVec next ||
-                           held && nextBlock.Y <= playerPos.Y + 1f then
+                           held && nextBlock.Y <= playerPos.Y then
                             held <- not held
                             t <- 0f
                         
