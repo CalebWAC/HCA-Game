@@ -77,4 +77,4 @@ offset_right = 715.0
 offset_bottom = 637.0
 theme_override_fonts/normal_font = ExtResource("2_clb8k")
 theme_override_font_sizes/normal_font_size = 20
-text = "	Welcome to Expedition! Move your character around with the arrow keys. The Q and E keys allow you to turn towards the right and left. Make it to the purple goal at the end of each level!"
+text = "	Welcome to Expedition! Move your character around WASD. The Q and E keys allow you to turn towards the right and left. Make it to the purple goal at the end of each level!"

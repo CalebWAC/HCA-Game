@@ -18,8 +18,8 @@ module GoalFS =
         ended <- true
         originalPos <- goal.GlobalPosition
         endPos <-
-            let cameraPos = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("Camera3D").GetNode<Node3D>("EndPos")
-            cameraPos.GlobalPosition // + cameraPos.Transform.Basis.Z * 50f
+            let cameraPos = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("EndPos")
+            cameraPos.GlobalPosition
         midpoint <- (originalPos + endPos) / 2f
     
     let ready () =
@@ -36,9 +36,9 @@ module GoalFS =
             goal.RotateY(degToRad 45f * delta)
             if goal.Position.Y - position.Y > 0.27f || position.Y - goal.Position.Y > 0f then change <- -change
         else
-             t <- t + delta * 0.25f
+             t <- t + delta * 0.5f
             
-             if t <= 1.5f then
+             if t <= 1f then
                  let q1 = originalPos.Lerp(midpoint, t)
                  let q2 = midpoint.Lerp(endPos, t)
                 
@@ -46,8 +46,8 @@ module GoalFS =
                  
                  // Camera movement
                  let camera = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("Camera3D")
-                 camera.RotateX(delta * -6f |> degToRad); camera.RotateZ(delta * -6f |> degToRad)
-             elif t <= 3f then
+                 camera.RotateX(delta * -12f |> degToRad); camera.RotateZ(delta * -12f |> degToRad)
+             elif t <= 2.5f then
                  goal.RotateY(degToRad 45f * delta)
              else
                 Array.set WorldFS.completedLevels WorldFS.level true

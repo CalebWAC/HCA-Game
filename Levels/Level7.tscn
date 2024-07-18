@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c586j6il5r82a"]
+[gd_scene load_steps=8 format=3 uid="uid://c586j6il5r82a"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_amxy3"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_sgqh0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_dow88"]
 [ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_5jaoc"]
 [ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="6_aipl8"]
+[ext_resource type="PackedScene" uid="uid://dys0axijrssoi" path="res://Tutorial Screens/TutorialMovingBlock.tscn" id="7_1cx3j"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -21,6 +22,9 @@ shadow_enabled = true
 [node name="Camera3D" type="Camera3D" parent="Camera"]
 transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 9, 12.5, -9)
 script = ExtResource("2_sgqh0")
+
+[node name="EndPos" type="Node3D" parent="Camera"]
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 8.5, 12.25, -8.5)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -98,3 +102,6 @@ script = ExtResource("5_5jaoc")
 
 [node name="Player" parent="." instance=ExtResource("6_aipl8")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, -5)
+
+[node name="TutorialMovingBlock" parent="." instance=ExtResource("7_1cx3j")]
+visible = false

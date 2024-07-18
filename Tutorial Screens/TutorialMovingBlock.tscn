@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://dys0axijrssoi"]
+
+[ext_resource type="Script" path="res://Scripts/UnpauseButton.cs" id="1_jqpaw"]
+[ext_resource type="Texture2D" uid="uid://dyxq06tl5tpkx" path="res://Assets/Tutorial Images/Tutorial8.1.PNG" id="2_qsob0"]
+[ext_resource type="Texture2D" uid="uid://bt24onlsedn3r" path="res://Assets/Tutorial Images/Tutorial8.2.PNG" id="3_1mmvy"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="4_c26g4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k3h3"]
+bg_color = Color(0.341823, 0.618289, 0.824765, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgb8y"]
+texture = ExtResource("2_qsob0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hjcwm"]
+texture = ExtResource("3_1mmvy")
+
+[node name="TutorialMovingBlock" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 75.0
+offset_right = 975.0
+offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1k3h3")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 12.0
+offset_right = 776.0
+offset_bottom = 54.0
+script = ExtResource("1_jqpaw")
+
+[node name="Image1" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 380.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tgb8y")
+
+[node name="Image2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 80.0
+offset_right = 720.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hjcwm")
+
+[node name="Title" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = -1.0
+offset_right = 625.0
+offset_bottom = 79.0
+theme_override_fonts/normal_font = ExtResource("4_c26g4")
+theme_override_font_sizes/normal_font_size = 60
+text = "Moving Block"
+
+[node name="Paragraph" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 374.0
+offset_right = 723.0
+offset_bottom = 642.0
+theme_override_fonts/normal_font = ExtResource("4_c26g4")
+theme_override_font_sizes/normal_font_size = 20
+text = "    These are special types of blocks that move back and forth. You can move onto a moving block just like any other block. If they hit you, they'll turn around and continue on their path."

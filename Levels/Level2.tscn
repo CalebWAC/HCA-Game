@@ -27,7 +27,7 @@ current = true
 script = ExtResource("2_7qope")
 
 [node name="EndPos" type="Node3D" parent="Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 11.5, -7.2)
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 8.5, 12.25, -8.5)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

@@ -24,6 +24,9 @@ shadow_normal_bias = 10.0
 transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 9, 12.5, -9)
 script = ExtResource("2_efc3n")
 
+[node name="EndPos" type="Node3D" parent="Camera"]
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 8.5, 12.25, -8.5)
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0

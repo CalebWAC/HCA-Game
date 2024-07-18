@@ -12,7 +12,7 @@ public partial class CameraControl : Camera3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		CameraControlFS.process(delta);
+		CameraControlFS.process((float) delta);
 	}
 
 	public override void _Input(InputEvent @event)
