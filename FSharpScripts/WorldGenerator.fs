@@ -10,6 +10,7 @@ module WorldGeneratorFS =
     let companionCubes = List<Node3D>()
     let cubeTriggers = List<Node3D>()
     let bridges = List<Node3D>()
+    let goalFragments = List<Node3D>()
     
     let ready () =
         // World generation
@@ -62,6 +63,7 @@ module WorldGeneratorFS =
             | CompanionCube -> companionCubes.Add emt
             | CubeTrigger -> cubeTriggers.Add emt
             | Bridge -> bridges.Add emt
+            | GoalFragment -> goalFragments.Add emt
             | _ -> ()
         )
         

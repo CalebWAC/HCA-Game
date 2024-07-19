@@ -1,5 +1,6 @@
 namespace FSharpScripts
 
+open FSharpScripts.WorldFS
 open Godot
 open WorldFS
 open GlobalFunctions
@@ -50,6 +51,12 @@ module CompanionCubeFS =
                     endPos <- endPos + forward
                     midpoint <- (originalPos + endPos) / 2f - Vector3(0f, 0.5f, 0f)
                     t <- 0f
+                    
+            // For invisble blocks
+            if Array.contains Glasses PlayerFS.powerUps then
+                if self.Position.DistanceTo PlayerFS.self.Position <= 3f then
+                    self.Visible <- true
+                else self.Visible <- false
             
         member this.input (event : InputEvent) =
             match event with

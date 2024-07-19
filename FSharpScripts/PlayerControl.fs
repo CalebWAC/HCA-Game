@@ -61,7 +61,7 @@ module PlayerControlFS =
     let inBubble () = elements[level] |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position)
     
     let move dir =
-        if withinBoundaries dir && originalPos = placeToBe then             
+        if withinBoundaries dir && originalPos = placeToBe && player.Position = originalPos then             
             t <- 0f
             placeToBe <- placeToBe + dirVec dir
                 
