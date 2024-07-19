@@ -107,7 +107,7 @@ module PlayerControlFS =
                             
                     midpoint <- (player.Position + placeToBe) / 2f
                     midpoint.Y <- midpoint.Y + 0.25f
-                    onBlock <- None
+                    if placeToBe <> player.Position then onBlock <- None
     
     let moveLeft () = move Left
     let moveRight () = move Right

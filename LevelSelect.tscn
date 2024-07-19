@@ -1,10 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://dt6h27ritdukq"]
+[gd_scene load_steps=35 format=3 uid="uid://dt6h27ritdukq"]
 
 [ext_resource type="Script" path="res://Scripts/BackButton.cs" id="1_pe52d"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_s0tgt"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level1.cs" id="2_gttpt"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level2.cs" id="3_0yy4k"]
+[ext_resource type="Texture2D" uid="uid://ditbmgtlfku5u" path="res://Assets/Level Images/Level1Unfilled.png" id="3_62beu"]
 [ext_resource type="Texture2D" uid="uid://ng2fx1caqo1p" path="res://Assets/Level Images/Level3Unfilled.png" id="5_s2rwx"]
+[ext_resource type="Texture2D" uid="uid://08muhtngkkb8" path="res://Assets/Level Images/Level2Unfilled.png" id="5_wugo0"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level3.cs" id="6_eqche"]
 [ext_resource type="Texture2D" uid="uid://bj0e86h3i83bc" path="res://Assets/Level Images/Level4Unfilled.png" id="6_jisa7"]
 [ext_resource type="Texture2D" uid="uid://cpm4664v50rmp" path="res://Assets/Level Images/Level5Unfilled.png" id="7_pwaar"]
@@ -24,14 +26,24 @@
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level10.cs" id="20_bn37r"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level11.cs" id="22_0t1oa"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level12.cs" id="24_vgnb0"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbkmj"]
-load_path = "res://.godot/imported/Level1Unfilled.png-52003cf202f59734482ce6c930a80f2e.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t8ohd"]
-load_path = "res://.godot/imported/Level2Unfilled.png-a46d60a3b02c4e173d56a03437f1ea0e.ctex"
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="25_5j2c4"]
+[ext_resource type="Texture2D" uid="uid://b0jg5434ei0mk" path="res://Assets/ConfettiBlue.png" id="25_ql2p3"]
+[ext_resource type="Script" path="res://Scripts/Confetti.cs" id="26_ixt6i"]
+[ext_resource type="Texture2D" uid="uid://dy38tn52fqnfv" path="res://Assets/ConfettiRed.png" id="26_l4yw6"]
+[ext_resource type="Texture2D" uid="uid://ct4ginad18fje" path="res://Assets/ConfettiGreen.png" id="27_rwqeg"]
+[ext_resource type="Texture2D" uid="uid://5jgns0io4xa5" path="res://Assets/ConfettiOrange.png" id="28_qmaj8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qyuk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ar3vc"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_max = 720.0
+radial_velocity_max = 452.31
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.05
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -56,13 +68,13 @@ script = ExtResource("1_pe52d")
 [node name="Level1" type="Button" parent="."]
 layout_mode = 0
 offset_left = 145.0
-offset_top = 63.0
+offset_top = 108.0
 offset_right = 300.0
-offset_bottom = 210.0
+offset_bottom = 255.0
 theme_override_font_sizes/font_size = 50
 text = "
 "
-icon = SubResource("CompressedTexture2D_gbkmj")
+icon = ExtResource("3_62beu")
 flat = true
 expand_icon = true
 script = ExtResource("2_gttpt")
@@ -70,11 +82,11 @@ script = ExtResource("2_gttpt")
 [node name="Level2" type="Button" parent="."]
 layout_mode = 0
 offset_left = 384.0
-offset_top = 62.0
+offset_top = 107.0
 offset_right = 535.0
-offset_bottom = 211.0
+offset_bottom = 256.0
 theme_override_font_sizes/font_size = 50
-icon = SubResource("CompressedTexture2D_t8ohd")
+icon = ExtResource("5_wugo0")
 flat = true
 expand_icon = true
 script = ExtResource("3_0yy4k")
@@ -82,9 +94,9 @@ script = ExtResource("3_0yy4k")
 [node name="Level3" type="Button" parent="."]
 layout_mode = 0
 offset_left = 629.0
-offset_top = 59.0
+offset_top = 104.0
 offset_right = 790.0
-offset_bottom = 214.0
+offset_bottom = 259.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("5_s2rwx")
@@ -95,9 +107,9 @@ script = ExtResource("6_eqche")
 [node name="Level4" type="Button" parent="."]
 layout_mode = 0
 offset_left = 864.0
-offset_top = 57.0
+offset_top = 102.0
 offset_right = 1018.0
-offset_bottom = 207.0
+offset_bottom = 252.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("6_jisa7")
@@ -108,9 +120,9 @@ script = ExtResource("8_1bktu")
 [node name="Level5" type="Button" parent="."]
 layout_mode = 0
 offset_left = 146.0
-offset_top = 251.0
+offset_top = 278.0
 offset_right = 289.0
-offset_bottom = 402.0
+offset_bottom = 429.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4qyuk")
@@ -122,9 +134,9 @@ script = ExtResource("10_vc7oa")
 [node name="Level6" type="Button" parent="."]
 layout_mode = 0
 offset_left = 383.0
-offset_top = 259.0
+offset_top = 286.0
 offset_right = 537.0
-offset_bottom = 407.0
+offset_bottom = 434.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("8_iwkjk")
@@ -135,9 +147,9 @@ script = ExtResource("12_4jdvf")
 [node name="Level7" type="Button" parent="."]
 layout_mode = 0
 offset_left = 632.0
-offset_top = 260.0
+offset_top = 287.0
 offset_right = 783.0
-offset_bottom = 407.0
+offset_bottom = 434.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("9_onq76")
@@ -148,9 +160,9 @@ script = ExtResource("14_45rtt")
 [node name="Level8" type="Button" parent="."]
 layout_mode = 0
 offset_left = 868.0
-offset_top = 259.0
+offset_top = 286.0
 offset_right = 1014.0
-offset_bottom = 405.0
+offset_bottom = 432.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("10_gkb0u")
@@ -161,9 +173,9 @@ script = ExtResource("16_iq55q")
 [node name="Level9" type="Button" parent="."]
 layout_mode = 0
 offset_left = 148.0
-offset_top = 431.0
+offset_top = 458.0
 offset_right = 291.0
-offset_bottom = 579.0
+offset_bottom = 606.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("11_mq3c7")
@@ -174,9 +186,9 @@ script = ExtResource("18_ivxpp")
 [node name="Level10" type="Button" parent="."]
 layout_mode = 0
 offset_left = 386.0
-offset_top = 434.0
+offset_top = 461.0
 offset_right = 531.0
-offset_bottom = 585.0
+offset_bottom = 612.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("12_02bmm")
@@ -187,9 +199,9 @@ script = ExtResource("20_bn37r")
 [node name="Level11" type="Button" parent="."]
 layout_mode = 0
 offset_left = 635.0
-offset_top = 434.0
+offset_top = 461.0
 offset_right = 783.0
-offset_bottom = 580.0
+offset_bottom = 607.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("13_5l5ny")
@@ -200,12 +212,46 @@ script = ExtResource("22_0t1oa")
 [node name="Level12" type="Button" parent="."]
 layout_mode = 0
 offset_left = 867.0
-offset_top = 435.0
+offset_top = 462.0
 offset_right = 1017.0
-offset_bottom = 583.0
+offset_bottom = 610.0
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("14_01bjl")
 flat = true
 expand_icon = true
 script = ExtResource("24_vgnb0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 452.0
+offset_top = -6.0
+offset_right = 736.0
+offset_bottom = 89.0
+theme_override_fonts/normal_font = ExtResource("25_5j2c4")
+theme_override_font_sizes/normal_font_size = 75
+text = "World 1"
+
+[node name="Confetti" type="Node2D" parent="."]
+visible = false
+script = ExtResource("26_ixt6i")
+
+[node name="Blue" type="GPUParticles2D" parent="Confetti"]
+position = Vector2(284, 456)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("25_ql2p3")
+
+[node name="Red" type="GPUParticles2D" parent="Confetti"]
+position = Vector2(1004, 132)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("26_l4yw6")
+
+[node name="Green" type="GPUParticles2D" parent="Confetti"]
+position = Vector2(805, 472)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("27_rwqeg")
+
+[node name="Orange" type="GPUParticles2D" parent="Confetti"]
+position = Vector2(370, 139)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("28_qmaj8")

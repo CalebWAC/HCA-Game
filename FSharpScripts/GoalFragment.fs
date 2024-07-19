@@ -16,6 +16,13 @@ module GoalFragmentFS =
                 if frags = 5 then
                     getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("Goal").Visible <- true
                     GoalFS.ended <- true
+                    
+                    GoalFS.originalPos <- GoalFS.goal.GlobalPosition
+                    GoalFS.endPos <-
+                        let cameraPos = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("EndPos")
+                        cameraPos.GlobalPosition
+                    GoalFS.midpoint <- (GoalFS.originalPos + GoalFS.endPos) / 2f
+                    
                 WorldGeneratorFS.goalFragments.Remove(self) |> ignore
                 self.QueueFree()
         
