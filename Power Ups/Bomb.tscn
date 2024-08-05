@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0ee1khfv0u65"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8orr3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_txq60"]
+emission_shape_offset = Vector3(0, 0.25, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yo3wj"]
+emission_enabled = true
+emission = Color(1, 0.541176, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_y55s3"]
+material = SubResource("StandardMaterial3D_yo3wj")
+radius = 0.05
+height = 0.1
+
+[node name="Bomb" type="Node3D"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+radial_segments = 30
+rings = 20
+
+[node name="Area3D" type="Area3D" parent="."]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+shape = SubResource("SphereShape3D_8orr3")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 6
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_txq60")
+draw_pass_1 = SubResource("SphereMesh_y55s3")

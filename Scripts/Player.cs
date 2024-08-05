@@ -14,4 +14,8 @@ public partial class Player : Node3D
 	{
 		PlayerFS.process(delta);
 	}
+	
+	public override void _Input(InputEvent @event) {
+		PlayerFS.input(@event);
+	}
 }

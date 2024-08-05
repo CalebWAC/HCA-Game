@@ -21,6 +21,7 @@
         <Compile Include="Goal.fs" />
         <Compile Include="CameraControl.fs" />
         <Compile Include="Glasses.fs" />
+        <Compile Include="MiniBomb.fs" />
         <Compile Include="LavaWall.fs" />
         <Compile Include="GoalFragment.fs" />
     </ItemGroup>

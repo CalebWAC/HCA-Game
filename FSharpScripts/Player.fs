@@ -28,11 +28,23 @@ module PlayerFS =
             if WorldFS.level = 5 then
                 getRoot().GetTree().Paused <- true
                 getRoot().GetNode<Control>("TutorialInvisibleGlasses").Visible <- true
+        | "Bomb" ->
+            powerUps <- Array.append powerUps [|WorldFS.Bomb|]
+            other.GetParent().QueueFree()
         | _ -> ()
     
     let ready () =
         self <- getRoot().GetNode<Node3D>("Player")
         self.GetNode<Area3D>("Area3D").add_AreaEntered (fun other -> onAreaEntered other)
         
-    let process delta =
-        ()
+    let process delta = ()
+    
+    let input (event : InputEvent) =
+        if Array.contains WorldFS.Bomb powerUps && event :? InputEventKey then
+            let keyEvent = event :?> InputEventKey
+            if keyEvent.IsReleased() && keyEvent.Keycode = Key.Space then
+                let scene = GD.Load<PackedScene>("res://Power Ups/MiniBomb.tscn")
+                let bomb = scene.Instantiate() :?> Node3D
+                bomb.Position <- self.Position + self.Transform.Basis.Z / 2f
+                getRoot().AddChild(bomb)
+                

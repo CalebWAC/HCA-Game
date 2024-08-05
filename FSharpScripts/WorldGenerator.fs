@@ -32,7 +32,12 @@ module WorldGeneratorFS =
                     | Invisible ->
                         if i <> 0f then block.Visible <- false
                         ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
-                
+                    | Destructible ->
+                        block.GetNode("Model").QueueFree()
+                        block.GetNode<Node3D>("CSGBox3D").Visible <- true
+                        if i <> 0f then ResourceLoader.Load("res://Materials/Destructible.tres") :?> Material
+                        else ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
+                 
                 block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
                 
@@ -74,6 +79,7 @@ module WorldGeneratorFS =
                         | GrapplingHook -> GD.Load<PackedScene>("res://Power Ups/GrapplingHook.tscn")
                         | TerrainManipulator -> GD.Load<PackedScene>("res://Power Ups/TerrainManipulator.tscn")
                         | Glasses -> GD.Load<PackedScene>("res://Power Ups/Glasses.tscn")
+                        | Bomb -> GD.Load<PackedScene>("res://Power Ups/Bomb.tscn")
             let power = scene.Instantiate() :?> Node3D
             power.Position <- powerUp.position
             getRoot().GetNode<Node3D>("WorldGenerator").AddChild(power)

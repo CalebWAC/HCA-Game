@@ -9,6 +9,7 @@ module WorldFS =
         | Water
         | RushingWater
         | Invisible
+        | Destructible
     
     type Block = {
         position : Vector3
@@ -32,6 +33,7 @@ module WorldFS =
         | GrapplingHook
         | TerrainManipulator
         | Glasses
+        | Bomb
         
     type Element = { etype: ElementType; position: Vector3; rotation: Vector3; visible: bool }
     
@@ -47,11 +49,15 @@ module WorldFS =
                                                 | "b" -> Vector3(0f, degToRad 270f, 0f)
                                                 | _ -> Vector3(0f, 0f, 0f))  }
                 
+    let desBlock x y z = { position = Vector3(x, y, z); rotation = Vector3.Zero; material = Destructible }
+                
     let mutable level = 0
     
     let completedLevels = Array.create 12 false
     
     let worlds = [|
+        //// World 1 \\\\
+        
         [| // Level 1
            block -6f 5f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; block -6f 0f 3f; block -6f 4f 4f; block -6f 5f 5f; block -6f 6f 6f
            block -5f 8f -6f; block -5f 5f -5f; block -5f 3f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 6f 0f; block -5f 3f 1f; block -5f 0f 2f; block -5f 0f 3f; block -5f 3f 4f; block -5f 6f 5f; block -5f 6f 6f
@@ -232,9 +238,29 @@ module WorldFS =
            block 5f 0f -6f; block 5f 0f -5f; block 5f 0f -4f; block 5f 0f -3f; block 5f 0f -2f; block 5f 1f -1f; block 5f 0f 0f; block 5f 0f 1f; block 5f 0f 2f; block 5f 0f 3f; block 5f 0f 4f; block 5f 0f 5f; block 5f 0f 6f
            block 6f 0f -6f; block 6f 0f -5f; block 6f 0f -4f; block 6f 0f -3f; block 6f 0f -2f; block 6f 1f -1f; block 6f 0f 0f; block 6f 0f 1f; block 6f 0f 2f; block 6f 0f 3f; block 6f 0f 4f; block 6f 0f 5f; block 6f 0f 6f
         |]
+        
+        //// World 2 \\\\
+        
+        [| // Level 12
+           block -6f 0f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; block -6f 0f 3f; block -6f 0f 4f; block -6f 0f 5f; block -6f 0f 6f
+           block -5f 0f -6f; block -5f 0f -5f; block -5f 0f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 0f 0f; block -5f 0f 1f; block -5f 0f 2f; block -5f 0f 3f; block -5f 0f 4f; block -5f 0f 5f; block -5f 0f 6f
+           block -4f 0f -6f; block -4f 0f -5f; block -4f 0f -4f; block -4f 0f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; block -4f 0f 1f; block -4f 0f 2f; block -4f 0f 3f; block -4f 0f 4f; block -4f 0f 5f; block -4f 0f 6f
+           block -3f 0f -6f; block -3f 0f -5f; block -3f 0f -4f; block -3f 0f -3f; block -3f 0f -2f; block -3f 0f -1f; block -3f 0f 0f; block -3f 0f 1f; block -3f 0f 2f; block -3f 0f 3f; block -3f 0f 4f; block -3f 0f 5f; block -3f 0f 6f
+           block -2f 0f -6f; block -2f 0f -5f; block -2f 0f -4f; block -2f 0f -3f; block -2f 0f -2f; block -2f 0f -1f; block -2f 0f 0f; block -2f 0f 1f; block -2f 0f 2f; block -2f 0f 3f; block -2f 0f 4f; block -2f 0f 5f; block -2f 0f 6f
+           block -1f 0f -6f; block -1f 0f -5f; block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 0f 0f; block -1f 0f 1f; block -1f 0f 2f; block -1f 0f 3f; block -1f 0f 4f; block -1f 0f 5f; block -1f 0f 6f
+           block 0f 0f -6f; block 0f 0f -5f; block 0f 0f -4f; block 0f 0f -3f; desBlock 0f 4f -2f; block 0f 0f -1f; block 0f 0f 0f; block 0f 0f 1f; block 0f 0f 2f; block 0f 0f 3f; block 0f 0f 4f; block 0f 0f 5f; block 0f 0f 6f
+           block 1f 0f -6f; block 1f 0f -5f; block 1f 0f -4f; block 1f 0f -3f; block 1f 0f -2f; block 1f 0f -1f; block 1f 0f 0f; block 1f 0f 1f; block 1f 0f 2f; block 1f 0f 3f; block 1f 0f 4f; block 1f 0f 5f; block 1f 0f 6f
+           block 2f 0f -6f; block 2f 0f -5f; block 2f 0f -4f; block 2f 0f -3f; block 2f 0f -2f; block 2f 0f -1f; block 2f 0f 0f; block 2f 0f 1f; block 2f 0f 2f; block 2f 0f 3f; block 2f 0f 4f; block 2f 0f 5f; block 2f 0f 6f
+           block 3f 0f -6f; block 3f 0f -5f; block 3f 0f -4f; block 3f 0f -3f; block 3f 0f -2f; block 3f 0f -1f; block 3f 0f 0f; block 3f 0f 1f; block 3f 0f 2f; block 3f 0f 3f; block 3f 0f 4f; block 3f 0f 5f; block 3f 0f 6f
+           block 4f 0f -6f; block 4f 0f -5f; block 4f 0f -4f; block 4f 0f -3f; block 4f 0f -2f; block 4f 0f -1f; block 4f 0f 0f; block 4f 0f 1f; block 4f 0f 2f; block 4f 0f 3f; block 4f 0f 4f; block 4f 0f 5f; block 4f 0f 6f
+           block 5f 0f -6f; block 5f 0f -5f; block 5f 0f -4f; block 5f 0f -3f; block 5f 0f -2f; block 5f 0f -1f; block 5f 0f 0f; block 5f 0f 1f; block 5f 0f 2f; block 5f 0f 3f; block 5f 0f 4f; block 5f 0f 5f; block 5f 0f 6f
+           block 6f 0f -6f; block 6f 0f -5f; block 6f 0f -4f; block 6f 0f -3f; block 6f 0f -2f; block 6f 0f -1f; block 6f 0f 0f; block 6f 0f 1f; block 6f 0f 2f; block 6f 0f 3f; block 6f 0f 4f; block 6f 0f 5f; block 6f 0f 6f
+        |]
     |]
     
     let elements = [|
+        //// World 1 \\\\
+        
         [| // Level 1
             { etype = Goal; position = Vector3(-5f, 9f, -6f); rotation = Vector3.Zero; visible = true }
             { etype = Bubble; position = Vector3(-5f, 7f, 3.5f); rotation = Vector3.Zero; visible = true }
@@ -358,9 +384,16 @@ module WorldFS =
             { etype = GoalFragment; position = Vector3(-6f, 2f, 6f); rotation = Vector3.Zero; visible = false }
             { etype = CubeTrigger; position = Vector3(-6f, 1f, 6f); rotation = Vector3.Zero; visible = false }
         |]
+        
+        //// World 2 \\\\
+        [| // Level 13
+            
+        |]
     |]
     
     let powerUps = [|
+        //// World 1 \\\\
+        
         [| // Level 1
             { ptype = GrapplingHook; position = Vector3(-2f, 1f, 0f) }
         |]
@@ -394,6 +427,13 @@ module WorldFS =
         [| // Level 12
             { ptype = Glasses; position = Vector3(3f, 2f, -4f) }
         |]
+        
+        //// World 2 \\\\
+        
+        [| // Level 13
+            { ptype = Bomb; position = Vector3(5f, 1f, 5f) }
+        |]
+        
     |]
     
     let ready () = level <-
