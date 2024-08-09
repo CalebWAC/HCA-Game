@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkk2ps1e0usda"]
+[gd_scene load_steps=4 format=3 uid="uid://bkk2ps1e0usda"]
 
 [ext_resource type="Script" path="res://Scripts/Power-Ups/MiniBomb.cs" id="1_fokoi"]
+[ext_resource type="PackedScene" uid="uid://csthox5dyrce2" path="res://Models/Bomb.glb" id="2_71r0l"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8yyc4"]
 radius = 0.179754
@@ -12,8 +13,5 @@ script = ExtResource("1_fokoi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_8yyc4")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
-radius = 0.2
-radial_segments = 30
-rings = 20
+[node name="Model" parent="." instance=ExtResource("2_71r0l")]
+transform = Transform3D(0.014, 0, 0, 0, 0.014, 0, 0, 0, 0.014, 0.176187, -0.178839, -0.222296)

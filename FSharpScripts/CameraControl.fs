@@ -12,6 +12,8 @@ module CameraControlFS =
     
     let ready () =
         camera <- getRoot().GetNode<Node3D>("Camera")
+        if WorldFS.level < 12 then RenderingServer.SetDefaultClearColor(Color(0f, 1f, 1f))
+        else RenderingServer.SetDefaultClearColor(Color(1f, 0.25f, 0f))
         t <- 0f
         
     let process delta =

@@ -24,20 +24,35 @@ module WorldGeneratorFS =
                 block.Rotation <- data.rotation
                 block.GetNode<CsgBox3D>("CSGBox3D").MaterialOverride <-
                     match data.material with
-                    | Ground -> ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
+                    | Ground ->
+                        if level >= 12 then
+                            block.GetNode("Model").QueueFree()
+                            let desModel = GD.Load<PackedScene>("res://Elements/VolcanicBlock.tscn")
+                            let desBlock = desModel.Instantiate() :?> Node3D
+                            block.AddChild desBlock
+                            ResourceLoader.Load("res://Materials/VolcanicBlock.tres") :?> Material
+                        else ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
                     | Water | RushingWater ->
                         block.GetNode("Model").QueueFree()
                         block.GetNode<Node3D>("CSGBox3D").Visible <- true
-                        ResourceLoader.Load("res://Materials/WaterBubble.tres") :?> Material
+                        if level < 12 then ResourceLoader.Load("res://Materials/WaterBubble.tres") :?> Material
+                        else ResourceLoader.Load("res://Materials/LavaBlock.tres") :?> Material
                     | Invisible ->
                         if i <> 0f then block.Visible <- false
                         ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
                     | Destructible ->
                         if i <> 0f then
                             block.GetNode("Model").QueueFree()
-                            block.GetNode<Node3D>("CSGBox3D").Visible <- true
+                            let desModel = GD.Load<PackedScene>("res://Elements/DestructibleBlock.tscn")
+                            let desBlock = desModel.Instantiate() :?> Node3D
+                            block.AddChild desBlock
                             ResourceLoader.Load("res://Materials/Destructible.tres") :?> Material
-                        else ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
+                        else
+                            block.GetNode("Model").QueueFree()
+                            let desModel = GD.Load<PackedScene>("res://Elements/VolcanicBlock.tscn")
+                            let desBlock = desModel.Instantiate() :?> Node3D
+                            block.AddChild desBlock
+                            ResourceLoader.Load("res://Materials/VolcanicBlock.tres") :?> Material
                  
                 block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)

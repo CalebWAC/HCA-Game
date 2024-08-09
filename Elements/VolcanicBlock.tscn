@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ukw5a2m7e6p8"]
+
+[ext_resource type="PackedScene" uid="uid://b7c72xus8r576" path="res://Models/Volcanic Block.glb" id="1_b17ma"]
+
+[node name="Block" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_b17ma")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.505, -0.505, -0.51)

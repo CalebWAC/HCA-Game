@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://xc5cyq4l5njn"]
+
+[resource]
+resource_name = "lambert2SG.001"
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.772226, 0.0601491, 2.88785e-07, 0.87451)

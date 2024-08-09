@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0ee1khfv0u65"]
+[gd_scene load_steps=6 format=3 uid="uid://c0ee1khfv0u65"]
+
+[ext_resource type="PackedScene" uid="uid://csthox5dyrce2" path="res://Models/Bomb.glb" id="1_5hok6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8orr3"]
 
@@ -17,11 +19,7 @@ radius = 0.05
 height = 0.1
 
 [node name="Bomb" type="Node3D"]
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
-radial_segments = 30
-rings = 20
+transform = Transform3D(0.641584, 0, -0.767053, 0, 1, 0, 0.767053, 0, 0.641584, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 input_ray_pickable = false
@@ -35,3 +33,6 @@ amount = 6
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_txq60")
 draw_pass_1 = SubResource("SphereMesh_y55s3")
+
+[node name="Model" parent="." instance=ExtResource("1_5hok6")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.391276, -0.371403, -0.473921)

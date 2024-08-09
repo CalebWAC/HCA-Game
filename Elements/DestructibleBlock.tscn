@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c360etl7mlmjj"]
+
+[ext_resource type="PackedScene" uid="uid://ctmlrnbkrla7l" path="res://Models/Destructible Block.glb" id="2_edu8f"]
+
+[node name="Block" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("2_edu8f")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.505, -0.505, -0.51)
