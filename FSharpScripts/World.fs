@@ -51,6 +51,7 @@ module WorldFS =
                 
     let desBlock x y z = { position = Vector3(x, y, z); rotation = Vector3.Zero; material = Destructible }
                 
+    let mutable currentWorld = 1
     let mutable level = 0
     
     let completedLevelsW1 = Array.create 12 false

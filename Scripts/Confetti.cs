@@ -9,7 +9,15 @@ public partial class Confetti : Node2D
 		switch (Name.ToString()[Name.ToString().Length - 1])
 		{
 			case '1':
-				if (WorldFS.completedLevelsW1.All(level => level)) Visible = true;
+				if (WorldFS.completedLevelsW1.All(level => level))
+				{
+					Visible = true;
+					try
+					{
+						GetParent().GetNode<Control>("World2").Visible = true;
+					}
+					catch (System.Exception e) {}
+				}
 				else Visible = false;
 				break;
 			case '2':

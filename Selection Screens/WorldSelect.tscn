@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://cxp1auvgv3xbc"]
+
+[ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_70re1"]
+[ext_resource type="Script" path="res://Scripts/BackButton.cs" id="2_ttjqp"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="3_peb75"]
+[ext_resource type="Script" path="res://Scripts/World Changes/World1.cs" id="4_16ywr"]
+[ext_resource type="Texture2D" uid="uid://ct4ginad18fje" path="res://Assets/ConfettiGreen.png" id="5_3imqc"]
+[ext_resource type="Script" path="res://Scripts/World Changes/World2.cs" id="5_y8s77"]
+[ext_resource type="Texture2D" uid="uid://b0jg5434ei0mk" path="res://Assets/ConfettiBlue.png" id="6_2h5vv"]
+[ext_resource type="Script" path="res://Scripts/Confetti.cs" id="6_fntct"]
+[ext_resource type="Texture2D" uid="uid://5jgns0io4xa5" path="res://Assets/ConfettiOrange.png" id="7_se131"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ar3vc"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_max = 720.0
+radial_velocity_max = 452.31
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.05
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kcke1"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_max = 720.0
+radial_velocity_max = 452.31
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.05
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 111.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("1_70re1")
+flat = true
+expand_icon = true
+script = ExtResource("2_ttjqp")
+
+[node name="World1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 262.0
+offset_right = 356.0
+offset_bottom = 347.0
+theme_override_fonts/font = ExtResource("3_peb75")
+theme_override_font_sizes/font_size = 60
+text = "World 1"
+script = ExtResource("4_16ywr")
+
+[node name="World2" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 496.0
+offset_top = 144.0
+offset_right = 720.0
+offset_bottom = 229.0
+theme_override_fonts/font = ExtResource("3_peb75")
+theme_override_font_sizes/font_size = 60
+text = "World 2"
+script = ExtResource("5_y8s77")
+
+[node name="World3" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 370.0
+offset_top = 463.0
+offset_right = 594.0
+offset_bottom = 548.0
+theme_override_fonts/font = ExtResource("3_peb75")
+theme_override_font_sizes/font_size = 60
+text = "World 3"
+
+[node name="World4" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 757.0
+offset_top = 326.0
+offset_right = 981.0
+offset_bottom = 411.0
+theme_override_fonts/font = ExtResource("3_peb75")
+theme_override_font_sizes/font_size = 60
+text = "World 4
+"
+
+[node name="Confetti1" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(226, 301)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("5_3imqc")
+script = ExtResource("6_fntct")
+
+[node name="Confetti2" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(490, 504)
+process_material = SubResource("ParticleProcessMaterial_kcke1")
+texture = ExtResource("6_2h5vv")
+script = ExtResource("6_fntct")
+
+[node name="Confetti3" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(614, 187)
+process_material = SubResource("ParticleProcessMaterial_kcke1")
+texture = ExtResource("7_se131")
+script = ExtResource("6_fntct")

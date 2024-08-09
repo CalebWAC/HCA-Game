@@ -9,7 +9,15 @@ module SceneChangeButtonFS =
     type SceneChanger(name: string, scene: string) = 
         let mutable button = Unchecked.defaultof<Button>
        
-        let startScene () = button.GetTree().ChangeSceneToFile(scene) |> ignore
+        let startScene () =
+            if name = "World1" || name = "BackButton" then
+                WorldFS.currentWorld <- 1
+                RenderingServer.SetDefaultClearColor(Color(0f, 1f, 1f))
+            elif name = "World2" then
+                WorldFS.currentWorld <- 2
+                RenderingServer.SetDefaultClearColor(Color(1f, 0.25f, 0f))
+            
+            button.GetTree().ChangeSceneToFile(scene) |> ignore
         
         member this.Ready () =
             button <- if name <> "BackButtonLevel" then getScreenRoot().GetNode<Button>(name) else getRoot().GetNode<Control>("Control").GetNode<Button>(name)

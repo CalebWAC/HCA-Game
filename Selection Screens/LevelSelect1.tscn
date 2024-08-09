@@ -1,0 +1,257 @@
+[gd_scene load_steps=35 format=3 uid="uid://dt6h27ritdukq"]
+
+[ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_auf6n"]
+[ext_resource type="Script" path="res://Scripts/BackButton.cs" id="2_7ocej"]
+[ext_resource type="Texture2D" uid="uid://ditbmgtlfku5u" path="res://Assets/Level Images/Level1Unfilled.png" id="3_1p415"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level1.cs" id="4_b1eer"]
+[ext_resource type="Texture2D" uid="uid://08muhtngkkb8" path="res://Assets/Level Images/Level2Unfilled.png" id="5_qef2u"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level2.cs" id="6_p0snp"]
+[ext_resource type="Texture2D" uid="uid://ng2fx1caqo1p" path="res://Assets/Level Images/Level3Unfilled.png" id="7_m5sex"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level3.cs" id="8_ovu7v"]
+[ext_resource type="Texture2D" uid="uid://bj0e86h3i83bc" path="res://Assets/Level Images/Level4Unfilled.png" id="9_hd8ak"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level4.cs" id="10_ej8va"]
+[ext_resource type="Texture2D" uid="uid://cpm4664v50rmp" path="res://Assets/Level Images/Level5Unfilled.png" id="11_83lwd"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level5.cs" id="12_tht3f"]
+[ext_resource type="Texture2D" uid="uid://mgw1s2t6j0u" path="res://Assets/Level Images/Level6Unfilled.png" id="13_2lowp"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level6.cs" id="14_1wagl"]
+[ext_resource type="Texture2D" uid="uid://ct0fog0jt5su7" path="res://Assets/Level Images/Level7Unfilled.png" id="15_gflsr"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level7.cs" id="16_crrq6"]
+[ext_resource type="Texture2D" uid="uid://hq3ykuu8u3x5" path="res://Assets/Level Images/Level8Unfilled.png" id="17_tqeos"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level8.cs" id="18_n75f8"]
+[ext_resource type="Texture2D" uid="uid://bhxexdvpp4aur" path="res://Assets/Level Images/Level9Unfilled.png" id="19_igpui"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level9.cs" id="20_fk637"]
+[ext_resource type="Texture2D" uid="uid://ex0e074xwbat" path="res://Assets/Level Images/Level10Unfilled.png" id="21_7ctbc"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level10.cs" id="22_q1r0d"]
+[ext_resource type="Texture2D" uid="uid://deosm5mosu7o0" path="res://Assets/Level Images/Level11Unfilled.png" id="23_ae2uj"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level11.cs" id="24_gicyt"]
+[ext_resource type="Texture2D" uid="uid://did1xwo65harp" path="res://Assets/Level Images/Level12Unfilled.png" id="25_2e47w"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level12.cs" id="26_hmupd"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="27_vuqub"]
+[ext_resource type="Script" path="res://Scripts/Confetti.cs" id="28_iwfte"]
+[ext_resource type="Texture2D" uid="uid://b0jg5434ei0mk" path="res://Assets/ConfettiBlue.png" id="29_ov8dq"]
+[ext_resource type="Texture2D" uid="uid://dy38tn52fqnfv" path="res://Assets/ConfettiRed.png" id="30_k8x2m"]
+[ext_resource type="Texture2D" uid="uid://ct4ginad18fje" path="res://Assets/ConfettiGreen.png" id="31_7ya08"]
+[ext_resource type="Texture2D" uid="uid://5jgns0io4xa5" path="res://Assets/ConfettiOrange.png" id="32_gbvde"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qyuk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ar3vc"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_max = 720.0
+radial_velocity_max = 452.31
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.05
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 111.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("1_auf6n")
+flat = true
+expand_icon = true
+script = ExtResource("2_7ocej")
+
+[node name="Level1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 108.0
+offset_right = 300.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 50
+text = "
+"
+icon = ExtResource("3_1p415")
+flat = true
+expand_icon = true
+script = ExtResource("4_b1eer")
+
+[node name="Level2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 107.0
+offset_right = 535.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("5_qef2u")
+flat = true
+expand_icon = true
+script = ExtResource("6_p0snp")
+
+[node name="Level3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 629.0
+offset_top = 104.0
+offset_right = 790.0
+offset_bottom = 259.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("7_m5sex")
+flat = true
+expand_icon = true
+script = ExtResource("8_ovu7v")
+
+[node name="Level4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 102.0
+offset_right = 1018.0
+offset_bottom = 252.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("9_hd8ak")
+flat = true
+expand_icon = true
+script = ExtResource("10_ej8va")
+
+[node name="Level5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 278.0
+offset_right = 289.0
+offset_bottom = 429.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4qyuk")
+icon = ExtResource("11_83lwd")
+flat = true
+expand_icon = true
+script = ExtResource("12_tht3f")
+
+[node name="Level6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 286.0
+offset_right = 537.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("13_2lowp")
+flat = true
+expand_icon = true
+script = ExtResource("14_1wagl")
+
+[node name="Level7" type="Button" parent="."]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 287.0
+offset_right = 783.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("15_gflsr")
+flat = true
+expand_icon = true
+script = ExtResource("16_crrq6")
+
+[node name="Level8" type="Button" parent="."]
+layout_mode = 0
+offset_left = 868.0
+offset_top = 286.0
+offset_right = 1014.0
+offset_bottom = 432.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("17_tqeos")
+flat = true
+expand_icon = true
+script = ExtResource("18_n75f8")
+
+[node name="Level9" type="Button" parent="."]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 458.0
+offset_right = 291.0
+offset_bottom = 606.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("19_igpui")
+flat = true
+expand_icon = true
+script = ExtResource("20_fk637")
+
+[node name="Level10" type="Button" parent="."]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 461.0
+offset_right = 531.0
+offset_bottom = 612.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("21_7ctbc")
+flat = true
+expand_icon = true
+script = ExtResource("22_q1r0d")
+
+[node name="Level11" type="Button" parent="."]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 461.0
+offset_right = 783.0
+offset_bottom = 607.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("23_ae2uj")
+flat = true
+expand_icon = true
+script = ExtResource("24_gicyt")
+
+[node name="Level12" type="Button" parent="."]
+layout_mode = 0
+offset_left = 867.0
+offset_top = 462.0
+offset_right = 1017.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("25_2e47w")
+flat = true
+expand_icon = true
+script = ExtResource("26_hmupd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 452.0
+offset_top = -6.0
+offset_right = 736.0
+offset_bottom = 89.0
+theme_override_fonts/normal_font = ExtResource("27_vuqub")
+theme_override_font_sizes/normal_font_size = 75
+text = "World 1"
+
+[node name="Confetti1" type="Node2D" parent="."]
+visible = false
+script = ExtResource("28_iwfte")
+
+[node name="Blue" type="GPUParticles2D" parent="Confetti1"]
+position = Vector2(284, 456)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("29_ov8dq")
+
+[node name="Red" type="GPUParticles2D" parent="Confetti1"]
+position = Vector2(1004, 132)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("30_k8x2m")
+
+[node name="Green" type="GPUParticles2D" parent="Confetti1"]
+position = Vector2(805, 472)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("31_7ya08")
+
+[node name="Orange" type="GPUParticles2D" parent="Confetti1"]
+position = Vector2(370, 139)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("32_gbvde")
