@@ -6,12 +6,16 @@ public partial class Confetti : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		if (WorldFS.completedLevels.All(level => level))
+		switch (Name.ToString()[Name.ToString().Length - 1])
 		{
-			Visible = true;
-		} else
-		{
-			Visible = false;
+			case '1':
+				if (WorldFS.completedLevelsW1.All(level => level)) Visible = true;
+				else Visible = false;
+				break;
+			case '2':
+				if (WorldFS.completedLevelsW2.All(level => level)) Visible = true;
+				else Visible = false;
+				break;
 		}
 	}
 

@@ -47,13 +47,19 @@ scale_max = 0.05
 
 [node name="Control" type="Control"]
 layout_mode = 3
+anchors_preset = 0
+offset_right = 1176.0
+offset_bottom = 659.0
+
+[node name="World 1" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 16.0
@@ -65,7 +71,7 @@ flat = true
 expand_icon = true
 script = ExtResource("1_pe52d")
 
-[node name="Level1" type="Button" parent="."]
+[node name="Level1" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 145.0
 offset_top = 108.0
@@ -79,7 +85,7 @@ flat = true
 expand_icon = true
 script = ExtResource("2_gttpt")
 
-[node name="Level2" type="Button" parent="."]
+[node name="Level2" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 384.0
 offset_top = 107.0
@@ -91,7 +97,7 @@ flat = true
 expand_icon = true
 script = ExtResource("3_0yy4k")
 
-[node name="Level3" type="Button" parent="."]
+[node name="Level3" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 629.0
 offset_top = 104.0
@@ -104,7 +110,7 @@ flat = true
 expand_icon = true
 script = ExtResource("6_eqche")
 
-[node name="Level4" type="Button" parent="."]
+[node name="Level4" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 864.0
 offset_top = 102.0
@@ -117,7 +123,7 @@ flat = true
 expand_icon = true
 script = ExtResource("8_1bktu")
 
-[node name="Level5" type="Button" parent="."]
+[node name="Level5" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 146.0
 offset_top = 278.0
@@ -131,7 +137,7 @@ flat = true
 expand_icon = true
 script = ExtResource("10_vc7oa")
 
-[node name="Level6" type="Button" parent="."]
+[node name="Level6" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 383.0
 offset_top = 286.0
@@ -144,7 +150,7 @@ flat = true
 expand_icon = true
 script = ExtResource("12_4jdvf")
 
-[node name="Level7" type="Button" parent="."]
+[node name="Level7" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 632.0
 offset_top = 287.0
@@ -157,7 +163,7 @@ flat = true
 expand_icon = true
 script = ExtResource("14_45rtt")
 
-[node name="Level8" type="Button" parent="."]
+[node name="Level8" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 868.0
 offset_top = 286.0
@@ -170,7 +176,7 @@ flat = true
 expand_icon = true
 script = ExtResource("16_iq55q")
 
-[node name="Level9" type="Button" parent="."]
+[node name="Level9" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 148.0
 offset_top = 458.0
@@ -183,7 +189,7 @@ flat = true
 expand_icon = true
 script = ExtResource("18_ivxpp")
 
-[node name="Level10" type="Button" parent="."]
+[node name="Level10" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 386.0
 offset_top = 461.0
@@ -196,7 +202,7 @@ flat = true
 expand_icon = true
 script = ExtResource("20_bn37r")
 
-[node name="Level11" type="Button" parent="."]
+[node name="Level11" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 635.0
 offset_top = 461.0
@@ -209,7 +215,7 @@ flat = true
 expand_icon = true
 script = ExtResource("22_0t1oa")
 
-[node name="Level12" type="Button" parent="."]
+[node name="Level12" type="Button" parent="World 1"]
 layout_mode = 0
 offset_left = 867.0
 offset_top = 462.0
@@ -222,7 +228,7 @@ flat = true
 expand_icon = true
 script = ExtResource("24_vgnb0")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="World 1"]
 layout_mode = 0
 offset_left = 452.0
 offset_top = -6.0
@@ -232,26 +238,249 @@ theme_override_fonts/normal_font = ExtResource("25_5j2c4")
 theme_override_font_sizes/normal_font_size = 75
 text = "World 1"
 
-[node name="Confetti" type="Node2D" parent="."]
+[node name="Right" type="Button" parent="World 1"]
+visible = false
+layout_mode = 0
+offset_left = 1070.0
+offset_top = 324.0
+offset_right = 1120.0
+offset_bottom = 374.0
+theme_override_font_sizes/font_size = 30
+text = ">"
+
+[node name="Confetti1" type="Node2D" parent="World 1"]
 visible = false
 script = ExtResource("26_ixt6i")
 
-[node name="Blue" type="GPUParticles2D" parent="Confetti"]
+[node name="Blue" type="GPUParticles2D" parent="World 1/Confetti1"]
 position = Vector2(284, 456)
 process_material = SubResource("ParticleProcessMaterial_ar3vc")
 texture = ExtResource("25_ql2p3")
 
-[node name="Red" type="GPUParticles2D" parent="Confetti"]
+[node name="Red" type="GPUParticles2D" parent="World 1/Confetti1"]
 position = Vector2(1004, 132)
 process_material = SubResource("ParticleProcessMaterial_ar3vc")
 texture = ExtResource("26_l4yw6")
 
-[node name="Green" type="GPUParticles2D" parent="Confetti"]
+[node name="Green" type="GPUParticles2D" parent="World 1/Confetti1"]
 position = Vector2(805, 472)
 process_material = SubResource("ParticleProcessMaterial_ar3vc")
 texture = ExtResource("27_rwqeg")
 
-[node name="Orange" type="GPUParticles2D" parent="Confetti"]
+[node name="Orange" type="GPUParticles2D" parent="World 1/Confetti1"]
+position = Vector2(370, 139)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("28_qmaj8")
+
+[node name="World 2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1152.0
+offset_right = 1152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 111.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("1_s0tgt")
+flat = true
+expand_icon = true
+script = ExtResource("1_pe52d")
+
+[node name="Level13" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 108.0
+offset_right = 300.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 50
+text = "
+"
+icon = ExtResource("3_62beu")
+flat = true
+expand_icon = true
+script = ExtResource("2_gttpt")
+
+[node name="Level14" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 107.0
+offset_right = 535.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("5_wugo0")
+flat = true
+expand_icon = true
+script = ExtResource("3_0yy4k")
+
+[node name="Level15" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 629.0
+offset_top = 104.0
+offset_right = 790.0
+offset_bottom = 259.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("5_s2rwx")
+flat = true
+expand_icon = true
+script = ExtResource("6_eqche")
+
+[node name="Level16" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 102.0
+offset_right = 1018.0
+offset_bottom = 252.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("6_jisa7")
+flat = true
+expand_icon = true
+script = ExtResource("8_1bktu")
+
+[node name="Level17" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 278.0
+offset_right = 289.0
+offset_bottom = 429.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4qyuk")
+icon = ExtResource("7_pwaar")
+flat = true
+expand_icon = true
+script = ExtResource("10_vc7oa")
+
+[node name="Level18" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 286.0
+offset_right = 537.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("8_iwkjk")
+flat = true
+expand_icon = true
+script = ExtResource("12_4jdvf")
+
+[node name="Level19" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 287.0
+offset_right = 783.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("9_onq76")
+flat = true
+expand_icon = true
+script = ExtResource("14_45rtt")
+
+[node name="Level20" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 868.0
+offset_top = 286.0
+offset_right = 1014.0
+offset_bottom = 432.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("10_gkb0u")
+flat = true
+expand_icon = true
+script = ExtResource("16_iq55q")
+
+[node name="Level21" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 458.0
+offset_right = 291.0
+offset_bottom = 606.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("11_mq3c7")
+flat = true
+expand_icon = true
+script = ExtResource("18_ivxpp")
+
+[node name="Level22" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 461.0
+offset_right = 531.0
+offset_bottom = 612.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("12_02bmm")
+flat = true
+expand_icon = true
+script = ExtResource("20_bn37r")
+
+[node name="Level23" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 461.0
+offset_right = 783.0
+offset_bottom = 607.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("13_5l5ny")
+flat = true
+expand_icon = true
+script = ExtResource("22_0t1oa")
+
+[node name="Level24" type="Button" parent="World 2"]
+layout_mode = 0
+offset_left = 867.0
+offset_top = 462.0
+offset_right = 1017.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("14_01bjl")
+flat = true
+expand_icon = true
+script = ExtResource("24_vgnb0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="World 2"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = -6.0
+offset_right = 765.0
+offset_bottom = 89.0
+theme_override_fonts/normal_font = ExtResource("25_5j2c4")
+theme_override_font_sizes/normal_font_size = 75
+text = "World 2"
+
+[node name="Confetti2" type="Node2D" parent="World 2"]
+visible = false
+script = ExtResource("26_ixt6i")
+
+[node name="Blue" type="GPUParticles2D" parent="World 2/Confetti2"]
+position = Vector2(284, 456)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("25_ql2p3")
+
+[node name="Red" type="GPUParticles2D" parent="World 2/Confetti2"]
+position = Vector2(1004, 132)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("26_l4yw6")
+
+[node name="Green" type="GPUParticles2D" parent="World 2/Confetti2"]
+position = Vector2(805, 472)
+process_material = SubResource("ParticleProcessMaterial_ar3vc")
+texture = ExtResource("27_rwqeg")
+
+[node name="Orange" type="GPUParticles2D" parent="World 2/Confetti2"]
 position = Vector2(370, 139)
 process_material = SubResource("ParticleProcessMaterial_ar3vc")
 texture = ExtResource("28_qmaj8")

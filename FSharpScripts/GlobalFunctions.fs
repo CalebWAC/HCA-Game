@@ -12,7 +12,7 @@ let getScreenRoot () =
     let mainLoop = Engine.GetMainLoop()
     (match mainLoop with
     | :? SceneTree as sceneTree -> sceneTree
-    | _ -> null).Root.GetNode<Control>("Control")
+    | _ -> null).Root.GetNode<Control>("Control").GetNode<Control>("World 1")
     
 // Mathematical functions                
 let degToRad deg = deg * Mathf.Pi / 180f

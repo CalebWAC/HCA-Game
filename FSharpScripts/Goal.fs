@@ -50,5 +50,7 @@ module GoalFS =
              elif t <= 2.5f then
                  goal.RotateY(degToRad 45f * delta)
              else
-                Array.set WorldFS.completedLevels WorldFS.level true
+                if WorldFS.level < 12 then Array.set WorldFS.completedLevelsW1 WorldFS.level true
+                elif WorldFS.level < 24 then Array.set WorldFS.completedLevelsW2 (WorldFS.level - 11) true
+                
                 getRoot().GetTree().ChangeSceneToFile("res://LevelSelect.tscn") |> ignore

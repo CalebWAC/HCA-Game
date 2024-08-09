@@ -60,9 +60,13 @@ module PlayerControlFS =
     
     let inBubble () = elements[level] |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position)
     
-    let desBlockFront () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe)
-    let desBlockDown () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -2f)
-    let desBlockFlat () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -1f)
+    let desBlockFront () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) &&
+                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f) |> not 
+    let desBlockDown () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -2f) &&
+                          TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -1f) |> not &&
+                          TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not
+    let desBlockFlat () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -1f) &&
+                          TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not
     
     let move dir =
         if withinBoundaries dir && originalPos = placeToBe && player.Position = originalPos then             
