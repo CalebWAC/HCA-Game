@@ -45,6 +45,6 @@ module PlayerFS =
             if keyEvent.IsReleased() && keyEvent.Keycode = Key.Space then
                 let scene = GD.Load<PackedScene>("res://Power Ups/MiniBomb.tscn")
                 let bomb = scene.Instantiate() :?> Node3D
-                bomb.Position <- self.Position + self.Transform.Basis.Z / 2f
+                bomb.Position <- self.Position + self.Transform.Basis.Z / 2f + Vector3(0f, 1f, 0f)
                 getRoot().AddChild(bomb)
                 

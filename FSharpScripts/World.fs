@@ -241,7 +241,7 @@ module WorldFS =
         
         //// World 2 \\\\
         
-        [| // Level 12
+        [| // Level 13
            block -6f 0f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; block -6f 0f 3f; block -6f 0f 4f; block -6f 0f 5f; block -6f 0f 6f
            block -5f 0f -6f; block -5f 0f -5f; block -5f 0f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 0f 0f; block -5f 0f 1f; block -5f 0f 2f; block -5f 0f 3f; block -5f 0f 4f; block -5f 0f 5f; block -5f 0f 6f
            block -4f 0f -6f; block -4f 0f -5f; block -4f 0f -4f; block -4f 0f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; block -4f 0f 1f; block -4f 0f 2f; block -4f 0f 3f; block -4f 0f 4f; block -4f 0f 5f; block -4f 0f 6f
@@ -441,3 +441,5 @@ module WorldFS =
         with | _ -> (getRoot().GetTree().CurrentScene.SceneFilePath.ToString()[18]).ToString().ToInt() - 1
     
     let getHeightAt x z = (worlds[level] |> Array.find (fun b -> b.position.X = x && b.position.Z = z)).position.Y
+    
+    let getMaterialAt x z = (worlds[level] |> Array.find (fun b -> b.position.X = x && b.position.Z = z)).material

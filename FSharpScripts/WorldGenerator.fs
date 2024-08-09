@@ -33,13 +33,16 @@ module WorldGeneratorFS =
                         if i <> 0f then block.Visible <- false
                         ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
                     | Destructible ->
-                        block.GetNode("Model").QueueFree()
-                        block.GetNode<Node3D>("CSGBox3D").Visible <- true
-                        if i <> 0f then ResourceLoader.Load("res://Materials/Destructible.tres") :?> Material
+                        if i <> 0f then
+                            block.GetNode("Model").QueueFree()
+                            block.GetNode<Node3D>("CSGBox3D").Visible <- true
+                            ResourceLoader.Load("res://Materials/Destructible.tres") :?> Material
                         else ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
                  
                 block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
+                
+                if data.material = Destructible then TerrainManipulatorFS.destructibleBlocks.Add block
                 
         )
         

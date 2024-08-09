@@ -6,7 +6,7 @@
 radius = 0.179754
 
 [node name="MiniBomb" type="RigidBody3D"]
-gravity_scale = 3.0
+gravity_scale = 5.0
 script = ExtResource("1_fokoi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

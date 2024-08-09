@@ -60,6 +60,10 @@ module PlayerControlFS =
     
     let inBubble () = elements[level] |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position)
     
+    let desBlockFront () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe)
+    let desBlockDown () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -2f)
+    let desBlockFlat () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -1f)
+    
     let move dir =
         if withinBoundaries dir && originalPos = placeToBe && player.Position = originalPos then             
             t <- 0f
@@ -78,13 +82,13 @@ module PlayerControlFS =
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
             else
                 // Height compensation
-                if (block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) &&
+                if ((block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || desBlockFront()) &&
                    WorldGeneratorFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe + Vector3.Up) |> not) ||
                    WorldGeneratorFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe) then
                     onBlock <- None
                     placeToBe.Y <- placeToBe.Y + 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
-                elif (block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) &&
+                elif ((block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || desBlockDown()) &&
                       WorldGeneratorFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> not) ||
                       WorldGeneratorFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) then
                     onBlock <- None
@@ -102,7 +106,7 @@ module PlayerControlFS =
                                     else
                                         placeToBe <- player.Position
                                 with | _ -> placeToBe <- player.Position
-                        elif block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water || block.material = RushingWater then
+                        elif not(desBlockFlat()) && (block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water || block.material = RushingWater) then
                             placeToBe <- player.Position
                             
                     midpoint <- (player.Position + placeToBe) / 2f

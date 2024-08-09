@@ -7,6 +7,8 @@ open PlayerFS
 open GlobalFunctions
 
 module TerrainManipulatorFS =
+    let destructibleBlocks = List<Node3D>()
+    
     type Block() =
         let mutable self = Unchecked.defaultof<Node3D>
         static let mutable t = 0f
@@ -32,22 +34,28 @@ module TerrainManipulatorFS =
                             selector.Position <- Vector3(0f, 50f, 0f)
                 with | _ -> ()
         
+        member this.onCollided (_: Node3D) =
+            if getMaterialAt (round self.Position.X) (round self.Position.Z) = Destructible && round self.Position.Y <> 0f then
+                destructibleBlocks.Remove self |> ignore
+                self.QueueFree()
+        
         member this.ready thing =
             self <- thing
             selector <- getRoot().GetNode<CsgBox3D>("Selector")
+            self.GetNode<Area3D>("Area3D").add_BodyEntered (fun x -> this.onCollided x)
         
         member this.process delta =
             t <- t + delta * 0.5f
             
             // For hidden blocks
-            if Array.contains Glasses powerUps && (worlds[level] |> Array.find(fun b -> b.position.X = self.Position.X && b.position.Z = self.Position.Z)).material = Invisible
+            if Array.contains Glasses powerUps && getMaterialAt self.Position.X self.Position.Z = Invisible
                && self.Position.Y <> 0f then
                 if getRoot().GetNode<Node3D>("Player").Position.DistanceTo self.Position <= 3f then
                     self.Visible <- true
                 else self.Visible <- false
                 
             // For rushing water
-            if (worlds[level] |> Array.find(fun b -> b.position.X = self.Position.X && b.position.Z = self.Position.Z)).material = RushingWater then
+            if getMaterialAt self.Position.X self.Position.Z = RushingWater then
                 self.RotateObjectLocal(Vector3.Right, delta * 3f)
         
         static member input (event : InputEvent) =

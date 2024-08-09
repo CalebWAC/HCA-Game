@@ -6,9 +6,8 @@ open GlobalFunctions
 module MiniBombFS =
     let ready (thing : RigidBody3D) =
         let player = getRoot().GetNode<Node3D>("Player")
-        GD.Print "Here"
-        thing.ApplyForce(Vector3(0f, 750f, 0f) + player.Transform.Basis.Z * 300f)
+        thing.ApplyForce(Vector3(0f, 500f, 0f) + player.Transform.Basis.Z * 400f)
         
-    
-    // let physicsProcess delta = ()
-        
+    let process delta =
+        if getRoot().GetNode<Node3D>("MiniBomb").Position.Y < -5f then
+            getRoot().GetNode<Node3D>("MiniBomb").QueueFree()
