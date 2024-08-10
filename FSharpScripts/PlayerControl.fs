@@ -61,7 +61,9 @@ module PlayerControlFS =
     let inBubble () = elements[level] |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position)
     
     let desBlockFront () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) &&
-                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f) |> not 
+                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f) |> not &&
+                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 2f) |> not &&
+                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round player.Position.X && b.Position.Z = round player.Position.Z && b.Position.Y = round player.Position.Y + 2f) |> not
     let desBlockDown () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -2f) &&
                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -1f) |> not &&
                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not
@@ -92,9 +94,9 @@ module PlayerControlFS =
                     onBlock <- None
                     placeToBe.Y <- placeToBe.Y + 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
-                elif ((block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || desBlockDown()) &&
+                elif (((block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || desBlockDown()) &&
                       WorldGeneratorFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> not) ||
-                      WorldGeneratorFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) then
+                      WorldGeneratorFS.companionCubes.Exists(fun c -> c.Position = roundVec placeToBe - Vector3(0f, 2f, 0f))) && (desBlockFlat() |> not && TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not) then
                     onBlock <- None
                     placeToBe.Y <- placeToBe.Y - 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
@@ -110,9 +112,11 @@ module PlayerControlFS =
                                     else
                                         placeToBe <- player.Position
                                 with | _ -> placeToBe <- player.Position
-                        elif not(desBlockFlat()) && (block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water || block.material = RushingWater) then
+                        elif not(desBlockFlat()) && (block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water || block.material = RushingWater ||
+                             TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f)) then
                             placeToBe <- player.Position
-                            
+                    
+                    GD.Print (desBlockFlat())
                     midpoint <- (player.Position + placeToBe) / 2f
                     midpoint.Y <- midpoint.Y + 0.25f
                     if placeToBe <> player.Position then onBlock <- None

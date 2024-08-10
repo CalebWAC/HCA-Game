@@ -9,7 +9,6 @@ module WorldFS =
         | Water
         | RushingWater
         | Invisible
-        | Destructible
     
     type Block = {
         position : Vector3
@@ -28,6 +27,7 @@ module WorldFS =
         | MovingBlockWithHook
         | CompanionCube
         | CubeTrigger
+        | DestructibleBlock
         
     type PowerUpType =
         | GrapplingHook
@@ -48,8 +48,7 @@ module WorldFS =
                                                 | "f" -> Vector3(0f, degToRad 90f, 0f)
                                                 | "b" -> Vector3(0f, degToRad 270f, 0f)
                                                 | _ -> Vector3(0f, 0f, 0f))  }
-                
-    let desBlock x y z = { position = Vector3(x, y, z); rotation = Vector3.Zero; material = Destructible }
+    let desBlock x y z = { etype = DestructibleBlock; position = Vector3(x, y, z); rotation = Vector3.Zero; visible = true }
                 
     let mutable currentWorld = 1
     let mutable level = 0
@@ -251,12 +250,12 @@ module WorldFS =
            waterBlock -2f 0f -6f; waterBlock -2f 0f -5f; waterBlock -2f 0f -4f; waterBlock -2f 0f -3f; block -2f 0f -2f; block -2f 0f -1f; riverBlock -2f 0f 0f "b"; riverBlock -2f 0f 1f "b"; block -2f 0f 2f; block -2f 0f 3f; block -2f 0f 4f; block -2f 0f 5f; block -2f 0f 6f
            block -1f 1f -6f; block -1f 1f -5f; block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; riverBlock -1f 0f 0f "b"; riverBlock -1f 0f 1f "b"; block -1f 0f 2f; block -1f 0f 3f; block -1f 0f 4f; block -1f 0f 5f; block -1f 0f 6f
            block 0f 0f -6f; block 0f 0f -5f; block 0f 0f -4f; block 0f 0f -3f; block 0f 0f -2f; block 0f 0f -1f; riverBlock 0f 0f 0f "b"; riverBlock 0f 0f 1f "b"; block 0f 0f 2f; block 0f 0f 3f; block 0f 0f 4f; block 0f 0f 5f; block 0f 0f 6f
-           block 1f 0f -6f; block 1f 0f -5f; block 1f 0f -4f; block 1f 0f -3f; block 1f 0f -2f; block 1f 0f -1f; riverBlock 1f 0f 0f "b"; desBlock 1f 2f 1f; desBlock 1f 3f 2f; desBlock 1f 4f 3f; desBlock 1f 4f 4f; desBlock 1f 3f 5f; desBlock 1f 3f 6f
-           desBlock 2f 6f -6f; desBlock 2f 5f -5f; desBlock 2f 5f -4f; desBlock 2f 4f -3f; desBlock 2f 4f -2f; block 2f 4f -1f; riverBlock 2f 0f 0f "b"; desBlock 2f 3f 1f; desBlock 2f 5f 2f; desBlock 2f 6f 3f; desBlock 2f 6f 4f; desBlock 2f 5f 5f; desBlock 2f 5f 6f
-           block 3f 0f -6f; block 3f 0f -5f; block 3f 0f -4f; block 3f 0f -3f; block 3f 0f -2f; block 3f 5f -1f; riverBlock 3f 0f 0f "b"; desBlock 3f 3f 1f; desBlock 3f 5f 2f; desBlock 3f 6f 3f; desBlock 3f 5f 4f; desBlock 3f 4f 5f; desBlock 3f 5f 6f
-           block 4f 0f -6f; block 4f 0f -5f; block 4f 0f -4f; block 4f 0f -3f; block 4f 1f -2f; block 4f 5f -1f; riverBlock 4f 0f 0f "b"; desBlock 4f 3f 1f; desBlock 4f 6f 2f; desBlock 4f 5f 3f; block 4f 0f 4f; desBlock 4f 4f 5f; desBlock 4f 4f 6f
-           block 5f 0f -6f; block 5f 0f -5f; block 5f 0f -4f; block 5f 0f -3f; block 5f 3f -2f; block 5f 4f -1f; riverBlock 5f 0f 0f "b"; desBlock 5f 4f 1f; desBlock 5f 6f 2f; desBlock 5f 5f 3f; desBlock 5f 4f 4f; desBlock 5f 5f 5f; desBlock 5f 3f 6f
-           block 6f 0f -6f; block 6f 0f -5f; block 6f 0f -4f; block 6f 0f -3f; block 6f 3f -2f; block 6f 4f -1f; riverBlock 6f 0f 0f "b"; desBlock 6f 4f 1f; desBlock 6f 5f 2f; desBlock 6f 5f 3f; desBlock 6f 4f 4f; desBlock 6f 4f 5f; desBlock 6f 3f 6f
+           block 1f 0f -6f; block 1f 0f -5f; block 1f 0f -4f; block 1f 0f -3f; block 1f 0f -2f; block 1f 0f -1f; riverBlock 1f 0f 0f "b"; block 1f 0f 1f; block 1f 0f 2f; block 1f 0f 3f; block 1f 0f 4f; block 1f 0f 5f; block 1f 0f 6f
+           block 2f 0f -6f; block 2f 0f -5f; block 2f 0f -4f; block 2f 0f -3f; block 2f 0f -2f; block 2f 4f -1f; riverBlock 2f 0f 0f "b"; block 2f 0f 1f; block 2f 0f 2f; block 2f 0f 3f; block 2f 0f 4f; block 2f 0f 5f; block 2f 0f 6f
+           block 3f 0f -6f; block 3f 0f -5f; block 3f 0f -4f; block 3f 0f -3f; block 3f 0f -2f; block 3f 5f -1f; riverBlock 3f 0f 0f "b"; block 3f 0f 1f; block 3f 0f 2f; block 3f 0f 3f; block 3f 0f 4f; block 3f 0f 5f; block 3f 0f 6f
+           block 4f 0f -6f; block 4f 0f -5f; block 4f 0f -4f; block 4f 0f -3f; block 4f 1f -2f; block 4f 5f -1f; riverBlock 4f 0f 0f "b"; block 4f 0f 1f; block 4f 0f 2f; block 4f 0f 3f; block 4f 0f 4f; block 4f 0f 5f; block 4f 0f 6f
+           block 5f 0f -6f; block 5f 0f -5f; block 5f 0f -4f; block 5f 0f -3f; block 5f 3f -2f; block 5f 4f -1f; riverBlock 5f 0f 0f "b"; block 5f 0f 1f; block 5f 0f 2f; block 5f 0f 3f; block 5f 0f 4f; block 5f 0f 5f; block 5f 0f 6f
+           block 6f 0f -6f; block 6f 0f -5f; block 6f 0f -4f; block 6f 0f -3f; block 6f 3f -2f; block 6f 4f -1f; riverBlock 6f 0f 0f "b"; block 6f 0f 1f; block 6f 0f 2f; block 6f 0f 3f; block 6f 0f 4f; block 6f 0f 5f; block 6f 0f 6f
         |]
     |]
     
@@ -392,6 +391,15 @@ module WorldFS =
             { etype = Goal; position = Vector3(4f, 1f, 4f); rotation = Vector3.Zero; visible = true }
             { etype = Bridge; position = Vector3(-2.5f, 1f, -5f); rotation = Vector3.Zero; visible = true }
             { etype = Bridge; position = Vector3(-6f, 3f, 0.5f); rotation = Vector3(0f, degToRad 90f, 0f); visible = true }
+            
+            // Destructible blocks
+            desBlock 2f 6f -6f; desBlock 2f 5f -5f ;desBlock 2f 5f -4f; desBlock 2f 4f -3f; desBlock 2f 4f -2f
+            desBlock 1f 2f 1f; desBlock 2f 3f 1f; desBlock 3f 4f 1f; desBlock 4f 4f 1f; desBlock 5f 4f 1f; desBlock 6f 4f 1f
+            desBlock 1f 3f 2f; desBlock 2f 4f 2f; desBlock 3f 4f 2f; desBlock 4f 6f 2f; desBlock 5f 6f 2f; desBlock 6f 5f 2f
+            desBlock 1f 4f 3f; desBlock 2f 6f 3f; desBlock 3f 6f 3f; desBlock 4f 5f 3f; desBlock 5f 5f 3f; desBlock 6f 5f 3f
+            desBlock 1f 4f 4f; desBlock 2f 6f 4f; desBlock 3f 5f 4f; desBlock 5f 4f 4f; desBlock 6f 4f 4f
+            desBlock 1f 3f 5f; desBlock 2f 5f 5f; desBlock 3f 4f 5f; desBlock 4f 4f 5f; desBlock 5f 5f 5f; desBlock 6f 4f 5f
+            desBlock 1f 3f 6f; desBlock 2f 5f 6f; desBlock 3f 5f 6f; desBlock 4f 4f 6f; desBlock 5f 3f 6f; desBlock 6f 3f 6f
         |]
     |]
     

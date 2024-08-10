@@ -35,7 +35,7 @@ module TerrainManipulatorFS =
                 with | _ -> ()
         
         member this.onCollided (_: Node3D) =
-            if getMaterialAt (round self.Position.X) (round self.Position.Z) = Destructible && round self.Position.Y <> 0f then
+            if destructibleBlocks.Contains self then
                 destructibleBlocks.Remove self |> ignore
                 self.QueueFree()
         

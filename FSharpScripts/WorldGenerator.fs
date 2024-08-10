@@ -40,25 +40,9 @@ module WorldGeneratorFS =
                     | Invisible ->
                         if i <> 0f then block.Visible <- false
                         ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
-                    | Destructible ->
-                        if i <> 0f then
-                            block.GetNode("Model").QueueFree()
-                            let desModel = GD.Load<PackedScene>("res://Elements/DestructibleBlock.tscn")
-                            let desBlock = desModel.Instantiate() :?> Node3D
-                            block.AddChild desBlock
-                            ResourceLoader.Load("res://Materials/Destructible.tres") :?> Material
-                        else
-                            block.GetNode("Model").QueueFree()
-                            let desModel = GD.Load<PackedScene>("res://Elements/VolcanicBlock.tscn")
-                            let desBlock = desModel.Instantiate() :?> Node3D
-                            block.AddChild desBlock
-                            ResourceLoader.Load("res://Materials/VolcanicBlock.tres") :?> Material
                  
                 block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
-                
-                if data.material = Destructible then TerrainManipulatorFS.destructibleBlocks.Add block
-                
         )
         
         // Platformer element placement
@@ -74,20 +58,29 @@ module WorldGeneratorFS =
                                                                  | MovingBlock -> "MovingBlock.tscn"
                                                                  | MovingBlockWithHook -> "MovingBlockWithHook.tscn"
                                                                  | CompanionCube -> "CompanionCube.tscn"
-                                                                 | CubeTrigger -> "CubeTrigger.tscn")
-            let emt = scene.Instantiate() :?> Node3D
-            emt.Position <- element.position
-            emt.Rotation <- element.rotation
-            if element.visible = false then emt.Visible <- false
-            getRoot().GetNode<Node3D>("WorldGenerator").AddChild emt
+                                                                 | CubeTrigger -> "CubeTrigger.tscn"
+                                                                 | DestructibleBlock -> "DestructibleBlock.tscn")
             
-            match element.etype with
-            | MovingBlock | MovingBlockWithHook -> movingBlocks.Add emt
-            | CompanionCube -> companionCubes.Add emt
-            | CubeTrigger -> cubeTriggers.Add emt
-            | Bridge -> bridges.Add emt
-            | GoalFragment -> goalFragments.Add emt
-            | _ -> ()
+            if element.etype = DestructibleBlock then
+                for i in getHeightAt element.position.X element.position.Z .. element.position.Y do
+                    let block = scene.Instantiate() :?> Node3D
+                    block.Position <- Vector3(element.position.X, i, element.position.Z)
+                    getRoot().GetNode<Node3D>("WorldGenerator").AddChild block
+                    TerrainManipulatorFS.destructibleBlocks.Add block
+            else
+                let emt = scene.Instantiate() :?> Node3D
+                emt.Position <- element.position
+                emt.Rotation <- element.rotation
+                if element.visible = false then emt.Visible <- false
+                getRoot().GetNode<Node3D>("WorldGenerator").AddChild emt
+                
+                match element.etype with
+                | MovingBlock | MovingBlockWithHook -> movingBlocks.Add emt
+                | CompanionCube -> companionCubes.Add emt
+                | CubeTrigger -> cubeTriggers.Add emt
+                | Bridge -> bridges.Add emt
+                | GoalFragment -> goalFragments.Add emt
+                | _ -> ()
         )
         
         // Power up placement
