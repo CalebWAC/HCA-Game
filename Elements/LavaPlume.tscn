@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://x2ilmb81afpb"]
+
+[ext_resource type="Material" uid="uid://xc5cyq4l5njn" path="res://Materials/LavaBlock.tres" id="1_5hbus"]
+[ext_resource type="Script" path="res://Scripts/Elements/LavaPlume.cs" id="1_08moi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0u7m"]
+albedo_color = Color(1, 0.317647, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l8mq4"]
+emission_shape = 2
+emission_sphere_radius = 0.5
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 3.0
+linear_accel_min = -10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_h6xtv"]
+radius = 0.1
+height = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vp437"]
+size = Vector3(1, 0.111099, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyoel"]
+size = Vector3(1, 0.0807495, 1)
+
+[node name="LavaPlume" type="Node3D"]
+script = ExtResource("1_08moi")
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159967, 0)
+material_override = SubResource("StandardMaterial3D_g0u7m")
+amount = 7
+lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_l8mq4")
+draw_pass_1 = SubResource("SphereMesh_h6xtv")
+
+[node name="TopArea3D" type="Area3D" parent="Particles"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Particles/TopArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00931549, 0)
+shape = SubResource("BoxShape3D_vp437")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Model" type="CSGCylinder3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.1, 0)
+material_override = ExtResource("1_5hbus")
+sides = 30
+
+[node name="BodyArea3D" type="Area3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/BodyArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0483704, 0)
+shape = SubResource("BoxShape3D_iyoel")

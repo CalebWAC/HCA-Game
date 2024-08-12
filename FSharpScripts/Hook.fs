@@ -48,6 +48,6 @@ module HookFS =
                                 onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> floorVec e.Position = floorVec(Vector3(self.GlobalPosition.X + 0.5f, self.GlobalPosition.Y, self.GlobalPosition.Z))) |> Some
             with | _ -> ()
         
-        member this.ready (thing : Node3D) =
+        member this.ready thing =
             self <- thing
             self.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event _ _ _ -> onInputEvent event)

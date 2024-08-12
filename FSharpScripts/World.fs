@@ -28,6 +28,7 @@ module WorldFS =
         | CompanionCube
         | CubeTrigger
         | DestructibleBlock
+        | LavaPlume
         
     type PowerUpType =
         | GrapplingHook
@@ -272,6 +273,21 @@ module WorldFS =
            block 5f 6f -6f; block 5f 6f -5f; block 5f 6f -4f; block 5f 6f -3f; block 5f 6f -2f; block 5f 6f -1f; block 5f 6f 0f; block 5f 6f 1f; block 5f 6f 2f; block 5f 6f 3f; block 5f 6f 4f; block 5f 6f 5f; block 5f 6f 6f
            block 6f 6f -6f; block 6f 6f -5f; block 6f 6f -4f; block 6f 6f -3f; block 6f 6f -2f; block 6f 6f -1f; block 6f 6f 0f; block 6f 6f 1f; block 6f 6f 2f; block 6f 6f 3f; block 6f 6f 4f; block 6f 6f 5f; block 6f 6f 6f
         |]
+        [| // Level 15
+           block -6f 0f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; block -6f 0f 3f; block -6f 0f 4f; block -6f 0f 5f; block -6f 0f 6f
+           block -5f 0f -6f; block -5f 0f -5f; block -5f 0f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 0f 0f; block -5f 0f 1f; block -5f 0f 2f; block -5f 0f 3f; block -5f 0f 4f; block -5f 0f 5f; block -5f 0f 6f
+           block -4f 0f -6f; block -4f 0f -5f; block -4f 0f -4f; block -4f 0f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; block -4f 0f 1f; block -4f 0f 2f; block -4f 0f 3f; block -4f 0f 4f; block -4f 0f 5f; block -4f 0f 6f
+           block -3f 0f -6f; block -3f 0f -5f; block -3f 0f -4f; block -3f 0f -3f; block -3f 0f -2f; block -3f 0f -1f; block -3f 0f 0f; block -3f 0f 1f; block -3f 0f 2f; block -3f 0f 3f; block -3f 0f 4f; block -3f 0f 5f; block -3f 0f 6f
+           block -2f 0f -6f; block -2f 0f -5f; block -2f 0f -4f; block -2f 0f -3f; block -2f 0f -2f; block -2f 0f -1f; block -2f 0f 0f; block -2f 0f 1f; block -2f 0f 2f; block -2f 0f 3f; block -2f 0f 4f; block -2f 0f 5f; block -2f 0f 6f
+           block -1f 0f -6f; block -1f 0f -5f; block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 2f 0f; block -1f 0f 1f; block -1f 0f 2f; block -1f 0f 3f; block -1f 0f 4f; block -1f 0f 5f; block -1f 0f 6f
+           block 0f 0f -6f; block 0f 0f -5f; block 0f 0f -4f; block 0f 0f -3f; block 0f 0f -2f; block 0f 0f -1f; waterBlock 0f 0f 0f; block 0f 4f 1f; block 0f 0f 2f; block 0f 0f 3f; block 0f 0f 4f; block 0f 0f 5f; block 0f 0f 6f
+           block 1f 0f -6f; block 1f 0f -5f; block 1f 0f -4f; block 1f 0f -3f; block 1f 0f -2f; block 1f 0f -1f; block 1f 0f 0f; block 1f 0f 1f; block 1f 0f 2f; block 1f 0f 3f; block 1f 0f 4f; block 1f 0f 5f; block 1f 0f 6f
+           block 2f 0f -6f; block 2f 0f -5f; block 2f 0f -4f; block 2f 0f -3f; block 2f 0f -2f; block 2f 0f -1f; block 2f 0f 0f; block 2f 0f 1f; block 2f 0f 2f; block 2f 0f 3f; block 2f 0f 4f; block 2f 0f 5f; block 2f 0f 6f
+           block 3f 0f -6f; block 3f 0f -5f; block 3f 0f -4f; block 3f 0f -3f; block 3f 0f -2f; block 3f 0f -1f; block 3f 0f 0f; block 3f 0f 1f; block 3f 0f 2f; block 3f 0f 3f; block 3f 0f 4f; block 3f 0f 5f; block 3f 0f 6f
+           block 4f 0f -6f; block 4f 0f -5f; block 4f 0f -4f; block 4f 0f -3f; block 4f 0f -2f; block 4f 0f -1f; block 4f 0f 0f; block 4f 0f 1f; block 4f 0f 2f; block 4f 0f 3f; block 4f 0f 4f; block 4f 0f 5f; block 4f 0f 6f
+           block 5f 0f -6f; block 5f 0f -5f; block 5f 0f -4f; block 5f 0f -3f; block 5f 0f -2f; block 5f 0f -1f; block 5f 0f 0f; block 5f 0f 1f; block 5f 0f 2f; block 5f 0f 3f; block 5f 0f 4f; block 5f 0f 5f; block 5f 0f 6f
+           block 6f 0f -6f; block 6f 0f -5f; block 6f 0f -4f; block 6f 0f -3f; block 6f 0f -2f; block 6f 0f -1f; block 6f 0f 0f; block 6f 0f 1f; block 6f 0f 2f; block 6f 0f 3f; block 6f 0f 4f; block 6f 0f 5f; block 6f 0f 6f
+        |]
     |]
     
     let elements = [|
@@ -428,6 +444,9 @@ module WorldFS =
             desBlock 3f 6f -5f; desBlock 3f 6f -4f; desBlock 3f 6f -3f; desBlock 3f 6f -2f; desBlock 3f 6f -1f; desBlock 3f 6f 0f; desBlock 3f 6f 1f; desBlock 3f 6f 2f; desBlock 3f 6f 3f; desBlock 3f 6f 4f; desBlock 3f 6f 5f; desBlock 3f 6f 6f
             desBlock 4f 6f -5f; desBlock 4f 6f -4f; desBlock 4f 6f -3f; desBlock 4f 6f -2f; desBlock 4f 6f -1f; desBlock 4f 6f 0f; desBlock 4f 6f 1f; desBlock 4f 6f 2f; desBlock 4f 6f 3f; desBlock 4f 6f 4f; desBlock 4f 6f 5f; desBlock 4f 6f 6f
         |]
+        [| // Level 15
+            { etype = LavaPlume; position = Vector3(0f, 0.5f, 0f); rotation = Vector3.Zero; visible = true }
+        |]
     |]
     
     let powerUps = [|
@@ -467,13 +486,16 @@ module WorldFS =
             { ptype = Glasses; position = Vector3(3f, 2f, -4f) }
         |]
         
+        
         //// World 2 \\\\
         
         [| // Level 13
             { ptype = Bomb; position = Vector3(4f, 1f, -4f) }
         |]
-        [| // Level 13
+        [| // Level 14
             { ptype = Bomb; position = Vector3(6f, 7f, 0f) }
+        |]
+        [| // Level 15
         |]
     |]
     

@@ -60,7 +60,8 @@ module WorldGeneratorFS =
                                                                  | MovingBlockWithHook -> "MovingBlockWithHook.tscn"
                                                                  | CompanionCube -> "CompanionCube.tscn"
                                                                  | CubeTrigger -> "CubeTrigger.tscn"
-                                                                 | DestructibleBlock -> "DestructibleBlock.tscn")
+                                                                 | DestructibleBlock -> "DestructibleBlock.tscn"
+                                                                 | LavaPlume -> "LavaPlume.tscn")
             
             if element.etype = DestructibleBlock then
                 for i in getHeightAt element.position.X element.position.Z .. element.position.Y do

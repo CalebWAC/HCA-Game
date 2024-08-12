@@ -23,6 +23,7 @@
         <Compile Include="Glasses.fs" />
         <Compile Include="MiniBomb.fs" />
         <Compile Include="LavaWall.fs" />
+        <Compile Include="LavaPlume.fs" />
         <Compile Include="GoalFragment.fs" />
     </ItemGroup>
 
