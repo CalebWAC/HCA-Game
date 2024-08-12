@@ -2,7 +2,6 @@ namespace FSharpScripts
 
 open FSharpScripts.WorldFS
 open Godot
-open WorldFS
 open GlobalFunctions
 open System.Collections.Generic
 
@@ -13,7 +12,7 @@ module CompanionCubeFS =
         let mutable t = 1f
         let mutable originalPos = Vector3(0f, 0f, 0f)
         let mutable endPos = Vector3(0f, 0f, 0f)
-        let mutable midpoint = Vector3(0f, 0f, 0f)
+        let mutable midpoint = Vector3(0f, 0f, 0f)      
         
         member val held = false with get, set
         
@@ -58,6 +57,37 @@ module CompanionCubeFS =
                     self.Visible <- true
                 else self.Visible <- false
             
+            // For lava plumes
+            let exists predicate (array: Collections.Array<Area3D>) =
+                let rec inner predicate (array: Collections.Array<Area3D>) i =
+                    if i < array.Count then 
+                        if predicate array[i] then true
+                        else inner predicate array (i + 1)
+                    else false
+                    
+                inner predicate array 0
+                
+            let find predicate (array: Collections.Array<Area3D>) =
+                let rec inner predicate (array: Collections.Array<Area3D>) i =
+                    if i < array.Count then
+                        if predicate array[i] then array[i]
+                        else inner predicate array (i + 1)
+                    else System.Exception "Item not found" |> raise
+                    
+                inner predicate array 0
+            
+            let areas = self.GetNode<Area3D>("Area3D").GetOverlappingAreas()
+            if not this.held && areas.Count > 0 && areas |> exists (fun a -> a.Name.ToString().Contains "TopArea3D") then
+                t <- 0f
+                originalPos <- (areas |> find (fun a -> a.Name.ToString().Contains "TopArea3D")).GlobalPosition
+                midpoint <- (areas |> find (fun a -> a.Name.ToString().Contains "TopArea3D")).GlobalPosition
+                endPos <- (areas |> find (fun a -> a.Name.ToString().Contains "TopArea3D")).GlobalPosition
+            elif not this.held && areas.Count > 0 && areas |> exists (fun a -> a.Name.ToString().Contains "BodyArea3D") then
+                t <- 0f
+                originalPos <- self.Position
+                endPos <- Vector3(areas[0].GlobalPosition.X, self.Position.Y + 0.5f, areas[0].GlobalPosition.Z)
+                midpoint <- (originalPos + endPos) / 2f
+            
         member this.input (event : InputEvent) =
             match event with
             | :? InputEventKey ->
@@ -69,7 +99,7 @@ module CompanionCubeFS =
                         let next = playerPos + getRoot().GetNode<Node3D>("Player").Transform.Basis.Z
                         let nextBlock = (worlds[level] |> Array.find (fun b -> b.position.X = round next.X && b.position.Z = round next.Z)).position
                         
-                        if not this.held && self.Position = roundVec next ||
+                        if not this.held && roundVec self.Position = roundVec next ||
                            this.held && nextBlock.Y <= playerPos.Y then
                             this.held <- not this.held
                             t <- 0f

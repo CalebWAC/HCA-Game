@@ -456,6 +456,10 @@ module WorldFS =
             { etype = Hook; position = Vector3(-3f, 5f, 3.5f); rotation = Vector3.Zero; visible = true }
             { etype = Hook; position = Vector3(2.5f, 2f, 3f); rotation = Vector3(0f, degToRad 90f, 0f); visible = true }
             { etype = Hook; position = Vector3(6f, 5f, 4.5f); rotation = Vector3.Zero; visible = true }
+            
+            
+            { etype = CompanionCube; position = Vector3(4f, 1f, -4f); rotation = Vector3.Zero; visible = true }
+            { etype = LavaPlume; position = Vector3(4f, 0.5f, -3f); rotation = Vector3.Zero; visible = true }
         |]
     |]
     
