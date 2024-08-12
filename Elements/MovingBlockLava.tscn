@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://srpk4caequnt"]
+
+[ext_resource type="Script" path="res://Scripts/Elements/MovingBlock.cs" id="1_s24k6"]
+[ext_resource type="PackedScene" uid="uid://b7c72xus8r576" path="res://Models/Volcanic Block.glb" id="2_d0jwi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rntx6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e641i"]
+albedo_color = Color(0.91138, 0.559035, 0.00630782, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cvlls"]
+size = Vector3(0.970215, 0.631836, 0.932617)
+
+[node name="MovingBlock" type="Node3D"]
+script = ExtResource("1_s24k6")
+
+[node name="Model" parent="." instance=ExtResource("2_d0jwi")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.505, -0.505, -0.51)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_rntx6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material = SubResource("StandardMaterial3D_e641i")
+
+[node name="Border" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Border"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00219727, -0.0170898, 0.00732422)
+shape = SubResource("BoxShape3D_cvlls")

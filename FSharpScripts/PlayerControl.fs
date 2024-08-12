@@ -86,6 +86,8 @@ module PlayerControlFS =
                 onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) |> Some
                 placeToBe.Y <- placeToBe.Y - 1f
                 midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
+            elif WorldGeneratorFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) then
+                onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> Some
             else
                 // Height compensation
                 if ((block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || desBlockFront()) &&
@@ -116,7 +118,6 @@ module PlayerControlFS =
                              TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f)) then
                             placeToBe <- player.Position
                     
-                    GD.Print (desBlockFlat())
                     midpoint <- (player.Position + placeToBe) / 2f
                     midpoint.Y <- midpoint.Y + 0.25f
                     if placeToBe <> player.Position then onBlock <- None

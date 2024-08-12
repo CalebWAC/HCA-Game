@@ -55,7 +55,8 @@ module WorldGeneratorFS =
                                                                  | Hook -> "Hook.tscn"
                                                                  | LavaWall -> "LavaWall.tscn"
                                                                  | GoalFragment -> "GoalFragment.tscn"
-                                                                 | MovingBlock -> "MovingBlock.tscn"
+                                                                 | MovingBlock ->
+                                                                     if level < 12 then "MovingBlock.tscn" else "MovingBlockLava.tscn"
                                                                  | MovingBlockWithHook -> "MovingBlockWithHook.tscn"
                                                                  | CompanionCube -> "CompanionCube.tscn"
                                                                  | CubeTrigger -> "CubeTrigger.tscn"
@@ -63,10 +64,11 @@ module WorldGeneratorFS =
             
             if element.etype = DestructibleBlock then
                 for i in getHeightAt element.position.X element.position.Z .. element.position.Y do
-                    let block = scene.Instantiate() :?> Node3D
-                    block.Position <- Vector3(element.position.X, i, element.position.Z)
-                    getRoot().GetNode<Node3D>("WorldGenerator").AddChild block
-                    TerrainManipulatorFS.destructibleBlocks.Add block
+                    if elements[level] |> Array.exists (fun e -> e.position = Vector3(element.position.X, i, element.position.Z) && e.etype <> DestructibleBlock) |> not then
+                        let block = scene.Instantiate() :?> Node3D
+                        block.Position <- Vector3(element.position.X, i, element.position.Z)
+                        getRoot().GetNode<Node3D>("WorldGenerator").AddChild block
+                        TerrainManipulatorFS.destructibleBlocks.Add block
             else
                 let emt = scene.Instantiate() :?> Node3D
                 emt.Position <- element.position

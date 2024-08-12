@@ -1,31 +1,21 @@
-[gd_scene load_steps=35 format=3 uid="uid://7prif6gxmd8s"]
+[gd_scene load_steps=25 format=3 uid="uid://7prif6gxmd8s"]
 
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_wb4cx"]
-[ext_resource type="Script" path="res://Scripts/BackButton.cs" id="2_k1pnh"]
+[ext_resource type="Script" path="res://Scripts/BackButtonSelect.cs" id="2_821p2"]
 [ext_resource type="Texture2D" uid="uid://dvasj3lh2tey7" path="res://Assets/Level Images/Level13Unfilled.png" id="3_2sgea"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level1.cs" id="4_gu5bo"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level13.cs" id="4_xg0rr"]
 [ext_resource type="Texture2D" uid="uid://bm1ra37bfhfnd" path="res://Assets/Level Images/Level14Unfilled.png" id="5_qii8f"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level2.cs" id="6_3o6io"]
+[ext_resource type="Script" path="res://Scripts/Level Changes/Level14.cs" id="6_8850b"]
 [ext_resource type="Texture2D" uid="uid://bebjlvrg0c8us" path="res://Assets/Level Images/Level15Unfilled.png" id="7_8ij0d"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level3.cs" id="8_o53am"]
 [ext_resource type="Texture2D" uid="uid://0p8if35341ah" path="res://Assets/Level Images/Level16Unfilled.png" id="9_pcukj"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level4.cs" id="10_8fqh5"]
 [ext_resource type="Texture2D" uid="uid://scik1qsipmoe" path="res://Assets/Level Images/Level17Unfilled.png" id="11_vlbxn"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level5.cs" id="12_u2wlm"]
 [ext_resource type="Texture2D" uid="uid://b3kr44hhsi7qn" path="res://Assets/Level Images/Level18Unfilled.png" id="13_8l5mq"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level6.cs" id="14_7h7s3"]
 [ext_resource type="Texture2D" uid="uid://cssgqfg4lgbls" path="res://Assets/Level Images/Level19Unfilled.png" id="15_5l7nq"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level7.cs" id="16_6tjf1"]
 [ext_resource type="Texture2D" uid="uid://dk20dhjy51d1b" path="res://Assets/Level Images/Level20Unfilled.png" id="17_rqg5w"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level8.cs" id="18_85prf"]
 [ext_resource type="Texture2D" uid="uid://cdt6dgu7pnndo" path="res://Assets/Level Images/Level21Unfilled.png" id="19_rbwh1"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level9.cs" id="20_q1vc6"]
 [ext_resource type="Texture2D" uid="uid://cwcww321qwxqj" path="res://Assets/Level Images/Level22Unfilled.png" id="21_site3"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level10.cs" id="22_ef8yc"]
 [ext_resource type="Texture2D" uid="uid://c8du7vu0maeep" path="res://Assets/Level Images/Level23Unfilled.png" id="23_qt7rx"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level11.cs" id="24_pda2g"]
 [ext_resource type="Texture2D" uid="uid://cnpu8j6dmewxy" path="res://Assets/Level Images/Level24Unfilled.png" id="25_8m72f"]
-[ext_resource type="Script" path="res://Scripts/Level Changes/Level12.cs" id="26_e5mxy"]
 [ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="27_lttmh"]
 [ext_resource type="Script" path="res://Scripts/Confetti.cs" id="28_ibn74"]
 [ext_resource type="Texture2D" uid="uid://b0jg5434ei0mk" path="res://Assets/ConfettiBlue.png" id="29_w8cka"]
@@ -53,7 +43,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButtonSelect" type="Button" parent="."]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 16.0
@@ -63,7 +53,7 @@ theme_override_font_sizes/font_size = 40
 icon = ExtResource("1_wb4cx")
 flat = true
 expand_icon = true
-script = ExtResource("2_k1pnh")
+script = ExtResource("2_821p2")
 
 [node name="Level13" type="Button" parent="."]
 layout_mode = 0
@@ -77,7 +67,7 @@ text = "
 icon = ExtResource("3_2sgea")
 flat = true
 expand_icon = true
-script = ExtResource("4_gu5bo")
+script = ExtResource("4_xg0rr")
 
 [node name="Level14" type="Button" parent="."]
 layout_mode = 0
@@ -89,7 +79,7 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("5_qii8f")
 flat = true
 expand_icon = true
-script = ExtResource("6_3o6io")
+script = ExtResource("6_8850b")
 
 [node name="Level15" type="Button" parent="."]
 layout_mode = 0
@@ -102,7 +92,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("7_8ij0d")
 flat = true
 expand_icon = true
-script = ExtResource("8_o53am")
 
 [node name="Level16" type="Button" parent="."]
 layout_mode = 0
@@ -115,7 +104,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("9_pcukj")
 flat = true
 expand_icon = true
-script = ExtResource("10_8fqh5")
 
 [node name="Level17" type="Button" parent="."]
 layout_mode = 0
@@ -129,7 +117,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_4qyuk")
 icon = ExtResource("11_vlbxn")
 flat = true
 expand_icon = true
-script = ExtResource("12_u2wlm")
 
 [node name="Level18" type="Button" parent="."]
 layout_mode = 0
@@ -142,7 +129,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("13_8l5mq")
 flat = true
 expand_icon = true
-script = ExtResource("14_7h7s3")
 
 [node name="Level19" type="Button" parent="."]
 layout_mode = 0
@@ -155,7 +141,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("15_5l7nq")
 flat = true
 expand_icon = true
-script = ExtResource("16_6tjf1")
 
 [node name="Level20" type="Button" parent="."]
 layout_mode = 0
@@ -168,7 +153,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("17_rqg5w")
 flat = true
 expand_icon = true
-script = ExtResource("18_85prf")
 
 [node name="Level21" type="Button" parent="."]
 layout_mode = 0
@@ -181,7 +165,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("19_rbwh1")
 flat = true
 expand_icon = true
-script = ExtResource("20_q1vc6")
 
 [node name="Level22" type="Button" parent="."]
 layout_mode = 0
@@ -194,7 +177,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("21_site3")
 flat = true
 expand_icon = true
-script = ExtResource("22_ef8yc")
 
 [node name="Level23" type="Button" parent="."]
 layout_mode = 0
@@ -207,7 +189,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("23_qt7rx")
 flat = true
 expand_icon = true
-script = ExtResource("24_pda2g")
 
 [node name="Level24" type="Button" parent="."]
 layout_mode = 0
@@ -220,7 +201,6 @@ theme_override_font_sizes/font_size = 50
 icon = ExtResource("25_8m72f")
 flat = true
 expand_icon = true
-script = ExtResource("26_e5mxy")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

@@ -10,7 +10,7 @@ module SceneChangeButtonFS =
         let mutable button = Unchecked.defaultof<Button>
        
         let startScene () =
-            if name = "World1" || name = "BackButton" then
+            if name = "World1" || name = "BackButton" || name = "BackButtonSelect" then
                 WorldFS.currentWorld <- 1
                 RenderingServer.SetDefaultClearColor(Color(0f, 1f, 1f))
             elif name = "World2" then
@@ -23,11 +23,13 @@ module SceneChangeButtonFS =
             button <- if name <> "BackButtonLevel" then getScreenRoot().GetNode<Button>(name) else getRoot().GetNode<Control>("Control").GetNode<Button>(name)
             button.add_Pressed startScene
                 
-            try                                                  // This will need to be changed
-                if name[..4] = "Level" && WorldFS.completedLevelsW1[(name[5..6].ToString() |> int) - 1] = true then
+            // Needs to be fixed!
+            let completedLevels = if WorldFS.level < 12 then WorldFS.completedLevelsW1 else WorldFS.completedLevelsW2
+            try                                                  
+                if name[..4] = "Level" && completedLevels[(name[5..6].ToString() |> int) - 1] = true then
                     button.Icon <- ResourceLoader.Load($"res://Assets/Level Images/{name}Filled.png") :?> Texture2D
             with | _ -> 
-                if name[..4] = "Level" && WorldFS.completedLevelsW1[(name[5].ToString() |> int) - 1] = true then
+                if name[..4] = "Level" && completedLevels[(name[5].ToString() |> int) - 1] = true then
                     button.Icon <- ResourceLoader.Load($"res://Assets/Level Images/{name}Filled.png") :?> Texture2D
             
             // Reset mechanics

@@ -14,17 +14,18 @@ module GoalFS =
     let mutable endPos = Vector3(0f, 0f, 0f)
     let mutable midpoint = Vector3(0f, 0f, 0f)
     
-    let onAreaEntered () =
-        ended <- true
-        originalPos <- goal.GlobalPosition
-        endPos <-
-            let cameraPos = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("EndPos")
-            cameraPos.GlobalPosition
-        midpoint <- (originalPos + endPos) / 2f
+    let onAreaEntered (other: Node3D) =
+        if other.GetParent().Name.ToString() = "Player" then
+            ended <- true
+            originalPos <- goal.GlobalPosition
+            endPos <-
+                let cameraPos = getRoot().GetNode<Node3D>("Camera").GetNode<Node3D>("EndPos")
+                cameraPos.GlobalPosition
+            midpoint <- (originalPos + endPos) / 2f
     
     let ready () =
         goal <- getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("Goal")
-        goal.GetNode<Area3D>("Area3D").add_AreaEntered (fun _ -> onAreaEntered())
+        goal.GetNode<Area3D>("Area3D").add_AreaEntered onAreaEntered
         position <- goal.Position
         t <- 0f
         ended <- false
@@ -51,6 +52,6 @@ module GoalFS =
                  goal.RotateY(degToRad 45f * delta)
              else
                 if WorldFS.level < 12 then Array.set WorldFS.completedLevelsW1 WorldFS.level true
-                elif WorldFS.level < 24 then Array.set WorldFS.completedLevelsW2 (WorldFS.level - 11) true
+                elif WorldFS.level < 24 then Array.set WorldFS.completedLevelsW2 (WorldFS.level - 12) true
                 
                 getRoot().GetTree().ChangeSceneToFile($"res://Selection Screens/LevelSelect{WorldFS.currentWorld}.tscn") |> ignore

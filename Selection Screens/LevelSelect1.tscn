@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://dt6h27ritdukq"]
 
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_auf6n"]
-[ext_resource type="Script" path="res://Scripts/BackButton.cs" id="2_7ocej"]
+[ext_resource type="Script" path="res://Scripts/BackButtonSelect.cs" id="2_0febg"]
 [ext_resource type="Texture2D" uid="uid://ditbmgtlfku5u" path="res://Assets/Level Images/Level1Unfilled.png" id="3_1p415"]
 [ext_resource type="Script" path="res://Scripts/Level Changes/Level1.cs" id="4_b1eer"]
 [ext_resource type="Texture2D" uid="uid://08muhtngkkb8" path="res://Assets/Level Images/Level2Unfilled.png" id="5_qef2u"]
@@ -53,7 +53,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButtonSelect" type="Button" parent="."]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 16.0
@@ -63,7 +63,7 @@ theme_override_font_sizes/font_size = 40
 icon = ExtResource("1_auf6n")
 flat = true
 expand_icon = true
-script = ExtResource("2_7ocej")
+script = ExtResource("2_0febg")
 
 [node name="Level1" type="Button" parent="."]
 layout_mode = 0

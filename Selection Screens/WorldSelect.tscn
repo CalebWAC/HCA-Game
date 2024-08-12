@@ -62,7 +62,6 @@ text = "World 1"
 script = ExtResource("4_16ywr")
 
 [node name="World2" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 496.0
 offset_top = 144.0
