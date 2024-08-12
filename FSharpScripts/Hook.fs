@@ -18,8 +18,7 @@ module HookFS =
                            | 3 | 8 -> true
                            | 0 -> roundVec player.Position = Vector3(-1f, 6f, -1f)
                            | 2 ->
-                               let pos = (self.Position.X, self.Position.Y, self.Position.Z)
-                               match pos with
+                               match self.Position.X, self.Position.Y, self.Position.Z with
                                | 2.5f, 5f, -4f -> seq { for x in 3f..6f do for z in -6f..3f do for y in 1f..6f -> Vector3(x, y, z) }  |> Seq.contains player.Position
                                | 5.5f, 5f, 0f -> seq { for x in 2f..5f do for z in -6f..5f do for y in 5f..6f -> Vector3(x, y, z) }  |> Seq.contains player.Position
                                | 3f, 5f, 4.5f -> seq { for x in -1f..6f do for z in 1f..4f do for y in 5f..6f -> Vector3(x, y, z) }  |> Seq.contains player.Position
@@ -28,6 +27,13 @@ module HookFS =
                                | -4.5f, 5f, 3f -> seq { for x in -4f.. -2f do for z in -1f..5f do for y in 1f..6f -> Vector3(x, y, z) }  |> Seq.contains player.Position
                                | -5f, 6f, -0.5f -> seq { for x in -5f.. -4f do for z in 0f..4f do for y in 1f..6f -> Vector3(x, y, z) }  |> Seq.contains player.Position
                                | -3.5f, 5f, -5f -> seq { for x in -2f.. -1f do for z in -5f.. -4f do for y in 1f..6f -> Vector3(x, y, z) }  |> Seq.contains (roundVec player.Position)
+                               | _ -> true
+                           | 14 ->
+                               let pos = (self.Position.X, self.Position.Y, self.Position.Z)
+                               match pos with
+                               | -3f, 5f, 3.5f -> seq { for x in -3f.. -1f do for y in 1f..4f -> Vector3(x, y, -3f) } |> Seq.contains player.Position
+                               | 2.5f, 2f, 3f -> seq { for x in -3f.. -2f do for z in 2f..3f do for y in 1f..3f -> Vector3(x, y, z) } |> Seq.contains (roundVec player.Position)
+                               | 6f, 5f, 4.5f -> seq { for x in 2f..6f do for z in 0f..6f do for y in 1f..3f -> Vector3(x, y, z) } |> Seq.contains player.Position
                                | _ -> true
                            | _ -> false
                         then

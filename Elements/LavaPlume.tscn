@@ -21,7 +21,7 @@ height = 0.1
 size = Vector3(1, 0.111099, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iyoel"]
-size = Vector3(1, 0.0807495, 1)
+size = Vector3(0.884827, 0.184418, 0.84137)
 
 [node name="LavaPlume" type="Node3D"]
 script = ExtResource("1_08moi")
@@ -51,5 +51,5 @@ sides = 30
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/BodyArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0483704, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00888062, 0.00346374, -0.00454712)
 shape = SubResource("BoxShape3D_iyoel")

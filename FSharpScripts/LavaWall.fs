@@ -31,7 +31,7 @@ module LavaWallFS =
                 
         member this.ready thing =
             self <- thing
-            self.GetNode<Area3D>("Area3D").add_AreaEntered (fun other -> onAreaEntered other)
+            self.GetNode<Area3D>("Area3D").add_AreaEntered onAreaEntered
             startingPoint <- getRoot().GetNode<Node3D>("Player").Position
             if self.Visible = false then invisible <- true
         

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5lcntd77ipmt"]
+[gd_scene load_steps=8 format=3 uid="uid://b5lcntd77ipmt"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_po7js"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_6tyvy"]
+[ext_resource type="PackedScene" uid="uid://daumxjq7jnjp8" path="res://addons/shaky_camera_3d/shaky_camera_3d.tscn" id="3_mncvl"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_tiw3r"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_xct3n"]
 [ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_fjp4g"]
@@ -26,6 +27,9 @@ script = ExtResource("2_6tyvy")
 
 [node name="EndPos" type="Node3D" parent="Camera"]
 transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 8.5, 12.25, -8.5)
+
+[node name="ShakyCamera3D" parent="Camera" instance=ExtResource("3_mncvl")]
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 9, 12.5, -9)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
