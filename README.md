@@ -1,4 +1,4 @@
-Expedition (tentatively named) is a puzzle platformer game where you have to traverse a 13x13 world using power-ups and in-game elements to complete each level.
+Expedition is a puzzle platformer game where you have to traverse a 13x13 world using power-ups and in-game elements to complete each level.
 
 ## Playing the Game
 The game is not complete yet, but it is still fully playable. There may be a few bugs that could show up. If one occurs, leaving the level and reopening it can sometimes resolve unexpected bugs.
@@ -12,12 +12,22 @@ The controls for the game are presented in the game as needed. WASD controls the
 - Grappling hook: Click on any orange diamond in the level to fly towards it when the grappling hook is enabled, given that it is within range. 
 - Terrain manipulator: Click on any terrain block and use the arrow keys to increase or decrease its height. Click anywhere else to enable player control again.
 - Invisible Glasses: This works automatically once you get it. They allow you to see things that were previously invisible within a given radius of the player.
-
-
+- Bomb: Press the space bar to throw a bomb that destroys any tan destructible block that it encounters.
 
 ## Change History
+Version 0.4 of the game added a second world with four new levels and a new power-up, with support for future additional worlds
+
 Version 0.3 of the game introduced four new levels, components such as the companion cube and moving water, and animations
 
 Version 0.2 of the game has 6 additional levels, one new power-up, and a plethora of bug fixes and improvements.
+
+# Images
+![Image 1](Assets/Readme%20Images/Expedition1.PNG)
+![Image 2](Assets/Readme%20Images/Expedition2.PNG)
+![Image 3](Assets/Readme%20Images/Expedition3.PNG)
+![Image 4](Assets/Readme%20Images/Expedition4.PNG)
+![Image 5](Assets/Readme%20Images/Expedition5.PNG)
+![Image 6](Assets/Readme%20Images/Expedition6.PNG)
+
 
 This project was built using Godot 4 and F# as part of a project for the Hack Club Arcade.

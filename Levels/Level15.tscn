@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5lcntd77ipmt"]
+[gd_scene load_steps=9 format=3 uid="uid://b5lcntd77ipmt"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_po7js"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_6tyvy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_xct3n"]
 [ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="5_fjp4g"]
 [ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="6_i207g"]
+[ext_resource type="PackedScene" uid="uid://kfplyxmr3e68" path="res://Tutorial Screens/TutorialLavaPlume.tscn" id="8_l8w1u"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -107,3 +108,6 @@ script = ExtResource("5_fjp4g")
 
 [node name="Player" parent="." instance=ExtResource("6_i207g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -5)
+
+[node name="TutorialLavaPlume" parent="." instance=ExtResource("8_l8w1u")]
+visible = false

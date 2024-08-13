@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://kfplyxmr3e68"]
+
+[ext_resource type="Script" path="res://Scripts/UnpauseButton.cs" id="1_1g6ci"]
+[ext_resource type="Texture2D" uid="uid://cj11m51fk2bcg" path="res://Assets/Tutorial Images/Tutorial11.1.PNG" id="2_c2m4i"]
+[ext_resource type="Texture2D" uid="uid://bpgn4vph78qjv" path="res://Assets/Tutorial Images/Tutorial11.2.PNG" id="3_21k7l"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="4_tn8b8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv65g"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v47ai"]
+texture = ExtResource("2_c2m4i")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hw50y"]
+texture = ExtResource("3_21k7l")
+
+[node name="TutorialLavaPlume" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 75.0
+offset_right = 975.0
+offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rv65g")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 12.0
+offset_right = 776.0
+offset_bottom = 54.0
+script = ExtResource("1_1g6ci")
+
+[node name="Image1" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 380.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_v47ai")
+
+[node name="Image2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 80.0
+offset_right = 720.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hw50y")
+
+[node name="Title" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = -1.0
+offset_right = 580.0
+offset_bottom = 79.0
+theme_override_fonts/normal_font = ExtResource("4_tn8b8")
+theme_override_font_sizes/normal_font_size = 60
+text = "Lava Plume"
+
+[node name="Paragraph" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 355.0
+offset_right = 722.0
+offset_bottom = 623.0
+theme_override_fonts/normal_font = ExtResource("4_tn8b8")
+theme_override_font_sizes/normal_font_size = 20
+text = "    Sometimes the lava current gets so strong that large plumes of lava rise up. These lava plumes periodically raise and lower, so you will need to time your movements correctly to avoid them. Lava plumes can raise and lower companion cubes when one is placed on it."

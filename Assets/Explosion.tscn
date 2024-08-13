@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfbc5ttr3q217"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ym3ly"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+radial_velocity_min = 20.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jnbrc"]
+radius = 0.05
+height = 0.1
+
+[node name="Explosion" type="GPUParticles3D"]
+emitting = false
+amount = 50
+lifetime = 0.2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_ym3ly")
+draw_pass_1 = SubResource("SphereMesh_jnbrc")

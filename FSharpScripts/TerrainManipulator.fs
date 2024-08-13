@@ -36,6 +36,11 @@ module TerrainManipulatorFS =
         
         member this.onCollided (_: Node3D) =
             if destructibleBlocks.Contains self then
+                let scene = GD.Load<PackedScene>("res://Assets/Explosion.tscn")
+                let particles = scene.Instantiate() :?> GpuParticles3D
+                particles.Position <- self.Position
+                getRoot().AddChild particles
+                particles.Emitting <- true
                 destructibleBlocks.Remove self |> ignore
                 self.QueueFree()
         

@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cxp1auvgv3xbc"]
+[gd_scene load_steps=20 format=3 uid="uid://cxp1auvgv3xbc"]
 
 [ext_resource type="Texture2D" uid="uid://bhkr180l82o6h" path="res://Assets/Background2.png" id="1_4a55w"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_70re1"]
+[ext_resource type="Texture2D" uid="uid://c6tpn1ly07p0v" path="res://Assets/Background1.png" id="1_wkyxy"]
 [ext_resource type="Script" path="res://Scripts/BackButton.cs" id="2_ttjqp"]
 [ext_resource type="Script" path="res://Scripts/BackgroundPanel.cs" id="2_ynung"]
 [ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="3_peb75"]
@@ -16,6 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://d1q5rwj7t5t2v" path="res://Assets/World3.png" id="9_8p0qv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jjbhp"]
+resource_name = "First"
+texture = ExtResource("1_wkyxy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0js5"]
+resource_name = "Second"
 texture = ExtResource("1_4a55w")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ar3vc"]
@@ -46,12 +52,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel1" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_jjbhp")
 script = ExtResource("2_ynung")
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_t0js5")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
@@ -79,6 +92,7 @@ expand_icon = true
 script = ExtResource("4_16ywr")
 
 [node name="World2" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 445.0
 offset_top = 34.0

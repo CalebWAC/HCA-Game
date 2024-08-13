@@ -9,7 +9,7 @@ public partial class BackgroundPanel : Panel
 	{
 		if (WorldFS.completedLevelsW1.All(level => level))
 		{
-			AddThemeStyleboxOverride("Background2", new StyleBox{ResourcePath = "res://Assets/Background2.png"} );
+			GlobalFunctions.getScreenRoot().GetNode<Control>("Panel2").Visible = true;
 		}
 	}
 

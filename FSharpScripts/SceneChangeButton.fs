@@ -38,4 +38,5 @@ module SceneChangeButtonFS =
                 WorldGeneratorFS.companionCubes.Clear()
                 WorldGeneratorFS.cubeTriggers.Clear()
                 WorldGeneratorFS.bridges.Clear()
+                WorldGeneratorFS.goalFragments.Clear()
                 TerrainManipulatorFS.destructibleBlocks.Clear()

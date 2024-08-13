@@ -112,7 +112,10 @@ module CompanionCubeFS =
                             else
                                 originalPos <- self.Position
                                 endPos <- nextBlock + Vector3.Up
-                                midpoint <- Vector3(self.Position.X, self.Position.Y + 0.3f, self.Position.Z)
+                                midpoint <-
+                                    if elements[level] |> Array.exists (fun e -> e.position.X = round next.X && e.position.Z = round next.Z && e.etype = LavaPlume) then
+                                        Vector3(self.Position.X, self.Position.Y + 0.3f, self.Position.Z) + getRoot().GetNode<Node3D>("Player").Transform.Basis.Z
+                                    else Vector3(self.Position.X, self.Position.Y + 0.3f, self.Position.Z)
                     | _ -> ()
             | _ -> ()
             

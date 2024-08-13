@@ -39,6 +39,9 @@ module CameraControlFS =
             elif WorldFS.level = 9 then
                 getRoot().GetTree().Paused <- true
                 getRoot().GetNode<Control>("TutorialCompanionCube").Visible <- true
+            elif WorldFS.level = 14 then
+                getRoot().GetTree().Paused <- true
+                getRoot().GetNode<Control>("TutorialLavaPlume").Visible <- true
             
             t <- 100f
 

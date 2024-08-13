@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://cp5k8khf1nofm"]
+
+[ext_resource type="Script" path="res://Scripts/UnpauseButton.cs" id="1_ts7gn"]
+[ext_resource type="Texture2D" uid="uid://hemghcox67q0" path="res://Assets/Tutorial Images/Tutorial10.1.PNG" id="2_41hd5"]
+[ext_resource type="Texture2D" uid="uid://4clv0fiosufx" path="res://Assets/Tutorial Images/Tutorial10.2.PNG" id="3_ct878"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="4_86nra"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv65g"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qo5k4"]
+texture = ExtResource("2_41hd5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mgncj"]
+texture = ExtResource("3_ct878")
+
+[node name="TutorialBomb" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 75.0
+offset_right = 975.0
+offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rv65g")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 12.0
+offset_right = 776.0
+offset_bottom = 54.0
+script = ExtResource("1_ts7gn")
+
+[node name="Image1" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 380.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qo5k4")
+
+[node name="Image2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 80.0
+offset_right = 720.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mgncj")
+
+[node name="Title" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 315.0
+offset_top = -1.0
+offset_right = 493.0
+offset_bottom = 79.0
+theme_override_fonts/normal_font = ExtResource("4_86nra")
+theme_override_font_sizes/normal_font_size = 60
+text = "Bomb"
+
+[node name="Paragraph" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 365.0
+offset_right = 719.0
+offset_bottom = 633.0
+theme_override_fonts/normal_font = ExtResource("4_86nra")
+theme_override_font_sizes/normal_font_size = 20
+text = "    The bomb destroys any destructible block that enters its path. Once the power-up has been obtained, use the space bar to throw a bomb. It will automatically blow up any tan destructible block that it encounters."
