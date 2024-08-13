@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://x2ilmb81afpb"]
+[gd_scene load_steps=9 format=3 uid="uid://x2ilmb81afpb"]
 
 [ext_resource type="Material" uid="uid://xc5cyq4l5njn" path="res://Materials/LavaBlock.tres" id="1_5hbus"]
 [ext_resource type="Script" path="res://Scripts/Elements/LavaPlume.cs" id="1_08moi"]
+[ext_resource type="PackedScene" uid="uid://bu6rdlcu08f83" path="res://Models/Lava Plume.glb" id="3_joexg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0u7m"]
 albedo_color = Color(1, 0.317647, 0, 1)
@@ -53,3 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/BodyArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00888062, 0.00346374, -0.00454712)
 shape = SubResource("BoxShape3D_iyoel")
+
+[node name="Tinkercad GLTF Scene" parent="Model" instance=ExtResource("3_joexg")]
+transform = Transform3D(0.035, 0, 0, 0, 0.01, 0, 0, 0, 0.035, -0.449624, -0.806244, -0.440086)
+visible = false

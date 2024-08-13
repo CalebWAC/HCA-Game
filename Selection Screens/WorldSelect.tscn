@@ -1,14 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxp1auvgv3xbc"]
+[gd_scene load_steps=18 format=3 uid="uid://cxp1auvgv3xbc"]
 
+[ext_resource type="Texture2D" uid="uid://bhkr180l82o6h" path="res://Assets/Background2.png" id="1_4a55w"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_70re1"]
 [ext_resource type="Script" path="res://Scripts/BackButton.cs" id="2_ttjqp"]
+[ext_resource type="Script" path="res://Scripts/BackgroundPanel.cs" id="2_ynung"]
 [ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="3_peb75"]
 [ext_resource type="Script" path="res://Scripts/World Changes/World1.cs" id="4_16ywr"]
 [ext_resource type="Texture2D" uid="uid://ct4ginad18fje" path="res://Assets/ConfettiGreen.png" id="5_3imqc"]
+[ext_resource type="Texture2D" uid="uid://dmlxdg0iljctq" path="res://Assets/World1.png" id="5_4oqoy"]
 [ext_resource type="Script" path="res://Scripts/World Changes/World2.cs" id="5_y8s77"]
 [ext_resource type="Texture2D" uid="uid://b0jg5434ei0mk" path="res://Assets/ConfettiBlue.png" id="6_2h5vv"]
 [ext_resource type="Script" path="res://Scripts/Confetti.cs" id="6_fntct"]
+[ext_resource type="Texture2D" uid="uid://ci5lmlhtae885" path="res://Assets/World2.png" id="7_5jwex"]
 [ext_resource type="Texture2D" uid="uid://5jgns0io4xa5" path="res://Assets/ConfettiOrange.png" id="7_se131"]
+[ext_resource type="Texture2D" uid="uid://d1q5rwj7t5t2v" path="res://Assets/World3.png" id="9_8p0qv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jjbhp"]
+texture = ExtResource("1_4a55w")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ar3vc"]
 particle_flag_disable_z = true
@@ -38,6 +46,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jjbhp")
+script = ExtResource("2_ynung")
+
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 12.0
@@ -52,36 +67,42 @@ script = ExtResource("2_ttjqp")
 
 [node name="World1" type="Button" parent="."]
 layout_mode = 0
-offset_left = 132.0
-offset_top = 262.0
-offset_right = 356.0
-offset_bottom = 347.0
+offset_left = 75.0
+offset_top = 268.0
+offset_right = 324.0
+offset_bottom = 405.0
 theme_override_fonts/font = ExtResource("3_peb75")
 theme_override_font_sizes/font_size = 60
-text = "World 1"
+icon = ExtResource("5_4oqoy")
+flat = true
+expand_icon = true
 script = ExtResource("4_16ywr")
 
 [node name="World2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 496.0
-offset_top = 144.0
-offset_right = 720.0
-offset_bottom = 229.0
+offset_left = 445.0
+offset_top = 34.0
+offset_right = 693.0
+offset_bottom = 232.0
 theme_override_fonts/font = ExtResource("3_peb75")
 theme_override_font_sizes/font_size = 60
-text = "World 2"
+icon = ExtResource("7_5jwex")
+flat = true
+expand_icon = true
 script = ExtResource("5_y8s77")
 
 [node name="World3" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 370.0
-offset_top = 463.0
-offset_right = 594.0
-offset_bottom = 548.0
+offset_left = 456.0
+offset_top = 461.0
+offset_right = 749.0
+offset_bottom = 576.0
 theme_override_fonts/font = ExtResource("3_peb75")
 theme_override_font_sizes/font_size = 60
-text = "World 3"
+icon = ExtResource("9_8p0qv")
+flat = true
+expand_icon = true
 
 [node name="World4" type="Button" parent="."]
 visible = false
