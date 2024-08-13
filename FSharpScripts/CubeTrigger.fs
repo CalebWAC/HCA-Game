@@ -2,6 +2,7 @@ namespace FSharpScripts
 
 open Godot
 open WorldFS
+open WorldGeneratorFS
 open GlobalFunctions
 
 module CubeTriggerFS =
@@ -12,7 +13,7 @@ module CubeTriggerFS =
         let onActivated (other : Area3D) =
             if other.GetParent().IsInGroup(new StringName "cubes") then
                 match level with
-                | 9 -> WorldGeneratorFS.bridges.ForEach(fun b -> b.Visible <- true)
+                | 9 -> bridges.ForEach(fun b -> b.Visible <- true)
                 | 10 ->
                     let scene = GD.Load<PackedScene>("res://Power Ups/TerrainManipulator.tscn")
                     let power = scene.Instantiate() :?> Node3D
@@ -21,18 +22,36 @@ module CubeTriggerFS =
                     falling <- true
                 | 11 ->
                     match self.Position.X, self.Position.Y, self.Position.Z with
-                    | -6f, 1f, -6f -> WorldGeneratorFS.goalFragments.Find(fun g -> g.Position = Vector3(-6f, 2f, -6f)).Visible <- true
-                    | 0f, 5f, 6f -> WorldGeneratorFS.goalFragments.Find(fun g -> g.Position = Vector3(0f, 6f, 6f)).Visible <- true
-                    | -3f, 1f, 0f -> WorldGeneratorFS.goalFragments.Find(fun g -> g.Position = Vector3(-3f, 2f, 0f)).Visible <- true
-                    | 5f, 1f, 4f -> WorldGeneratorFS.goalFragments.Find(fun g -> g.Position = Vector3(5f, 2f, 4f)).Visible <- true
-                    | -6f, 1f, 6f -> WorldGeneratorFS.goalFragments.Find(fun g -> g.Position = Vector3(-6f, 2f, 6f)).Visible <- true
+                    | -6f, 1f, -6f -> goalFragments.Find(fun g -> g.Position = Vector3(-6f, 2f, -6f)).Visible <- true
+                    | 0f, 5f, 6f -> goalFragments.Find(fun g -> g.Position = Vector3(0f, 6f, 6f)).Visible <- true
+                    | -3f, 1f, 0f -> goalFragments.Find(fun g -> g.Position = Vector3(-3f, 2f, 0f)).Visible <- true
+                    | 5f, 1f, 4f -> goalFragments.Find(fun g -> g.Position = Vector3(5f, 2f, 4f)).Visible <- true
+                    | -6f, 1f, 6f -> goalFragments.Find(fun g -> g.Position = Vector3(-6f, 2f, 6f)).Visible <- true
                     | _, _, _ -> ()
+                | 15 ->
+                    let plumes = [| LavaPlumeFS.lavaPlumes.Find(fun l -> (l.self.GetParent() :?> Node3D).Position = Vector3(3f, 0.5f, 2f))
+                                    LavaPlumeFS.lavaPlumes.Find(fun l -> (l.self.GetParent() :?> Node3D).Position = Vector3(3f, 0.5f, 3f)) |]
+                    for plume in plumes do
+                        GD.Print "activating plumes"
+                        plume.active <- 0f
+                        plume.self.Scale <- Vector3(1f, 20f, 1f)
+                        plume.self.Visible <- true
+                    for cube in companionCubes do 
+                        GD.Print "visiblating cubes"
+                        cube.Visible <- true
+                    
+                    let blockScene = GD.Load<PackedScene>("res://Elements/VolcanicBlock.tscn")
+                    let block = blockScene.Instantiate() :?> Node3D
+                    block.Position <- Vector3(-4f, 1f, 0f)
+                    worlds[level][31] <- WorldFS.block -4f 1f 0f
+                    block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
+                    getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
         
         let onDeactivated (other : Area3D) =
             match other.GetParent().Name.ToString() with
             | "CompanionCube" ->
                 match level with
-                | 9 -> if self.Position = Vector3(-2f, 1f, 4f) then WorldGeneratorFS.bridges.ForEach(fun b -> b.Visible <- false)
+                | 9 -> if self.Position = Vector3(-2f, 1f, 4f) then bridges.ForEach(fun b -> b.Visible <- false)
                 | _ -> ()
             | _ -> ()
         

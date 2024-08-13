@@ -4,6 +4,8 @@ open Godot
 open GlobalFunctions
 
 module LavaPlumeFS =
+    let lavaPlumes = System.Collections.Generic.List()
+    
     type Direction =
         | Up
         | Down
@@ -12,7 +14,6 @@ module LavaPlumeFS =
     type LavaPlume() =
         let mutable tChange = 0f
         let mutable direction = Stagnant
-        let mutable self = Unchecked.defaultof<Node3D>
         let mutable startingPoint = Unchecked.defaultof<Vector3>
 
         let onAreaEntered (other: Area3D) =
@@ -34,23 +35,28 @@ module LavaPlumeFS =
                 timer.Start()
                 timer.add_Timeout (fun _ -> shaky.Current <- false; CameraControlFS.camera.GetNode<Camera3D>("Camera3D").Current <- true)
                 
+                
+        member val self = Unchecked.defaultof<Node3D> with get, set
+        member val active = 1f with get, set
+                
         member this.ready (thing : Node3D) =
-            self <- thing.GetNode<Node3D>("Model")
-            self.GetNode<Area3D>("BodyArea3D").add_AreaEntered onAreaEntered
+            this.self <- thing.GetNode<Node3D>("Model")
+            this.self.GetNode<Area3D>("BodyArea3D").add_AreaEntered onAreaEntered
             startingPoint <- getRoot().GetNode<Node3D>("Player").Position
+            lavaPlumes.Add this
             
         member this.process delta =
-            tChange <- tChange + delta
+            tChange <- tChange + delta * this.active
             
             if tChange > 7f then
                 tChange <- 0f
-                if self.Scale.Y > 1f then direction <- Down else direction <- Up
+                if this.self.Scale.Y > 1f then direction <- Down else direction <- Up
            
-            if direction = Up && self.Scale.Y < 20f then
-                self.Scale <- Vector3(1f, self.Scale.Y + delta * 5f, 1f)
-                self.GetParent().GetNode<Node3D>("Particles").Translate(Vector3(0f, delta, 0f))
-            elif direction = Down && self.Scale.Y > 1f then
-                self.Scale <- Vector3(1f, self.Scale.Y - delta * 5f, 1f)
-                self.GetParent().GetNode<Node3D>("Particles").Translate(Vector3(0f, -delta, 0f))
+            if direction = Up && this.self.Scale.Y < 20f then
+                this.self.Scale <- Vector3(1f, this.self.Scale.Y + delta * 5f, 1f)
+                this.self.GetParent().GetNode<Node3D>("Particles").Translate(Vector3(0f, delta, 0f))
+            elif direction = Down && this.self.Scale.Y > 1f then
+                this.self.Scale <- Vector3(1f, this.self.Scale.Y - delta * 5f, 1f)
+                this.self.GetParent().GetNode<Node3D>("Particles").Translate(Vector3(0f, -delta, 0f))
                 
-            if self.Scale.Y <= 1f || self.Scale.Y >= 20f then direction <- Stagnant
+            if this.self.Scale.Y <= 1f || this.self.Scale.Y >= 20f then direction <- Stagnant

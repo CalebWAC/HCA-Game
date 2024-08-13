@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhhgcdtkrqnek"]
+
+[ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_mdwkv"]
+[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_flc0l"]
+[ext_resource type="PackedScene" uid="uid://daumxjq7jnjp8" path="res://addons/shaky_camera_3d/shaky_camera_3d.tscn" id="3_oe16m"]
+[ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="4_1ge2v"]
+[ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="5_g3xvt"]
+[ext_resource type="Script" path="res://Scripts/LevelBackButton.cs" id="6_jhjpf"]
+[ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="7_qmtyq"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldGenerator" type="Node3D" parent="."]
+script = ExtResource("1_mdwkv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.321754, 0.946823, 0, -0.946823, -0.321754, 0, 4.62078, 0)
+light_energy = 0.75
+shadow_enabled = true
+shadow_normal_bias = 10.0
+
+[node name="Camera" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera"]
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 9, 12.5, -9)
+script = ExtResource("2_flc0l")
+
+[node name="EndPos" type="Node3D" parent="Camera"]
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 8.5, 12.25, -8.5)
+
+[node name="ShakyCamera3D" parent="Camera" instance=ExtResource("3_oe16m")]
+transform = Transform3D(-0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, 0.5, -0.5, 9, 12.5, -9)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+mouse_filter = 1
+script = ExtResource("4_1ge2v")
+
+[node name="Forward" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 970.0
+offset_top = 528.0
+offset_right = 1044.0
+offset_bottom = 559.0
+text = "Forward"
+
+[node name="Backward" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 966.0
+offset_top = 604.0
+offset_right = 1051.0
+offset_bottom = 635.0
+text = "Backward"
+
+[node name="Left" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 891.0
+offset_top = 562.0
+offset_right = 965.0
+offset_bottom = 593.0
+text = "Left"
+
+[node name="Right" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 564.0
+offset_right = 1126.0
+offset_bottom = 595.0
+text = "Right"
+
+[node name="RotateLeft" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 889.0
+offset_top = 515.0
+offset_right = 963.0
+offset_bottom = 546.0
+text = "Rotate L"
+
+[node name="RotateRight" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1053.0
+offset_top = 515.0
+offset_right = 1127.0
+offset_bottom = 546.0
+text = "Rotate R"
+
+[node name="BackButtonLevel" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 111.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("5_g3xvt")
+flat = true
+expand_icon = true
+script = ExtResource("6_jhjpf")
+
+[node name="Player" parent="." instance=ExtResource("7_qmtyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -5)
