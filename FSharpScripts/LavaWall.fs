@@ -37,8 +37,11 @@ module LavaWallFS =
         
         member this.process (delta : float32) =
            try
-                let blockPos = (worlds[level] |> Array.find (fun b -> b.position.X = round self.Position.X && b.position.Z = round self.Position.Z)).position.Y 
-                if blockPos < self.Position.Y - 1f || blockPos >= self.Position.Y + 0.5f then
+                let blockPos = getHeightAt (round self.Position.X) (round self.Position.Z)
+                let potentialCube =
+                    WorldGeneratorFS.companionCubes.Exists(fun c ->
+                        round c.Position.X = round self.Position.X && round c.Position.Z = round self.Position.Z && (round c.Position.Y < self.Position.Y - 1f || round c.Position.Y >= self.Position.Y + 0.5f))
+                if blockPos < self.Position.Y - 1f || blockPos >= self.Position.Y + 0.5f || potentialCube then
                     self.RotateY(degToRad 180f)
            with | _ -> self.RotateY(degToRad 180f)
         

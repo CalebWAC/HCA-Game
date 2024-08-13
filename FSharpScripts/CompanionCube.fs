@@ -79,13 +79,14 @@ module CompanionCubeFS =
             let areas = self.GetNode<Area3D>("Area3D").GetOverlappingAreas()
             if not this.held && areas.Count > 0 && areas |> exists (fun a -> a.Name.ToString().Contains "TopArea3D") then
                 t <- 0f
-                originalPos <- (areas |> find (fun a -> a.Name.ToString().Contains "TopArea3D")).GlobalPosition
-                midpoint <- (areas |> find (fun a -> a.Name.ToString().Contains "TopArea3D")).GlobalPosition
-                endPos <- (areas |> find (fun a -> a.Name.ToString().Contains "TopArea3D")).GlobalPosition
+                originalPos <- (areas |> find (fun a -> a.Name.ToString().Contains "TopArea3D")).GlobalPosition + Vector3(0f, 0.4f, 0f)
+                midpoint <- (areas |> find (fun a -> a.Name.ToString().Contains "TopArea3D")).GlobalPosition + Vector3(0f, 0.4f, 0f)
+                endPos <- (areas |> find (fun a -> a.Name.ToString().Contains "TopArea3D")).GlobalPosition + Vector3(0f, 0.4f, 0f)
             elif not this.held && areas.Count > 0 && areas |> exists (fun a -> a.Name.ToString().Contains "BodyArea3D") then
                 t <- 0f
-                originalPos <- self.Position
-                endPos <- Vector3(areas[0].GlobalPosition.X, self.Position.Y + 0.5f, areas[0].GlobalPosition.Z)
+                let plume = (areas |> find (fun a -> a.Name.ToString().Contains "BodyArea3D"))
+                originalPos <- Vector3(plume.GlobalPosition.X, self.Position.Y, plume.GlobalPosition.Z)
+                endPos <- Vector3(plume.GlobalPosition.X, self.Position.Y + 1f, plume.GlobalPosition.Z)
                 midpoint <- (originalPos + endPos) / 2f
             
         member this.input (event : InputEvent) =

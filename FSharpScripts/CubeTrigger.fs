@@ -32,20 +32,25 @@ module CubeTriggerFS =
                     let plumes = [| LavaPlumeFS.lavaPlumes.Find(fun l -> (l.self.GetParent() :?> Node3D).Position = Vector3(3f, 0.5f, 2f))
                                     LavaPlumeFS.lavaPlumes.Find(fun l -> (l.self.GetParent() :?> Node3D).Position = Vector3(3f, 0.5f, 3f)) |]
                     for plume in plumes do
-                        GD.Print "activating plumes"
-                        plume.active <- 0f
+                        plume.active <- false
                         plume.self.Scale <- Vector3(1f, 20f, 1f)
-                        plume.self.Visible <- true
-                    for cube in companionCubes do 
-                        GD.Print "visiblating cubes"
-                        cube.Visible <- true
+                        (plume.self.GetParent() :?> Node3D).Visible <- true
+                        let particles = plume.self.GetParent().GetNode<Node3D>("Particles")
+                        particles.Position <- Vector3(particles.Position.X, 4f, particles.Position.Z)
+                     
+                    // Companion cube spawning
+                    let scene = GD.Load<PackedScene>("res://Elements/CompanionCube.tscn")
+                    let emt = scene.Instantiate() :?> Node3D
+                    emt.Position <- Vector3(-5f, 1f, 5f)
+                    getRoot().GetNode<Node3D>("WorldGenerator").AddChild emt
+                    companionCubes.Add emt
                     
+                    // Extra terrain block addition
                     let blockScene = GD.Load<PackedScene>("res://Elements/VolcanicBlock.tscn")
                     let block = blockScene.Instantiate() :?> Node3D
                     block.Position <- Vector3(-4f, 1f, 0f)
-                    worlds[level][31] <- WorldFS.block -4f 1f 0f
-                    block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
                     getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
+                    worlds[level][32] <- WorldFS.block -4f 1f 0f
         
         let onDeactivated (other : Area3D) =
             match other.GetParent().Name.ToString() with

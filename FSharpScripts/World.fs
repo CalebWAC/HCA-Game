@@ -292,7 +292,7 @@ module WorldFS =
            block -6f 0f -6f; block -6f 0f -5f; block -6f 0f -4f; block -6f 0f -3f; block -6f 0f -2f; block -6f 0f -1f; block -6f 0f 0f; block -6f 0f 1f; block -6f 0f 2f; block -6f 0f 3f; block -6f 0f 4f; block -6f 0f 5f; block -6f 0f 6f
            block -5f 0f -6f; block -5f 0f -5f; block -5f 0f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 0f 0f; block -5f 0f 1f; block -5f 0f 2f; block -5f 0f 3f; block -5f 0f 4f; block -5f 0f 5f; block -5f 0f 6f
            block -4f 0f -6f; block -4f 0f -5f; block -4f 0f -4f; block -4f 0f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; block -4f 1f 1f; block -4f 1f 2f; block -4f 1f 3f; block -4f 0f 4f; block -4f 0f 5f; block -4f 0f 6f
-           block -3f 0f -6f; block -3f 0f -5f; block -3f 0f -4f; block -3f 0f -3f; block -3f 0f -2f; block -3f 0f -1f; block -3f 1f 0f; block -3f 3f 1f; block -3f 3f 2f; block -3f 1f 3f; block -3f 0f 4f; block -3f 0f 5f; block -3f 0f 6f
+           block -3f 0f -6f; block -3f 0f -5f; block -3f 0f -4f; block -3f 0f -3f; block -3f 0f -2f; block -3f 0f -1f; block -3f 2f 0f; block -3f 3f 1f; block -3f 3f 2f; block -3f 1f 3f; block -3f 0f 4f; block -3f 0f 5f; block -3f 0f 6f
            block -2f 2f -6f; block -2f 1f -5f; block -2f 0f -4f; block -2f 0f -3f; block -2f 0f -2f; block -2f 0f -1f; block -2f 2f 0f; block -2f 3f 1f; block -2f 1f 2f; block -2f 1f 3f; block -2f 0f 4f; block -2f 0f 5f; block -2f 0f 6f
            block -1f 2f -6f; block -1f 1f -5f; block -1f 0f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 3f 0f; block -1f 3f 1f; block -1f 1f 2f; block -1f 0f 3f; block -1f 0f 4f; block -1f 0f 5f; block -1f 0f 6f
            block 0f 1f -6f; block 0f 0f -5f; block 0f 0f -4f; block 0f 0f -3f; block 0f 0f -2f; block 0f 0f -1f; block 0f 0f 0f; block 0f 3f 1f; block 0f 1f 2f; block 0f 0f 3f; block 0f 0f 4f; block 0f 0f 5f; block 0f 0f 6f
@@ -481,7 +481,6 @@ module WorldFS =
             { etype = CubeTrigger; position = Vector3(-2f, 4f, 1f); rotation = Vector3.Zero; visible = true }
             { etype = LavaPlume; position = Vector3(3f, 0.5f, 2f); rotation = Vector3.Zero; visible = false }
             { etype = LavaPlume; position = Vector3(3f, 0.5f, 3f); rotation = Vector3.Zero; visible = false }
-            { etype = CompanionCube; position = Vector3(-5f, 1f, 5f); rotation = Vector3.Zero; visible = false }
         |]
     |]
     
