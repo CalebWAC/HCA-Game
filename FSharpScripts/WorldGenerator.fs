@@ -16,31 +16,45 @@ module WorldGeneratorFS =
         // World generation
         worlds[level]
         |> Array.iter (fun data ->
-            for i in 0f .. data.position.Y do
+            if data.material <> Cave then
+                let range = if level = 16 then [| -5f .. data.position.Y |] else [| 0f .. data.position.Y |]
+                for i in range do
+                    let blockScene = GD.Load<PackedScene>("res://Elements/Block.tscn")
+                    let block = blockScene.Instantiate() :?> Node3D
+                    
+                    block.Position <- Vector3(data.position.X, i, data.position.Z)
+                    block.Rotation <- data.rotation
+                    block.GetNode<CsgBox3D>("CSGBox3D").MaterialOverride <-
+                        match data.material with
+                        | Ground ->
+                            if level >= 12 then
+                                block.GetNode("Model").QueueFree()
+                                let desModel = GD.Load<PackedScene>("res://Elements/VolcanicBlock.tscn")
+                                let desBlock = desModel.Instantiate() :?> Node3D
+                                block.AddChild desBlock
+                                ResourceLoader.Load("res://Materials/VolcanicBlock.tres") :?> Material
+                            else ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
+                        | Water | RushingWater ->
+                            block.GetNode("Model").QueueFree()
+                            block.GetNode<Node3D>("CSGBox3D").Visible <- true
+                            if level < 12 then ResourceLoader.Load("res://Materials/WaterBubble.tres") :?> Material
+                            else ResourceLoader.Load("res://Materials/LavaBlock.tres") :?> Material
+                        | Invisible ->
+                            if i <> 0f then block.Visible <- false
+                            ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
+                        | Cave -> System.Exception "This should not be possible" |> raise
+                     
+                    block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
+                    getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
+            else
                 let blockScene = GD.Load<PackedScene>("res://Elements/Block.tscn")
                 let block = blockScene.Instantiate() :?> Node3D
-                
-                block.Position <- Vector3(data.position.X, i, data.position.Z)
-                block.Rotation <- data.rotation
-                block.GetNode<CsgBox3D>("CSGBox3D").MaterialOverride <-
-                    match data.material with
-                    | Ground ->
-                        if level >= 12 then
-                            block.GetNode("Model").QueueFree()
-                            let desModel = GD.Load<PackedScene>("res://Elements/VolcanicBlock.tscn")
-                            let desBlock = desModel.Instantiate() :?> Node3D
-                            block.AddChild desBlock
-                            ResourceLoader.Load("res://Materials/VolcanicBlock.tres") :?> Material
-                        else ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
-                    | Water | RushingWater ->
-                        block.GetNode("Model").QueueFree()
-                        block.GetNode<Node3D>("CSGBox3D").Visible <- true
-                        if level < 12 then ResourceLoader.Load("res://Materials/WaterBubble.tres") :?> Material
-                        else ResourceLoader.Load("res://Materials/LavaBlock.tres") :?> Material
-                    | Invisible ->
-                        if i <> 0f then block.Visible <- false
-                        ResourceLoader.Load("res://Materials/Blue.tres") :?> Material
-                 
+                if level >= 12 then
+                    block.GetNode("Model").QueueFree()
+                    let desModel = GD.Load<PackedScene>("res://Elements/VolcanicBlock.tscn")
+                    let desBlock = desModel.Instantiate() :?> Node3D
+                    block.AddChild desBlock
+                block.Position <- data.position
                 block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> TerrainManipulatorFS.Block.onInputEvent event position)
                 getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
         )
