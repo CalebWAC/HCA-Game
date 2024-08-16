@@ -60,15 +60,38 @@ module PlayerControlFS =
     
     let inBubble () = elements[level] |> Array.exists (fun e -> e.etype = Bubble && e.position = player.Position)
     
-    let desBlockFront () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) &&
-                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f) |> not &&
-                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 2f) |> not &&
-                           TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round player.Position.X && b.Position.Z = round player.Position.Z && b.Position.Y = round player.Position.Y + 2f) |> not
-    let desBlockDown () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -2f) &&
-                          TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -1f) |> not &&
-                          TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not
-    let desBlockFlat () = TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -1f) &&
-                          TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not
+    let desBlockFront () =
+        let req1 = fun (b : Node3D) -> b.Position = roundVec placeToBe
+        let req2 = fun (b : Node3D) -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f // not
+        let req3 = fun (b : Node3D) -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 2f // not
+        let req4 = fun (b : Node3D) -> b.Position.X = round player.Position.X && b.Position.Z = round player.Position.Z && b.Position.Y = round player.Position.Y + 2f // not
+        let notReqs = [| req2; req3; req4 |]
+        
+        let notReqPasses = [ for r in notReqs -> TerrainManipulatorFS.destructibleBlocks.Exists r |> not ]
+        let passes = TerrainManipulatorFS.destructibleBlocks.Exists req1 :: notReqPasses
+        
+        List.forall (fun r -> r = true) passes
+        
+    let desBlockDown () =
+        let req1 = fun (b : Node3D) -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -2f
+        let req2 = fun (b : Node3D) -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y - round placeToBe.Y = -1f // not
+        let req3 = fun (b : Node3D) -> b.Position = roundVec placeToBe // not
+        let notReqs = [| req2; req3 |] 
+        
+        let notReqPasses = [ for r in notReqs -> TerrainManipulatorFS.destructibleBlocks.Exists r |> not ]
+        let passes = TerrainManipulatorFS.destructibleBlocks.Exists req1 :: notReqPasses
+        
+        List.forall (fun r -> r = true) passes
+         
+    let desBlockFlat () =
+        let convert (b : Node3D) = { position = b.Position; rotation = Vector3.Zero; material = Cave }
+        let req1 = fun (b : Block) -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z && b.position.Y - round placeToBe.Y = -1f && b.material = Cave
+        let req2 = fun (b : Block) -> b.position = roundVec placeToBe && b.material = Cave // not
+        
+        let desPasses = [ TerrainManipulatorFS.destructibleBlocks.Exists (convert >> req1); TerrainManipulatorFS.destructibleBlocks.Exists (convert >> req2) |> not ]
+        let cavePasses = [ Array.exists req1 worlds[level]; Array.exists req2 worlds[level] ]
+        
+        List.forall (fun r -> r = true) desPasses || List.forall (fun r -> r = true) cavePasses
     
     let move dir =
         if withinBoundaries dir && originalPos = placeToBe && player.Position = originalPos then             
@@ -120,6 +143,7 @@ module PlayerControlFS =
                                 with | _ -> placeToBe <- player.Position
                         elif not(desBlockFlat()) && not(WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f))) &&
                              (block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water || block.material = RushingWater ||
+                             (CompanionCubeFS.somethingHeld && worlds[level] |> Array.exists (fun b -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z && b.position.Y = round player.Position.Y + 2f)) ||
                              TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f)) then
                             placeToBe <- player.Position
                     

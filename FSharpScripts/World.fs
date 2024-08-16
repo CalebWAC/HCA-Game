@@ -310,10 +310,10 @@ module WorldFS =
            block -5f 0f -6f; block -5f 0f -5f; block -5f -1f -4f; block -5f -1f -3f; block -5f -1f -2f; block -5f -1f -1f; block -5f -1f 0f; block -5f -1f 1f; block -5f -1f 2f; block -5f -1f 3f; block -5f -1f 4f; block -5f -1f 5f; block -5f 0f 6f
            block -4f 0f -6f; block -4f 0f -5f; block -4f -2f -4f; block -4f -2f -3f; block -4f -2f -2f; block -4f -2f -1f; block -4f -2f 0f; block -4f -2f 1f; block -4f -2f 2f; block -4f -2f 3f; block -4f -2f 4f; block -4f -1f 5f; block -4f 0f 6f
            block -3f 0f -6f; block -3f 0f -5f; block -3f -2f -4f; block -3f -3f -3f; block -3f -3f -2f; block -3f -3f -1f; block -3f -3f 0f; block -3f -3f 1f; block -3f -3f 2f; block -3f -3f 3f; block -3f -2f 4f; block -3f -1f 5f; block -3f 0f 6f
-           block -2f 0f -6f; block -2f 0f -5f; block -2f -2f -4f; block -2f -3f -3f; block -2f -4f -2f; block -2f -4f -1f; block -2f -4f 0f; block -2f -4f 1f; block -2f -4f 2f; block -2f -3f 3f; block -2f -2f 4f; block -2f -1f 5f; block -2f 0f 6f
-           block -1f 1f -6f; block -1f 0f -5f; block -1f -2f -4f; block -1f -3f -3f; block -1f -4f -2f; waterBlock -1f -5f -1f; waterBlock -1f -5f 0f; waterBlock -1f -5f 1f; block -1f -4f 2f; block -1f -3f 3f; block -1f -2f 4f; block -1f -1f 5f; block -1f 0f 6f
-           block 0f 2f -6f; block 0f 0f -5f; block 0f 3f -4f; block 0f -3f -3f; block 0f -4f -2f; waterBlock 0f -5f -1f; waterBlock 0f -5f 0f; waterBlock 0f -5f 1f; block 0f -4f 2f; block 0f -3f 3f; block 0f -2f 4f; block 0f -1f 5f; block 0f 0f 6f
-           block 1f 0f -6f; block 1f 0f -5f; block 1f 3f -4f; block 1f -3f -3f; block 1f -4f -2f; waterBlock 1f -5f -1f; waterBlock 1f -5f 0f; waterBlock 1f -5f 1f; block 1f -4f 2f; block 1f -3f 3f; block 1f -2f 4f; block 1f -1f 5f; block 1f 0f 6f
+           block -2f 1f -6f; block -2f 0f -5f; block -2f -2f -4f; block -2f -3f -3f; block -2f -4f -2f; block -2f -4f -1f; block -2f -4f 0f; block -2f -4f 1f; block -2f -4f 2f; block -2f -3f 3f; block -2f -2f 4f; block -2f -1f 5f; block -2f 0f 6f
+           block -1f 2f -6f; block -1f 0f -5f; block -1f -2f -4f; block -1f -3f -3f; block -1f -4f -2f; waterBlock -1f -4f -1f; waterBlock -1f -4f 0f; waterBlock -1f -4f 1f; block -1f -4f 2f; block -1f -3f 3f; block -1f -2f 4f; block -1f -1f 5f; block -1f 0f 6f
+           block 0f 2f -6f; block 0f 0f -5f; block 0f 3f -4f; block 0f -3f -3f; block 0f -4f -2f; waterBlock 0f -4f -1f; waterBlock 0f -4f 0f; waterBlock 0f -4f 1f; block 0f -4f 2f; block 0f -3f 3f; block 0f -2f 4f; block 0f -1f 5f; block 0f 0f 6f
+           block 1f 0f -6f; block 1f 0f -5f; block 1f 3f -4f; block 1f -3f -3f; block 1f -4f -2f; waterBlock 1f -4f -1f; waterBlock 1f -4f 0f; waterBlock 1f -4f 1f; block 1f -4f 2f; block 1f -3f 3f; block 1f -2f 4f; block 1f -1f 5f; block 1f 0f 6f
            block 2f 0f -6f; block 2f 0f -5f; block 2f 3f -4f; block 2f -3f -3f; block 2f -4f -2f; block 2f -4f -1f; block 2f -4f 0f; block 2f -4f 1f; block 2f -4f 2f; block 2f -3f 3f; block 2f -2f 4f; block 2f -1f 5f; block 2f 0f 6f
            block 3f 0f -6f; block 3f 0f -5f; block 3f 3f -4f; block 3f -3f -3f; block 3f -3f -2f; block 3f -3f -1f; block 3f -3f 0f; block 3f -3f 1f; block 3f -3f 2f; block 3f -3f 3f; block 3f -2f 4f; block 3f -1f 5f; block 3f 0f 6f
            block 4f 0f -6f; block 4f 0f -5f; block 4f 3f -4f; block 4f -2f -3f; block 4f -2f -2f; block 4f -2f -1f; block 4f -2f 0f; block 4f -2f 1f; block 4f -2f 2f; block 4f -2f 3f; block 4f -2f 4f; block 4f -1f 5f; block 4f 0f 6f
@@ -507,14 +507,14 @@ module WorldFS =
         |]
         [| // Level 17
             { etype = Goal; position = Vector3(0f, 6f, 0f); rotation = Vector3.Zero; visible = false }
-            { etype = GoalFragment; position = Vector3(6f, 1f, 6f); rotation = Vector3.Zero; visible = true }
-            { etype = GoalFragment; position = Vector3(-1f, 1f, 0f); rotation = Vector3.Zero; visible = true }
-            { etype = GoalFragment; position = Vector3(-6f, 1f, -6f); rotation = Vector3.Zero; visible = true }
-            { etype = GoalFragment; position = Vector3(1f, 4f, 5f); rotation = Vector3.Zero; visible = true }
-            { etype = GoalFragment; position = Vector3(2f, 4f, 9f); rotation = Vector3.Zero; visible = true }
+            { etype = GoalFragment; position = Vector3(6f, 1f, 6f); rotation = Vector3.Zero; visible = false }
+            { etype = GoalFragment; position = Vector3(-1f, 1f, 0f); rotation = Vector3.Zero; visible = false }
+            { etype = GoalFragment; position = Vector3(-6f, 1f, -6f); rotation = Vector3.Zero; visible = false }
+            { etype = GoalFragment; position = Vector3(1f, 4f, 5f); rotation = Vector3.Zero; visible = false }
+            { etype = GoalFragment; position = Vector3(2f, 4f, 9f); rotation = Vector3.Zero; visible = false }
             { etype = CompanionCube; position = Vector3(3f, 1f, -6f); rotation = Vector3.Zero; visible = true }
             { etype = CubeTrigger; position = Vector3(-4f, 1f, -6f); rotation = Vector3.Zero; visible = true }
-            { etype = LavaPlume; position = Vector3(-1f, -4.5f, 0f); rotation = Vector3.Zero; visible = true }
+            { etype = LavaPlume; position = Vector3(-1f, -3.5f, 0f); rotation = Vector3.Zero; visible = true }
             { etype = MovingBlock; position = Vector3(0f, 0f, 5f); rotation = Vector3(0f, degToRad 90f, 0f); visible = true }
             { etype = MovingBlock; position = Vector3(1f, 1f, 5f); rotation = Vector3(0f, degToRad 270f, 0f); visible = true }
             { etype = MovingBlock; position = Vector3(2f, 2f, 5f); rotation = Vector3(0f, degToRad 90f, 0f); visible = true }

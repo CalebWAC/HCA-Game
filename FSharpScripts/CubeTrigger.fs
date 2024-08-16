@@ -51,12 +51,14 @@ module CubeTriggerFS =
                     block.Position <- Vector3(-4f, 1f, 0f)
                     getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
                     worlds[level][32] <- WorldFS.block -4f 1f 0f
+                | 16 -> for frag in goalFragments do frag.Visible <- true
         
         let onDeactivated (other : Area3D) =
             match other.GetParent().Name.ToString() with
             | "CompanionCube" ->
                 match level with
                 | 9 -> if self.Position = Vector3(-2f, 1f, 4f) then bridges.ForEach(fun b -> b.Visible <- false)
+                | 16 -> for frag in goalFragments do frag.Visible <- false
                 | _ -> ()
             | _ -> ()
         

@@ -14,13 +14,13 @@
         <Compile Include="TerrainManipulator.fs" />
         <Compile Include="MovingBlock.fs" />
         <Compile Include="WorldGenerator.fs" />
+        <Compile Include="CompanionCube.fs" />
         <Compile Include="PlayerControl.fs" />
         <Compile Include="Hook.fs" />
         <Compile Include="SceneChangeButton.fs" />
         <Compile Include="UnpauseButton.fs" />
         <Compile Include="Glasses.fs" />
         <Compile Include="MiniBomb.fs" />
-        <Compile Include="CompanionCube.fs" />
         <Compile Include="LavaWall.fs" />
         <Compile Include="LavaPlume.fs" />
         <Compile Include="CubeTrigger.fs" />

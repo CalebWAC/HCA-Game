@@ -6,15 +6,22 @@ open GlobalFunctions
 open System.Collections.Generic
 
 module CompanionCubeFS =
+    let mutable somethingHeld = false
+    
     type CompanionCube() =
         let mutable self = Unchecked.defaultof<Node3D>
         
         let mutable t = 1f
         let mutable originalPos = Vector3(0f, 0f, 0f)
         let mutable endPos = Vector3(0f, 0f, 0f)
-        let mutable midpoint = Vector3(0f, 0f, 0f)      
+        let mutable midpoint = Vector3(0f, 0f, 0f)
+        let mutable _held = false
         
-        member val held = false with get, set
+        member this.held
+            with get () = _held
+            and set value =
+                _held <- value
+                somethingHeld <- value
         
         member this.fall () =
             this.held <- false
@@ -24,6 +31,7 @@ module CompanionCubeFS =
             t <- 0f
         
         member this.ready thing =
+            this.held <- false
             self <- thing
             originalPos <- self.Position
         
@@ -99,9 +107,10 @@ module CompanionCubeFS =
                         let playerPos = getRoot().GetNode<Node3D>("Player").Position
                         let next = playerPos + getRoot().GetNode<Node3D>("Player").Transform.Basis.Z
                         let nextBlock = (worlds[level] |> Array.find (fun b -> b.position.X = round next.X && b.position.Z = round next.Z)).position
+                        let cave = worlds[level] |> Array.exists (fun b -> b.position.X = round next.X && b.position.Z = round next.Z && b.position.Y = round next.Y + 2f)
                         
-                        if not this.held && roundVec self.Position = roundVec next ||
-                           this.held && nextBlock.Y <= playerPos.Y then
+                        if (not this.held && roundVec self.Position = roundVec next) ||
+                           (this.held && nextBlock.Y <= playerPos.Y + (if level = 16 then 1f else 0f) && not cave) then
                             this.held <- not this.held
                             t <- 0f
                         
