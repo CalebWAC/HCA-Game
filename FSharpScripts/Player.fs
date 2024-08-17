@@ -28,6 +28,8 @@ module PlayerFS =
             if WorldFS.level = 5 then
                 getRoot().GetTree().Paused <- true
                 getRoot().GetNode<Control>("TutorialInvisibleGlasses").Visible <- true
+            elif WorldFS.level = 17 then
+                getRoot().GetNode<Node3D>("WorldGenerator").GetNode<Node3D>("Goal").Visible <- true
         | "Bomb" ->
             powerUps <- Array.append powerUps [|WorldFS.Bomb|]
             other.GetParent().QueueFree()

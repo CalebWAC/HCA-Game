@@ -326,6 +326,29 @@ module WorldFS =
            caveBlock 1f 3f 8f; caveBlock 2f 3f 8f; caveBlock 3f 3f 8f
            caveBlock 2f 3f 9f
         |]
+        [| // Level 18
+           block -6f 7f -6f; block -6f 7f -5f; block -6f 7f -4f; block -6f 7f -3f; block -6f 7f -2f; block -6f 7f -1f; block -6f 7f 0f; block -6f 7f 1f; block -6f 7f 2f; block -6f 7f 3f; block -6f 7f 4f; block -6f 6f 5f; block -6f 7f 6f
+           block -5f 7f -6f; block -5f 0f -5f; block -5f 0f -4f; block -5f 0f -3f; block -5f 0f -2f; block -5f 0f -1f; block -5f 4f 0f; block -5f 5f 1f; block -5f 0f 2f; block -5f 1f 3f; block -5f 4f 4f; block -5f 5f 5f; block -5f 7f 6f
+           block -4f 7f -6f; block -4f 1f -5f; block -4f 1f -4f; block -4f 1f -3f; block -4f 0f -2f; block -4f 0f -1f; block -4f 0f 0f; block -4f 5f 1f; block -4f 0f 2f; block -4f 2f 3f; block -4f 3f 4f; block -4f 2f 5f; block -4f 7f 6f
+           block -3f 7f -6f; block -3f 2f -5f; block -3f 3f -4f; block -3f 3f -3f; block -3f 3f -2f; block -3f 3f -1f; block -3f 3f 0f; block -3f 1f 1f; block -3f 0f 2f; block -3f 1f 3f; block -3f 1f 4f; block -3f 1f 5f; block -3f 7f 6f
+           block -2f 7f -6f; block -2f 4f -5f; block -2f 3f -4f; block -2f 3f -3f; block -2f 3f -2f; block -2f 3f -1f; block -2f 3f 0f; block -2f 4f 1f; block -2f 0f 2f; block -2f 0f 3f; block -2f 0f 4f; block -2f 0f 5f; block -2f 7f 6f
+           block -1f 7f -6f; block -1f 4f -5f; block -1f 1f -4f; block -1f 0f -3f; block -1f 0f -2f; block -1f 0f -1f; block -1f 0f 0f; block -1f 5f 1f; block -1f 0f 2f; block -1f 0f 3f; block -1f 0f 4f; block -1f 0f 5f; block -1f 7f 6f
+           block 0f 7f -6f; block 0f 4f -5f; block 0f 3f -4f; block 0f 0f -3f; block 0f 0f -2f; block 0f 0f -1f; block 0f 0f 0f; block 0f 5f 1f; block 0f 0f 2f; block 0f 0f 3f; block 0f 0f 4f; block 0f 0f 5f; block 0f 7f 6f
+           block 1f 7f -6f; block 1f 2f -5f; block 1f 3f -4f; block 1f 0f -3f; block 1f 0f -2f; block 1f 0f -1f; block 1f 0f 0f; block 1f 5f 1f; block 1f 0f 2f; block 1f 0f 3f; block 1f 0f 4f; block 1f 0f 5f; block 1f 7f 6f
+           block 2f 7f -6f; block 2f 1f -5f; block 2f 0f -4f; block 2f 0f -3f; block 2f 0f -2f; block 2f 0f -1f; block 2f 0f 0f; block 2f 4f 1f; block 2f 1f 2f; block 2f 0f 3f; block 2f 0f 4f; block 2f 0f 5f; block 2f 7f 6f
+           block 3f 7f -6f; block 3f 0f -5f; block 3f 0f -4f; block 3f 0f -3f; block 3f 0f -2f; block 3f 0f -1f; block 3f 0f 0f; block 3f 3f 1f; block 3f 1f 2f; block 3f 1f 3f; block 3f 0f 4f; block 3f 0f 5f; block 3f 7f 6f
+           block 4f 5f -6f; block 4f 0f -5f; block 4f 0f -4f; block 4f 0f -3f; block 4f 0f -2f; block 4f 0f -1f; block 4f 0f 0f; block 4f 3f 1f; block 4f 2f 2f; block 4f 1f 3f; block 4f 0f 4f; block 4f 0f 5f; block 4f 5f 6f
+           block 5f 4f -6f; block 5f 0f -5f; block 5f 0f -4f; block 5f 0f -3f; block 5f 0f -2f; block 5f 0f -1f; block 5f 0f 0f; block 5f 3f 1f; block 5f 2f 2f; block 5f 1f 3f; block 5f 0f 4f; block 5f 0f 5f; block 5f 4f 6f
+           block 6f 2f -6f; block 6f 0f -5f; block 6f 0f -4f; block 6f 0f -3f; block 6f 0f -2f; block 6f 0f -1f; block 6f 0f 0f; block 6f 3f 1f; block 6f 2f 2f; block 6f 2f 3f; block 6f 0f 4f; block 6f 0f 5f; block 6f 2f 6f
+        
+           caveBlock -5f 7f -5f; caveBlock -5f 7f -4f; caveBlock -5f 7f -3f; caveBlock -5f 7f -2f; caveBlock -5f 7f -1f; caveBlock -5f 7f 0f; caveBlock -5f 7f 1f; caveBlock -5f 7f 2f; caveBlock -5f 7f 3f; caveBlock -5f 7f 4f
+           caveBlock -4f 7f -5f; caveBlock -4f 7f -4f; caveBlock -4f 7f -3f; caveBlock -4f 7f -2f; caveBlock -4f 7f -1f; caveBlock -4f 7f 0f; caveBlock -4f 7f 1f; caveBlock -4f 7f 2f; caveBlock -4f 7f 3f; caveBlock -4f 7f 4f; caveBlock -4f 7f 5f
+           caveBlock -3f 7f -5f; caveBlock -3f 7f -4f; caveBlock -3f 7f -3f; caveBlock -3f 7f -2f; caveBlock -3f 7f -1f; caveBlock -3f 7f 0f; caveBlock -3f 7f 1f; caveBlock -3f 7f 2f; caveBlock -3f 7f 3f; caveBlock -3f 7f 4f; caveBlock -3f 7f 5f
+           caveBlock -2f 7f -5f; caveBlock -2f 7f -4f; caveBlock -2f 7f -3f; caveBlock -2f 7f -2f; caveBlock -2f 7f -1f; caveBlock -2f 7f 0f; caveBlock -2f 7f 1f; caveBlock -2f 7f 2f; caveBlock -2f 7f 3f; caveBlock -2f 7f 4f; caveBlock -2f 7f 5f
+           caveBlock -1f 7f -5f; caveBlock -1f 7f -4f; caveBlock -1f 7f -3f; caveBlock -1f 7f -2f; caveBlock -1f 7f -1f; caveBlock -1f 7f 0f; caveBlock -1f 7f 1f; caveBlock -1f 7f 2f; caveBlock -1f 7f 3f; caveBlock -1f 7f 4f; caveBlock -1f 7f 5f
+           caveBlock 0f 7f -5f; caveBlock 0f 7f -4f; caveBlock 0f 7f -3f; caveBlock 0f 7f -2f; caveBlock 0f 7f -1f; caveBlock 0f 7f 0f; caveBlock 0f 7f 1f; caveBlock 0f 7f 2f; caveBlock 0f 7f 3f; caveBlock 0f 7f 4f; caveBlock 0f 7f 5f
+           caveBlock 1f 7f -5f; caveBlock 1f 7f -4f; caveBlock 1f 7f -3f; caveBlock 1f 7f -2f; caveBlock 1f 7f -1f; caveBlock 1f 7f 0f; caveBlock 1f 7f 1f; caveBlock 1f 7f 2f; caveBlock 1f 7f 3f; caveBlock 1f 7f 4f; caveBlock 1f 7f 5f
+        |]
     |]
     
     let elements = [|
@@ -520,6 +543,10 @@ module WorldFS =
             { etype = MovingBlock; position = Vector3(2f, 2f, 5f); rotation = Vector3(0f, degToRad 90f, 0f); visible = true }
             { etype = MovingBlock; position = Vector3(-1f, 3f, 5f); rotation = Vector3(0f, degToRad 270f, 0f); visible = true }
         |]
+        [| // Level 18
+            { etype = Goal; position = Vector3(-3f, 8f, -3f); rotation = Vector3.Zero; visible = false }
+            { etype = LavaWall; position = Vector3(-2f, 3.5f, -2f); rotation = Vector3.Zero; visible = true }
+        |]
     |]
     
     let powerUps = [|
@@ -574,6 +601,9 @@ module WorldFS =
         [| // Level 16
         |]
         [| // Level 17
+        |]
+        [| // Level 18
+            { ptype = Glasses; position = Vector3(-5f, 1f, -2f) }
         |]
     |]
     
