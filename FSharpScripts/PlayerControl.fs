@@ -121,22 +121,31 @@ module PlayerControlFS =
             elif WorldGeneratorFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) then
                 onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> Some
             else
-                // Height compensation
-                if ((block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || floatingBlockFront()) &&
+                let canMoveUp () =
+                   ((block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || floatingBlockFront()) &&
                    WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe + Vector3.Up) |> not) ||
-                   WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe) then
+                   WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe) ||
+                   (Array.contains MoonBoots PlayerFS.powerUps && block.position.Y - round placeToBe.Y >= 1f && block.position.Y - round placeToBe.Y <= 3f)
+                
+                let canMoveDown () = 
+                    (((block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || floatingBlockDown()) &&
+                      WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> not) ||
+                      WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) ||
+                      (Array.contains MoonBoots PlayerFS.powerUps && round placeToBe.Y - block.position.Y <= 5f && placeToBe.Y - block.position.Y >= 1f)) &&
+                    (floatingBlockFlat() |> not && TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not)
+                    
+                // Height compensation
+                if canMoveUp() then
                     if block.material <> Water then
                         onBlock <- None
                     else
                         onBlock <- WorldGeneratorFS.companionCubes.Find(fun c -> roundVec c.Position = roundVec placeToBe) |> Some
                         
-                    placeToBe.Y <- placeToBe.Y + 1f
-                    midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
-                elif (((block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || floatingBlockDown()) &&
-                      WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> not) ||
-                      WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 2f, 0f))) && (floatingBlockFlat() |> not && TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not) then
+                    placeToBe.Y <- block.position.Y + 1f
+                    midpoint <- Vector3(player.Position.X, block.position.Y + 1.5f, player.Position.Z)
+                elif canMoveDown() then
                     onBlock <- None
-                    placeToBe.Y <- placeToBe.Y - 1f
+                    placeToBe.Y <- block.position.Y + 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
                 else
                     // Water bubble movement
@@ -194,7 +203,9 @@ module PlayerControlFS =
             placeToBe <- player.Position
             originalPos <- placeToBe
         | _ ->
-            t <- Mathf.Min(1f, t + delta * 3f)
+            t <- if Array.contains MoonBoots PlayerFS.powerUps && Mathf.Abs(round placeToBe.Y - round originalPos.Y) > 1f then
+                    Mathf.Min(1f, t + delta * 2f)
+                 else Mathf.Min(1f, t + delta * 3f)
             
             if t >= 1f then
                 if onBlock.IsSome then

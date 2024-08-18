@@ -108,6 +108,7 @@ module WorldGeneratorFS =
                         | TerrainManipulator -> GD.Load<PackedScene>("res://Power Ups/TerrainManipulator.tscn")
                         | Glasses -> GD.Load<PackedScene>("res://Power Ups/Glasses.tscn")
                         | Bomb -> GD.Load<PackedScene>("res://Power Ups/Bomb.tscn")
+                        | MoonBoots -> GD.Load<PackedScene>("res://Power Ups/MoonBoots.tscn")
             let power = scene.Instantiate() :?> Node3D
             power.Position <- powerUp.position
             getRoot().GetNode<Node3D>("WorldGenerator").AddChild(power)

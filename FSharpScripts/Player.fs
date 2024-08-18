@@ -36,6 +36,12 @@ module PlayerFS =
             if WorldFS.level = 12 then
                 getRoot().GetTree().Paused <- true
                 getRoot().GetNode<Control>("TutorialBomb").Visible <- true
+        | "MoonBoots" ->
+            powerUps <- Array.append powerUps [|WorldFS.MoonBoots|]
+            other.GetParent().QueueFree()
+            if WorldFS.level = 18 then
+                getRoot().GetTree().Paused <- true
+                getRoot().GetNode<Control>("TutorialMoonBoots").Visible <- true
         | _ -> ()
     
     let ready () =

@@ -36,6 +36,7 @@ module WorldFS =
         | TerrainManipulator
         | Glasses
         | Bomb
+        | MoonBoots
         
     type Element = { etype: ElementType; position: Vector3; rotation: Vector3; visible: bool }
     
@@ -604,6 +605,7 @@ module WorldFS =
         |]
         [| // Level 18
             { ptype = Glasses; position = Vector3(-5f, 1f, -2f) }
+            { ptype = MoonBoots; position = Vector3(-2f, 8f, 0f) }
         |]
     |]
     

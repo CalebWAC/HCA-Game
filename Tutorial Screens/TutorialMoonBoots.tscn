@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://w43kj05gtgdr"]
+
+[ext_resource type="Script" path="res://Scripts/UnpauseButton.cs" id="1_kjn0i"]
+[ext_resource type="Texture2D" uid="uid://s3a18s045wm" path="res://Assets/Tutorial Images/Tutorial12.1.PNG" id="2_v3h2j"]
+[ext_resource type="Texture2D" uid="uid://b8xnkcdrs3v2w" path="res://Assets/Tutorial Images/Tutorial12.2.PNG" id="3_vplbg"]
+[ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="4_1hfeg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k3h3"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ubmlw"]
+texture = ExtResource("2_v3h2j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fvk7q"]
+texture = ExtResource("3_vplbg")
+
+[node name="TutorialMoonBoots" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 75.0
+offset_right = 975.0
+offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1k3h3")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 12.0
+offset_right = 776.0
+offset_bottom = 54.0
+script = ExtResource("1_kjn0i")
+
+[node name="Image1" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 380.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ubmlw")
+
+[node name="Image2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 80.0
+offset_right = 720.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fvk7q")
+
+[node name="Title" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = -1.0
+offset_right = 660.0
+offset_bottom = 79.0
+theme_override_fonts/normal_font = ExtResource("4_1hfeg")
+theme_override_font_sizes/normal_font_size = 60
+text = "Moon Boots"
+
+[node name="Paragraph" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 371.0
+offset_right = 720.0
+offset_bottom = 639.0
+theme_override_fonts/normal_font = ExtResource("4_1hfeg")
+theme_override_font_sizes/normal_font_size = 20
+text = "    Using special negative matter repulsion, the moon boots allow you to jump even higher than before. With them, you can jump up and down up to four blocks high."
