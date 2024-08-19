@@ -36,6 +36,10 @@ module GoalFS =
             
             goal.RotateY(degToRad 45f * delta)
             if goal.Position.Y - position.Y > 0.27f || position.Y - goal.Position.Y > 0f then change <- -change
+            
+            if Array.contains WorldFS.Glasses PlayerFS.powerUps && getRoot().GetNode<Node3D>("Player").Position.DistanceTo goal.Position <= 3f then
+                goal.Visible <- true
+            else goal.Visible <- false
         else
              t <- t + delta * 0.5f
             

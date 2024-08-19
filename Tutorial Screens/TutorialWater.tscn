@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqctu5x58x3xl"]
+[gd_scene load_steps=9 format=3 uid="uid://cqctu5x58x3xl"]
 
+[ext_resource type="Texture2D" uid="uid://8bslu8e76f73" path="res://Assets/Close.png" id="1_5w0r5"]
 [ext_resource type="Script" path="res://Scripts/UnpauseButton.cs" id="1_188hd"]
 [ext_resource type="Texture2D" uid="uid://cr6yaiql2qjya" path="res://Assets/Tutorial Images/Tutorial6.2.PNG" id="2_3151r"]
 [ext_resource type="Texture2D" uid="uid://bm7crqs5m8e1u" path="res://Assets/Tutorial Images/Tutorial6.1.PNG" id="3_30i7c"]
@@ -41,6 +42,9 @@ offset_left = 735.0
 offset_top = 12.0
 offset_right = 776.0
 offset_bottom = 54.0
+icon = ExtResource("1_5w0r5")
+flat = true
+expand_icon = true
 script = ExtResource("1_188hd")
 
 [node name="Image1" type="Panel" parent="Panel"]

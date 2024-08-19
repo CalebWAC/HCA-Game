@@ -25,6 +25,7 @@
         <Compile Include="LavaPlume.fs" />
         <Compile Include="CubeTrigger.fs" />
         <Compile Include="GoalFragment.fs" />
+        <Compile Include="Bridge.fs" />
     </ItemGroup>
 
 </Project>

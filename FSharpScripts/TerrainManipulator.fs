@@ -75,6 +75,13 @@ module TerrainManipulatorFS =
                             let blockScene = GD.Load<PackedScene>("res://Elements/Block.tscn")
                             let block = blockScene.Instantiate() :?> Node3D
                             block.Position <- selected
+                            
+                            if level >= 12 then
+                                block.GetNode("Model").QueueFree()
+                                let desModel = GD.Load<PackedScene>("res://Elements/VolcanicBlock.tscn")
+                                let desBlock = desModel.Instantiate() :?> Node3D
+                                block.AddChild desBlock
+                            
                             block.GetNode<Area3D>("Area3D").add_InputEvent (fun _ event position _ _ -> Block.onInputEvent event position)
                             getRoot().GetNode<Node3D>("WorldGenerator").AddChild(block)
                             Array.set worlds[level] (worlds[level] |> Array.findIndex (fun b -> b.position = selected - Vector3.Up)) { position = selected; rotation = Vector3.Zero; material = Ground }

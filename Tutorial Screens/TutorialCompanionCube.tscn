@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://43ua23gf2akh"]
+[gd_scene load_steps=9 format=3 uid="uid://43ua23gf2akh"]
 
 [ext_resource type="Script" path="res://Scripts/UnpauseButton.cs" id="1_va6xy"]
+[ext_resource type="Texture2D" uid="uid://8bslu8e76f73" path="res://Assets/Close.png" id="1_wtxln"]
 [ext_resource type="Texture2D" uid="uid://c2ufwtni68gg7" path="res://Assets/Tutorial Images/Tutorial9.1.PNG" id="2_4xd2o"]
 [ext_resource type="Texture2D" uid="uid://dcc6gikbt2d6d" path="res://Assets/Tutorial Images/Tutorial9.2.PNG" id="3_h4dpe"]
 [ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="4_gkip6"]
@@ -41,6 +42,9 @@ offset_left = 735.0
 offset_top = 12.0
 offset_right = 776.0
 offset_bottom = 54.0
+icon = ExtResource("1_wtxln")
+flat = true
+expand_icon = true
 script = ExtResource("1_va6xy")
 
 [node name="Image1" type="Panel" parent="Panel"]
