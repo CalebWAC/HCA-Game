@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5lpn1wckdi7"]
+[gd_scene load_steps=5 format=3 uid="uid://c5lpn1wckdi7"]
 
 [ext_resource type="Script" path="res://Scripts/PlayButton.cs" id="1_nvy70"]
 [ext_resource type="Texture2D" uid="uid://dgax0c1rejroc" path="res://Assets/PlayButton.png" id="1_pl4cy"]
 [ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="3_88shu"]
+[ext_resource type="PackedScene" uid="uid://1ew8rajkloxk" path="res://Assets/Music/IntroMusic.tscn" id="4_sr28h"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -33,3 +34,5 @@ offset_bottom = 301.0
 theme_override_fonts/normal_font = ExtResource("3_88shu")
 theme_override_font_sizes/normal_font_size = 200
 text = "Expedition"
+
+[node name="IntroMusic" parent="." instance=ExtResource("4_sr28h")]

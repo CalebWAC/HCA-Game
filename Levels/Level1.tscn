@@ -12,6 +12,7 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldGenerator" type="Node3D" parent="."]
+process_mode = 3
 script = ExtResource("1_icx1w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

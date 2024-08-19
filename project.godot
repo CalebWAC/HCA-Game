@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 boot_splash/main_scene="res://BaseLevel.tscn"
 
+[autoload]
+
+IntroMusic="*res://Assets/Music/IntroMusic.tscn"
+
 [dotnet]
 
 project/assembly_name="HCA Game"

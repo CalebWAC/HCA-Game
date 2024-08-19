@@ -12,6 +12,8 @@ module WorldGeneratorFS =
     let bridges = List<Node3D>()
     let goalFragments = List<Node3D>()
     
+    let mutable audioPlayer = Unchecked.defaultof<AudioStreamPlayer>
+    
     let ready () =
         // World generation
         worlds[level]
@@ -114,4 +116,11 @@ module WorldGeneratorFS =
             getRoot().GetNode<Node3D>("WorldGenerator").AddChild(power)
         )
         
-    let process delta = ()
+        // Music playing
+        getRoot().GetNode<AudioStreamPlayer>("IntroMusic").QueueFree()
+        audioPlayer <- new AudioStreamPlayer()
+        getRoot().GetNode<Node3D>("WorldGenerator").AddChild(audioPlayer)
+        audioPlayer.Stream <- GD.Load<AudioStream>("res://Assets/Music/ExpeditionTheme.wav")
+        
+    let process delta =
+        if not audioPlayer.Playing then audioPlayer.Playing <- true

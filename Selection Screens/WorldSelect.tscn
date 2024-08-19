@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxp1auvgv3xbc"]
+[gd_scene load_steps=21 format=3 uid="uid://cxp1auvgv3xbc"]
 
 [ext_resource type="Texture2D" uid="uid://bhkr180l82o6h" path="res://Assets/Background2.png" id="1_4a55w"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_70re1"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ci5lmlhtae885" path="res://Assets/World2.png" id="7_5jwex"]
 [ext_resource type="Texture2D" uid="uid://5jgns0io4xa5" path="res://Assets/ConfettiOrange.png" id="7_se131"]
 [ext_resource type="Texture2D" uid="uid://d1q5rwj7t5t2v" path="res://Assets/World3.png" id="9_8p0qv"]
+[ext_resource type="PackedScene" uid="uid://1ew8rajkloxk" path="res://Assets/Music/IntroMusic.tscn" id="16_vjxmq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jjbhp"]
 resource_name = "First"
@@ -150,3 +151,5 @@ position = Vector2(614, 187)
 process_material = SubResource("ParticleProcessMaterial_kcke1")
 texture = ExtResource("7_se131")
 script = ExtResource("6_fntct")
+
+[node name="IntroMusic" parent="." instance=ExtResource("16_vjxmq")]

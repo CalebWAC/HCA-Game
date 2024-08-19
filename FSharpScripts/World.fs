@@ -470,12 +470,12 @@ module WorldFS =
             { etype = MovingBlockWithHook; position = Vector3(3f, 7f, -3f); rotation = Vector3.Zero; visible = true }
         |]
         [| // Level 10
+            { etype = Goal; position = Vector3(-3f, 1f, -6f); rotation = Vector3.Zero; visible = true }
             { etype = CompanionCube; position = Vector3(5f, 1f, -2f); rotation = Vector3.Zero; visible = true }
             { etype = CompanionCube; position = Vector3(3f, 4f, -5f); rotation = Vector3.Zero; visible = true }
             { etype = CompanionCube; position = Vector3(-5f, 1f, 2f); rotation = Vector3.Zero; visible = true }
             { etype = CubeTrigger; position = Vector3(-2f, 1f, 4f); rotation = Vector3.Zero; visible = true }
             { etype = Bridge; position = Vector3(1.5f, 3f, 6f); rotation = Vector3.Zero; visible = false }
-            { etype = Goal; position = Vector3(-3f, 1f, -6f); rotation = Vector3.Zero; visible = true }
         |]
         [| // Level 11
             { etype = Goal; position = Vector3(-5f, 7f, -5f); rotation = Vector3.Zero; visible = true }

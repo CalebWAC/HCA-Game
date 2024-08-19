@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1ew8rajkloxk"]
+
+[ext_resource type="AudioStream" uid="uid://yj14ehkcxg53" path="res://Assets/Music/ExpeditionIntro.wav" id="1_xvxed"]
+
+[node name="IntroMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_xvxed")
+autoplay = true
