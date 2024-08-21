@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdj5e7h50hwnv"]
+[gd_scene load_steps=9 format=3 uid="uid://cdj5e7h50hwnv"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_agcbp"]
+[ext_resource type="Script" path="res://Scripts/ChangeMusic.gd" id="1_hqnjk"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_bg5es"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_5ua76"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_1f3vh"]
@@ -9,6 +10,7 @@
 [ext_resource type="Material" uid="uid://cntcf82orge6v" path="res://Materials/TerrainSelector.tres" id="7_4f1mh"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_hqnjk")
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("1_agcbp")

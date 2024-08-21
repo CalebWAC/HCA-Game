@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://wca4sgl56uxm"]
+[gd_scene load_steps=10 format=3 uid="uid://wca4sgl56uxm"]
 
+[ext_resource type="Script" path="res://Scripts/ChangeMusic.gd" id="1_5eiug"]
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_k88o7"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_d3csd"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_alyt7"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://w43kj05gtgdr" path="res://Tutorial Screens/TutorialMoonBoots.tscn" id="7_lchl4"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_5eiug")
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("1_k88o7")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkeakhsuc7cx0"]
+[gd_scene load_steps=11 format=3 uid="uid://dkeakhsuc7cx0"]
 
+[ext_resource type="Script" path="res://Scripts/ChangeMusic.gd" id="1_cj4jt"]
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_g74n3"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_7qope"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_cn8my"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d4a7t4ikhpqec" path="res://Tutorial Screens/TutorialTerrainManipulator.tscn" id="9_s8mas"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_cj4jt")
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("1_g74n3")

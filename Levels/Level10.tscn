@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4l4sc508bimp"]
+[gd_scene load_steps=9 format=3 uid="uid://c4l4sc508bimp"]
 
+[ext_resource type="Script" path="res://Scripts/ChangeMusic.gd" id="1_7av8i"]
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_f2q3q"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_qoapr"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_5gxhk"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://43ua23gf2akh" path="res://Tutorial Screens/TutorialCompanionCube.tscn" id="7_hb5p5"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_7av8i")
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("1_f2q3q")

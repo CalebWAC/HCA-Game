@@ -1,5 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://7prif6gxmd8s"]
 
+[ext_resource type="Script" path="res://Scripts/ChangeMusic.gd" id="1_k00cr"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="1_wb4cx"]
 [ext_resource type="Script" path="res://Scripts/BackButtonSelect.cs" id="2_821p2"]
 [ext_resource type="Texture2D" uid="uid://dvasj3lh2tey7" path="res://Assets/Level Images/Level13Unfilled.png" id="3_2sgea"]
@@ -24,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://cnpu8j6dmewxy" path="res://Assets/Level Images/Level24Unfilled.png" id="25_8m72f"]
 [ext_resource type="FontFile" uid="uid://dt0lbhw7bs0gt" path="res://Assets/NovaSquare-Regular.ttf" id="27_lttmh"]
 [ext_resource type="Script" path="res://Scripts/Confetti.cs" id="28_ibn74"]
-[ext_resource type="PackedScene" uid="uid://1ew8rajkloxk" path="res://Assets/Music/IntroMusic.tscn" id="29_2mjff"]
 [ext_resource type="Texture2D" uid="uid://b0jg5434ei0mk" path="res://Assets/ConfettiBlue.png" id="29_w8cka"]
 [ext_resource type="Texture2D" uid="uid://dy38tn52fqnfv" path="res://Assets/ConfettiRed.png" id="30_kmr06"]
 [ext_resource type="Texture2D" uid="uid://ct4ginad18fje" path="res://Assets/ConfettiGreen.png" id="31_imkbq"]
@@ -49,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_k00cr")
 
 [node name="BackButtonSelect" type="Button" parent="."]
 layout_mode = 0
@@ -248,5 +249,3 @@ texture = ExtResource("31_imkbq")
 position = Vector2(370, 139)
 process_material = SubResource("ParticleProcessMaterial_ar3vc")
 texture = ExtResource("32_f3up1")
-
-[node name="IntroMusic" parent="." instance=ExtResource("29_2mjff")]

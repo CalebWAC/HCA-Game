@@ -57,7 +57,12 @@ module PlayerControlFS =
          
     let floatingBlockFlat () =
         let convert (b : Node3D) = { position = b.Position; rotation = Vector3.Zero; material = Cave }
-        let req1 = fun (b : Block) -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z && b.position.Y - round placeToBe.Y = -1f && b.material = Cave
+        let req1 = fun (b : Block) ->
+            if b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z && b.position.Y - round placeToBe.Y = -1f && b.material = Cave then
+                GD.Print $"{placeToBe.X} {round placeToBe.X}        {placeToBe.Z} {round placeToBe.Z}"
+                GD.Print b
+                true
+            else false
         let req2 = fun (b : Block) -> b.position = roundVec placeToBe && b.material = Cave // not
         
         let desPasses = [ TerrainManipulatorFS.destructibleBlocks.Exists (convert >> req1); TerrainManipulatorFS.destructibleBlocks.Exists (convert >> req2) |> not ]
@@ -107,67 +112,81 @@ module PlayerControlFS =
             t <- 0f
             placeToBe <- placeToBe + dirVec dir
                 
-            let block = worlds[level] |> Array.find (fun b -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z)
+            let block = worlds[level] |> Array.tryFind (fun b -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z)
             
-            // Moving block movement                                          
-            if WorldGeneratorFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe || floorVec e.Position = floorVec placeToBe) then
-                onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe || floorVec e.Position = floorVec placeToBe) |> Some
-                placeToBe.Y <- placeToBe.Y + 1f
-                midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
-            elif WorldGeneratorFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) then
-                onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) |> Some
-                placeToBe.Y <- placeToBe.Y - 1f
-                midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
-            elif WorldGeneratorFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) then
-                onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> Some
-            else
-                let canMoveUp () =
-                   ((block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || floatingBlockFront()) &&
-                   WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe + Vector3.Up) |> not) ||
-                   WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe) ||
-                   (Array.contains MoonBoots PlayerFS.powerUps && block.position.Y - round placeToBe.Y >= 1f && block.position.Y - round placeToBe.Y <= 3f)
-                
-                let canMoveDown () = 
-                    (((block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || floatingBlockDown()) &&
-                      WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> not) ||
-                      WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) ||
-                      (Array.contains MoonBoots PlayerFS.powerUps && round placeToBe.Y - block.position.Y <= 5f && placeToBe.Y - block.position.Y >= 1f)) &&
-                    (floatingBlockFlat() |> not && TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not)
-                    
-                // Height compensation
-                if canMoveUp() then
-                    if block.material <> Water then
-                        onBlock <- None
-                    else
-                        onBlock <- WorldGeneratorFS.companionCubes.Find(fun c -> roundVec c.Position = roundVec placeToBe) |> Some
-                        
-                    placeToBe.Y <- block.position.Y + 1f
-                    midpoint <- Vector3(player.Position.X, block.position.Y + 1.5f, player.Position.Z)
-                elif canMoveDown() then
-                    onBlock <- None
-                    placeToBe.Y <- block.position.Y + 1f
+            match block with
+            | Some block ->
+                // Moving block movement                                          
+                if WorldGeneratorFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe || floorVec e.Position = floorVec placeToBe) then
+                    onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe || floorVec e.Position = floorVec placeToBe) |> Some
+                    placeToBe.Y <- placeToBe.Y + 1f
+                    midpoint <- Vector3(player.Position.X, player.Position.Y + 1.5f, player.Position.Z)
+                elif WorldGeneratorFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) then
+                    onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) |> Some
+                    placeToBe.Y <- placeToBe.Y - 1f
                     midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
+                elif WorldGeneratorFS.movingBlocks.Exists(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) then
+                    onBlock <- WorldGeneratorFS.movingBlocks.Find(fun e -> roundVec e.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> Some
                 else
-                    // Water bubble movement
-                    if tryMoveAquatically placeToBe = Result.Error "Not good" && tryMoveBridge () = Result.Error "Not good" then
-                        if inBubble() then
-                            if tryMoveAquatically(placeToBe + dirVec dir * 0.5f) = Result.Error "Not good" then
-                                try if block.position.Y = player.Position.Y - 1f || (worlds[level] |> Array.find (fun b ->
-                                        let pos = placeToBe + dirVec dir * 0.5f - Vector3(0f, 1f, 0f) |> roundVec
-                                        b.position.X = pos.X && b.position.Z = pos.Z)).position.Y = player.Position.Y - 1f then
-                                        placeToBe <- placeToBe + dirVec dir * 0.5f |> roundVec
-                                    else
-                                        placeToBe <- player.Position
-                                with | _ -> placeToBe <- player.Position
-                        elif not(floatingBlockFlat()) && not(WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f))) &&
-                             (block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water || block.material = RushingWater ||
-                             (CompanionCubeFS.somethingHeld && worlds[level] |> Array.exists (fun b -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z && b.position.Y = round player.Position.Y + 2f)) ||
-                             TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f)) then
-                            placeToBe <- player.Position
+                    let canMoveUp () =
+                       ((block.position.Y = round placeToBe.Y && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || floatingBlockFront()) &&
+                       WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe + Vector3.Up) |> not) ||
+                       WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe) ||
+                       (Array.contains MoonBoots PlayerFS.powerUps && block.position.Y - round placeToBe.Y >= 1f && block.position.Y - round placeToBe.Y <= 3f)
                     
+                    let canMoveDown () = 
+                        (((block.position.Y - round placeToBe.Y = -2f && (block.material = Ground || (block.material = Invisible && Array.contains Glasses PlayerFS.powerUps)) || floatingBlockDown()) &&
+                          WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f)) |> not) ||
+                          WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 2f, 0f)) ||
+                          (Array.contains MoonBoots PlayerFS.powerUps && round placeToBe.Y - block.position.Y <= 5f && placeToBe.Y - block.position.Y >= 1f)) &&
+                        (floatingBlockFlat() |> not && TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position = roundVec placeToBe) |> not)
+                        
+                    // Height compensation
+                    if canMoveUp() then
+                        if block.material <> Water then
+                            onBlock <- None
+                        else
+                            onBlock <- WorldGeneratorFS.companionCubes.Find(fun c -> roundVec c.Position = roundVec placeToBe) |> Some
+                        
+                        
+                        let cube = WorldGeneratorFS.companionCubes.Find(fun c -> roundVec c.Position = roundVec placeToBe)
+                        placeToBe.Y <- if cube = null then block.position.Y + 1f else cube.Position.Y + 1f
+                        midpoint <- Vector3(player.Position.X,
+                                            (if cube = null then block.position.Y + 1.5f else cube.Position.Y + 1.5f),
+                                            player.Position.Z)
+                    elif canMoveDown() then
+                        onBlock <- None
+                        placeToBe.Y <- block.position.Y + 1f
+                        midpoint <- Vector3(player.Position.X, player.Position.Y + 0.3f, player.Position.Z) + dirVec dir
+                    else
+                        // Water bubble movement
+                        if tryMoveAquatically placeToBe = Result.Error "Not good" && tryMoveBridge () = Result.Error "Not good" then
+                            if inBubble() then
+                                if tryMoveAquatically(placeToBe + dirVec dir * 0.5f) = Result.Error "Not good" then
+                                    try if block.position.Y = player.Position.Y - 1f || (worlds[level] |> Array.find (fun b ->
+                                            let pos = placeToBe + dirVec dir * 0.5f - Vector3(0f, 1f, 0f) |> roundVec
+                                            b.position.X = pos.X && b.position.Z = pos.Z)).position.Y = player.Position.Y - 1f then
+                                            placeToBe <- placeToBe + dirVec dir * 0.5f |> roundVec
+                                        else
+                                            placeToBe <- player.Position
+                                    with | _ -> placeToBe <- player.Position
+                            elif not(WorldGeneratorFS.companionCubes.Exists(fun c -> roundVec c.Position = roundVec placeToBe - Vector3(0f, 1f, 0f))) &&
+                                 block.position.Y > placeToBe.Y || block.position.Y - round placeToBe.Y < -2f || block.material = Water || block.material = RushingWater ||
+                                 (CompanionCubeFS.somethingHeld && worlds[level] |> Array.exists (fun b -> b.position.X = round placeToBe.X && b.position.Z = round placeToBe.Z && b.position.Y = round player.Position.Y + 2f)) ||
+                                 TerrainManipulatorFS.destructibleBlocks.Exists(fun b -> b.Position.X = round placeToBe.X && b.Position.Z = round placeToBe.Z && b.Position.Y = round placeToBe.Y + 1f) then
+                                placeToBe <- player.Position
+                                
+                            midpoint <- (player.Position + placeToBe) / 2f
+                            midpoint.Y <- midpoint.Y + 0.25f
+                            if placeToBe <> player.Position then onBlock <- None          
+            | None ->
+                if not(floatingBlockFlat()) then
+                    placeToBe <- player.Position
                     midpoint <- (player.Position + placeToBe) / 2f
                     midpoint.Y <- midpoint.Y + 0.25f
                     if placeToBe <> player.Position then onBlock <- None
+            
+            
     
     let moveLeft () = move Left
     let moveRight () = move Right

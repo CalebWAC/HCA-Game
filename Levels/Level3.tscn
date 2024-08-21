@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bck17vhdshq08"]
+[gd_scene load_steps=10 format=3 uid="uid://bck17vhdshq08"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_e1qtt"]
+[ext_resource type="Script" path="res://Scripts/ChangeMusic.gd" id="1_hyurv"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_p8orx"]
 [ext_resource type="PackedScene" uid="uid://daumxjq7jnjp8" path="res://addons/shaky_camera_3d/shaky_camera_3d.tscn" id="3_20nva"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="4_k1s1x"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://deeg6eic6rb6p" path="res://Tutorial Screens/TutorialLavaWall.tscn" id="8_o0eqg"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_hyurv")
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("1_e1qtt")

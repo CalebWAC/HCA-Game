@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgjwaxj4so0v6"]
+[gd_scene load_steps=8 format=3 uid="uid://cgjwaxj4so0v6"]
 
+[ext_resource type="Script" path="res://Scripts/ChangeMusic.gd" id="1_hlacg"]
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_n4g5n"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_borgj"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_8fhv8"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d6ep830hjnl0" path="res://Elements/Player.tscn" id="6_w4c80"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_hlacg")
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("1_n4g5n")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3221c06shpth"]
+[gd_scene load_steps=10 format=3 uid="uid://d3221c06shpth"]
 
 [ext_resource type="Script" path="res://Scripts/WorldGenerator.cs" id="1_ka1r6"]
+[ext_resource type="Script" path="res://Scripts/ChangeMusic.gd" id="1_uq0ey"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_jm63s"]
 [ext_resource type="Script" path="res://Scripts/PlayerControl.cs" id="3_tue76"]
 [ext_resource type="Texture2D" uid="uid://6hfndyd72v3m" path="res://Assets/BackButton.png" id="4_rots3"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b6sp522ld8jht" path="res://Tutorial Screens/TutorialInvisibleGlasses.tscn" id="8_o5ho3"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_uq0ey")
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("1_ka1r6")

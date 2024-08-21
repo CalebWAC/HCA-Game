@@ -117,10 +117,12 @@ module WorldGeneratorFS =
         )
         
         // Music playing
-        getRoot().GetNode<AudioStreamPlayer>("IntroMusic").QueueFree()
+        try getRoot().GetNode<AudioStreamPlayer>("IntroMusic").QueueFree() with | _ -> ()
         audioPlayer <- new AudioStreamPlayer()
+        audioPlayer.ProcessMode <- Node.ProcessModeEnum.Always
+        GD.Print audioPlayer.ProcessMode
         getRoot().GetNode<Node3D>("WorldGenerator").AddChild(audioPlayer)
         audioPlayer.Stream <- GD.Load<AudioStream>("res://Assets/Music/ExpeditionTheme.wav")
         
     let process delta =
-        if not audioPlayer.Playing then audioPlayer.Playing <- true
+        if audioPlayer <> null && not audioPlayer.Playing then audioPlayer.Playing <- true

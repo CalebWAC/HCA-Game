@@ -46,7 +46,7 @@ module TerrainManipulatorFS =
         
         member this.ready thing =
             self <- thing
-            selector <- getRoot().GetNode<CsgBox3D>("Selector")
+            try selector <- getRoot().GetNode<CsgBox3D>("Selector") with | _ -> ()
             self.GetNode<Area3D>("Area3D").add_BodyEntered (fun x -> this.onCollided x)
         
         member this.process delta =
